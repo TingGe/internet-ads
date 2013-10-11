@@ -1,0 +1,37 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" Content="text/html; charset=UTF-8">
+		<title>解码工具</title>
+	</head>
+	<body>
+	    <h2>解码工具</h2>
+        <input id="hex2str" type="button" value="十六进制转ASCII码" />
+        <input id="uridecode" type="button" value="URL解码" />
+        <br />
+        <textarea id="input_code" rows="2" cols="50"></textarea> 
+        <div id="output_code" style="height:30px;"></div>
+        <script type="text/javascript">
+            var input = document.getElementById("input_code"),
+                output = document.getElementById("output_code"),
+                hex2str = document.getElementById("hex2str"),
+                uridecode = document.getElementById("uridecode");
+            hex2str.onclick = function(){
+                var val = input.value, arr = [], result = "";
+                if(val.length){
+                    arr = val.substring(2).split("\\x");
+                }
+                for(var i = 0; i < arr.length; i++){
+                    result += String.fromCharCode(parseInt(arr[i],16));
+                }
+                output.innerHTML = result;
+            };
+            uridecode.onclick = function(){
+                output.innerHTML = decodeURI(input.value);
+            };
+		</script>
+        <hr />
+        <footer>
+            <p>&copy; 周培公 2012</p>
+        </footer>
+	</body>
+</html>

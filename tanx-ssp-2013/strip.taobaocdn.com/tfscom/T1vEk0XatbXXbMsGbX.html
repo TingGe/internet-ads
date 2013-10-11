@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+        html,body{padding:0;margin:0;}
+        body{overflow:hidden;font:normal 12px/1.5 "Tahoma","simsun";}
+    </style>
+  </head>
+  <body>
+    <script>
+    (function(a) {
+        a._ent = {
+            util: {},
+            config: {
+                timeout: 3e4
+            },
+            data: {
+                queue: a._ent || []
+            },
+            push: function(a) {
+                var b = _ent.data.queue;
+                b && b.push ? b.push(a) : a()
+            }
+        }
+    })(this),
+    function(a, b) {
+        function j(a, b) {
+            a.nodeName === "SCRIPT" ? k(a, b) : l(a, b)
+        }
+        function k(a, b) {
+            a.onload = a.onerror = a.onreadystatechange = function() {
+                g.test(a.readyState) && (a.onload = a.onerror = a.onreadystatechange = null, a = undefined, b())
+            }
+        }
+        function l(b, c) {
+            p || q ? (a.log("Start poll to fetch css"), setTimeout(function() {
+                m(b, c)
+            },
+            1)) : b.onload = b.onerror = function() {
+                b.onload = b.onerror = null,
+                b = undefined,
+                c()
+            }
+        }
+        function m(a, b) {
+            var c;
+            if (p) a.sheet && (c = !0);
+            else if (a.sheet) try {
+                a.sheet.cssRules && (c = !0)
+            } catch(d) {
+                d.name === "NS_ERROR_DOM_SECURITY_ERR" && (c = !0)
+            }
+            setTimeout(function() {
+                c ? b() : m(a, b)
+            },
+            1)
+        }
+        function n() {}
+        var c = document,
+        d = c.head || c.getElementsByTagName("head")[0] || c.documentElement,
+        e = d.getElementsByTagName("base")[0],
+        f = /\.css(?:\?|$)/i,
+        g = /loaded|complete|undefined/,
+        h,
+        i;
+        a.fetch = function(b, c, g) {
+            var i = f.test(b),
+            k = document.createElement(i ? "link": "script");
+            if (g) {
+                var l = a.isFunction(g) ? g(b) : g;
+                l && (k.charset = l)
+            }
+            j(k, c || n),
+            i ? (k.rel = "stylesheet", k.href = b) : (k.async = "async", k.src = b),
+            h = k,
+            e ? d.insertBefore(k, e) : d.appendChild(k),
+            h = null
+        },
+        a.getCurrentScript = function() {
+            if (h) return h;
+            if (i && i.readyState === "interactive") return i;
+            var a = d.getElementsByTagName("script");
+            for (var b = 0; b < a.length; b++) {
+                var c = a[b];
+                if (c.readyState === "interactive") return i = c,
+                c
+            }
+        },
+        a.getScriptAbsoluteSrc = function(a) {
+            return a.hasAttribute ? a.src: a.getAttribute("src", 4)
+        },
+        a.importStyle = function(a, b) {
+            if (b && c.getElementById(b)) return;
+            var e = c.createElement("style");
+            b && (e.id = b),
+            d.appendChild(e),
+            e.styleSheet ? e.styleSheet.cssText = a: e.appendChild(c.createTextNode(a))
+        },
+        a.scriptOnload = k;
+        var o = navigator.userAgent,
+        p = Number(o.replace(/.*AppleWebKit\/(\d+)\..*/, "$1")) < 536,
+        q = o.indexOf("Firefox") > 0 && !("onload" in document.createElement("link"))
+    } (_ent.util, _ent.config, this),
+    function(a, b, c) {
+        function e(a) {
+            var b = a.match(d);
+            return (b ? b[0] : ".") + "/"
+        }
+        function f(a, b) {
+            var c;
+            return a.indexOf("./") === 0 ? (a = a.substr(2), b = e(b), c = b + a) : a.indexOf("../") === 0 && (a = a.substr(3), b = e(e(b).replace(/\/$/, "")), c = b + a),
+            a.charAt(0) === "." ? f(a, b) : c || a
+        }
+        function g(a) {
+            return a.charAt(0) !== "/" && (a = "/" + a),
+            a
+        }
+        var d = /.*(?=\/.*$)/,
+        h = a.location,
+        i = h.protocol + "//" + h.host + g(h.pathname);
+        b.pageUri = i,
+        b.resolve = f
+    } (this, _ent.util, _ent.config),
+    function(a, b, c, d) {
+        function g(a, c, d) {
+            function g(a) {
+                var c = b.resolve(a, e.id),
+                d = f[c];
+                return d ? d.exports || d._compile() : console.log("_ent shouts: Module missing!", d),
+                d.exports
+            }
+            var e = this;
+            this.id = a,
+            this.dependencies = c,
+            this.factory = d,
+            this.require = g,
+            g.async = g.load = function(a, b) {
+                e._use(a, b)
+            }
+        }
+        var e = b.mix = function(a, b, c, e) {
+            if (!a || !b) return a;
+            c === d && (c = !0);
+            var f, g, h;
+            if (e && (h = e.length)) for (f = 0; f < h; f++) g = e[f],
+            g in b && (c || !(g in a)) && (a[g] = b[g]);
+            else for (g in b) if (c || !(g in a)) a[g] = b[g];
+            return a
+        };
+        e(b,
+        function() {
+            var b = Object.prototype.toString,
+            c = Array.prototype,
+            d;
+            return d = {
+                iF: function(a) {
+                    return b.call(a) === "[object Function]"
+                },
+                iA: function(a) {
+                    return b.call(a) === "[object Array]"
+                },
+                iS: function(a) {
+                    return b.call(a) === "[object String]"
+                },
+                iPO: function(a) {
+                    return a && b.call(a) === "[object Object]" && !a.nodeType && !a.setInterval
+                }
+            },
+            a.console || (a.console = {}),
+            console.log || (console.log = function() {}),
+            d
+        } ());
+        var f = c.memoizedMods = {};
+        b.mix(g.prototype, {
+            _use: function(a, c) {
+                /*- 原代码 -*/
+                //if (b.iS(a) && a.indexOf("http://") === 0) b.fetch(a, c);
+                /*- 本地代码 -*/
+                if (b.iS(a) && ((a.indexOf("http://") === 0) || (a.indexOf("./") === 0) || (a.indexOf("../") === 0))) b.fetch(a, c);
+                else {
+                    var d = this;
+                    b.iS(a) && (a = [a]);
+                    var e = [],
+                    f;
+                    for (f = 0; f < a.length; f++) e[f] = d.require(a[f], d.id);
+                    b.iF(c) && c.apply(null, e)
+                }
+            },
+            _compile: function() {
+                var a = this,
+                c = a.factory,
+                e;
+                a.exports = {},
+                delete a.factory,
+                b.iF(c) ? (e = c(a.require, a.exports, a), e !== d && (a.exports = e)) : c !== d && (a.exports = c)
+            }
+        });
+        var h = new g(b.pageUri);
+        a.seajs ? _ent.use = seajs.use: (a.define = function(a, c, d) {
+            if (b.iF(c) || b.iPO(c)) d = c,
+            c = [];
+            var e = new g(a, c, d);
+            f[a] = e
+        },
+        _ent.use = function(a, b) {
+            h._use(a, b)
+        },
+        a.seajs = _ent),
+        define("ent",
+        function(a, c) {
+            b.mix(c, b, !0, "mix iF iA iS iPO fetch".split(" ")),
+            c.substitute = function(a, b, e, f) {
+                return ! c.iS(a) || !c.iPO(b) ? a: a.replace(e || /\\?\{([^{}]+)\}/g,
+                function(a, c) {
+                    return a.charAt(0) === "\\" ? a.slice(1) : b[c] !== d ? b[c] : f ? a: ""
+                })
+            }
+        })
+    } (this, _ent.util, _ent.data),
+    function(a, b, c) {
+        function f() {
+            var c = a.document,
+            d = b.getCurrentScript(),
+            e,
+            f,
+            g,
+            h;
+            if (!d) {
+                h = c.getElementsByTagName("script");
+                for (e = 0, f = h.length; e < f; e++) {
+                    g = h[e];
+                    if (g._ent) {
+                        d = g;
+                        break
+                    }
+                }
+            }
+            return d
+        }
+        var d = f(),
+        e;
+        if (!d) return;
+        e = d.onload,
+        b.scriptOnload(d,
+        function() {
+            var a = c.queue,
+            d, f;
+            if (b.iA(a)) for (d = 0; d < a.length; d++) f = a[d],
+            b.iF(f) && f();
+            delete c.queue,
+            _ent.push = function(a) {
+                a()
+            },
+            b.iF(e) && e()
+        })
+    } (this, _ent.util, _ent.data);
+    define("cc/util/tps", [],
+    function(e, t) {
+        var n = [[24, 24], [30, 30], [40, 40], [60, 60], [63, 63, "60x30"], [70, 70], [80, 80, "sum"], [65, 65, "81x65"], [84, 84, "80x40"], [90, 90, "110x90"], [100, 100], [110, 110], [120, 120, "m"], [160, 160], [170, 170], [180, 180], [200, 200], [210, 210], [220, 220, "b"], [250, 250], [270, 270], [310, 310], [315, 315], [620, 620, "620x10000"], [670, 670]];
+        t.alias = function(e) {
+            var t, r, i = n,
+            s = i.length,
+            o = parseInt(e, 10);
+            for (t = 0; t < s; t++) {
+                r = i[t];
+                if (r[0] == o) break
+            }
+            return t === s ? "": r[2] || o + "x" + o
+        }
+    });
+    define("cc/datasource/p4p/rosetta", ["cc/util/tps"],
+    function(e, t) {
+        function s(e) {
+            var t = e.split(";") || "",
+            n,
+            r,
+            i = {};
+            if (!t) return i;
+            for (n = 0; n < t.length; n++) r = t[n].split(":"),
+            i[r[0]] = r[1] || "";
+            return i
+        }
+        function o(e, t) {
+            var n, o, u = {},
+            a, f, l, c, h = t.imgsize,
+            p = t.decimal,
+            d = s(e.ADGEXTENSION || ""),
+            v = r.alias(h);
+            typeof p == "undefined" && (p = 2);
+            for (n in i) o = i[n],
+            o == "ds_img" ? (a = e.DISPLAY_RESOLUTION.split("*"), f = parseInt(a[0], 10), l = parseInt(a[1], 10), c = u[o] = {},
+            h && v ? c.src = e[n].replace(/[^_]+\.(jpg|gif)$/, "") + v + ".jpg": c.src = e[n], c.width = f || 0, c.height = l || 0) : o == "ds_price" ? u[o] = (e[n] / 100).toFixed(p) : o == "ds_free" ? u[o] = d[n] || "": u[o] = e[n];
+            return u
+        }
+        function u(e, t) {
+            var r, i = [];
+            if (!n.iA(e)) return e;
+            for (r = 0; r < e.length; r++) i.push(o(e[r], t));
+            return i
+        }
+        var n = e("ent"),
+        r = e("cc/util/tps"),
+        i = {
+            TBGOODSLINK: "ds_img",
+            EURL: "ds_clickurl",
+            TITLE: "ds_title",
+            GOODSPRICE: "ds_price",
+            SELL: "ds_sell",
+            isPostFree: "ds_free",
+            ISMALL: "ds_mall",
+            RESOURCEID: "ds_itemid",
+            REDKEYS: "ds_redkeys"
+        };
+        t.format = u
+    });
+    define("cc/datasource/p4p", ["cc/util/params", "./p4p/rosetta"],
+    function(e, t) {
+        var n = e("cc/util/params"),
+        r = e("./p4p/rosetta"),
+        i = e("ent");
+        t.getData = function(t, s, o) {
+            /*-- 原代码 --*/
+            //var u = "tbcc_p4p_fn_" + (t.uid ? t.uid.replace(/[^a-z0-9_$]/ig, "_") : +(new Date)),
+            /*-- 本地代码 --*/
+            var u = "tbcc_p4p_fn_",
+            a = t.datasource[s],
+            f,
+            l = t.uid ? document.getElementById("tbcc-c-" + t.uid).getAttribute("tbcc-args") : "",
+            c = l ? n.get(l) : n.get(location.href) || window.TBCC_P4P;
+            f = i.substitute(a.ds_host, {
+                qp_count: a.qp_count,
+                qp_callback: u
+            }),
+            i.iPO(c) && (c.refpid = c.pid, f = n.replace(f, c)),
+            e.async(f,
+            function() {
+                var e = t.datasource[s],
+                n = {
+                    imgsize: e.qp_imgsize,
+                    decimal: e.qp_decimal
+                },
+                a = window[u];
+                t.data = t.data || {},
+                t.data[s] = t.data[s] || {},
+                t.data[s].items = i.iA(a) ? r.format(a, n) : [],
+                o()
+            })
+        }
+    });
+    define("cc/vender/trident/discount", ["cc/util/params", "cc/util/et"],
+    function(e, t) {
+        function u(e, t, n) {
+            function l(e, t) {
+                var n, r;
+                n = o.find(e, "em")[0],
+                r = parseFloat(o.html(n) || 0);
+                if (t < 0 || r <= t) return;
+                o.addClass(e, a + "-price-promo"),
+                o.html(n, t.toFixed(f)),
+                e = o.next(e, "span"),
+                o.removeClass(e, a + "-hidden"),
+                o.addClass(e, a + "-price-old"),
+                n = o.find(e, "em")[0],
+                o.html(n, r)
+            }
+            var r, i, s, u, a = e.uid,
+            f = e.datasource.ds1.qp_decimal;
+            typeof f == "undefined" && (f = 2);
+            for (r = 0, i = t.length; r < i; r++) s = t[r],
+            u = n[s.auction_id],
+            s.promoOtherNeed || l(u, parseFloat(s.promoPrice || -1));
+            u = e = t = null
+        }
+        function a(e) {
+            var t = document,
+            n = "tbcc-c-" + e.uid,
+            r = t.getElementById(n),
+            i = r.getElementsByTagName("span"),
+            s,
+            o,
+            u,
+            a = [],
+            f = {};
+            for (o = 0, u = i.length; o < u; o++) s = i[o],
+            itemid = s.getAttribute("tbcc-itemid"),
+            !itemid || (a.push(itemid), f[itemid] = s);
+            return {
+                ids: a,
+                _price_spans: f
+            }
+        }
+        /*-- 原代码 --*/
+        //var n = "http://show.re.taobao.com/feature.htm?cb={qp_callback}&auction_ids={item_ids}",
+        /*-- 本地代码 --*/
+        var n = "./show.re.taobao.com/feature.htm?cb={qp_callback}&auction_ids={item_ids}",
+        r = {
+            feature_names: "promoPrice,promoOtherNeed"
+        },
+        i = e("ent"),
+        s = e("cc/util/params"),
+        o = e("cc/util/et");
+        t.inject = function(t) {
+            var o = i.mix({},
+            r),
+            f,
+            l = a(t),
+            c = l.ids,
+            h = l._price_spans,
+            /*-- 原代码 --*/
+            //p = "tbcc_items_discounts_" + +(new Date);
+            /*-- 本地代码 --*/
+            p = "tbcc_items_discounts_";
+            if (c.length === 0) return;
+            i.mix(o, {
+                cb: p,
+                auction_ids: c.join(",")
+            }),
+            f = s.replace(n, o),
+            window[p] = function(e) {
+                u(t, e, h)
+            },
+            e.async(f,
+            function() {})
+        }
+    });
+    define("cc/vender/tanxclick", [],
+    function(a, b) {
+        b.bind = function(b) {
+            /*-- 原代码 --*/
+            //var c = b.info.templet; (/^p4p\/(tw|dp|dtw)/.test(c) || /^tbu\/tw/.test(c)) && a.async("http://cdn.tanx.com/t/tanxclick.js",
+            /*-- 本地代码 --*/
+            var c = b.info.templet; (/^p4p\/(tw|dp|dtw)/.test(c) || /^tbu\/tw/.test(c)) && a.async("../../cdn.tanx.com/t/tanxclick.js",
+            function() {})
+        }
+    });
+    define("cc/util/params", [],
+    function(e, t) {
+        var n = e("ent");
+        t.replace = function(e, t, r) {
+            if (!t) return e;
+            var i = "=",
+            s = "?",
+            o = "&",
+            u = "#",
+            a = !!r && !!r.force,
+            f = e.split(s),
+            l = f[0],
+            c = (f[1] || "").split(u),
+            h = c[1] || "",
+            p,
+            d,
+            v,
+            m,
+            g;
+            t = n.mix({},
+            t),
+            c = (c[0] || "").split(o);
+            for (v = 0; v < c.length; v++) {
+                p = c[v].split(i);
+                for (m in t) {
+                    g = t[m] || "",
+                    d = p[0] === m;
+                    if (d) {
+                        g = n.iF(g) ? g(p[1]) : g;
+                        if ( !! g || a) p[1] = g;
+                        c[v] = p.join(i);
+                        break
+                    }
+                }
+                d && delete t[m]
+            }
+            for (m in t) g = t[m] || "",
+            g = n.iF(g) ? g("") : g,
+            !g || (p = m + i + g, c.push(p));
+            return e = l + s + c.join(o),
+            h && (e += u + h),
+            e
+        },
+        t.get = function(e, t) {
+            var r = e.split("#")[0].split("?")[1] || "",
+            i = r.split("&"),
+            s,
+            o,
+            u,
+            a,
+            f = n.iS(t),
+            l = f ? "": {};
+            if (!r) return l;
+            for (u = 0; u < i.length; u++) {
+                s = i[u],
+                o = s.split("=");
+                if (!s) continue;
+                if (!t) l[o[0]] = o[1] || "";
+                else if (f && o[0] === t) l = o[1];
+                else for (a = 0; a < t.length; a++) o[0] === t[a] && (l[o[0]] = o[1] || "")
+            }
+            return l
+        }
+    });
+    define("cc/vender/p4p/wt_hook", ["cc/util/params", "../tanxclick"],
+    function(e, t) {
+        function u(e, t) {
+            /*-- 原代码 --*/
+            //return e.indexOf("http://" + t + ".simba.taobao.com") === 0
+            /*-- 本地代码 --*/
+            return e.indexOf("http://" + t + ".simba.taobao.com") === 0
+        }
+        function a(e) {
+            return e.info.templet_id + "_" + ("" + e.id).split("/").pop() + "_"
+        }
+        function f(e, t) {
+            return e.replace(new RegExp(t, "g"), "")
+        }
+        function l(e, t, n) {
+            var i;
+            return t && (e = decodeURIComponent(r.get(e, t))),
+            i = r.get(e, "refpos"),
+            !i || i === "refposplaceholder" ? ",n,a": f(i, n)
+        }
+        function c(e) {
+            return function(t) {
+                var n = decodeURIComponent(t);
+                return encodeURIComponent(e(n))
+            }
+        }
+        function h(e) {
+            return c(function(t) {
+                if (i.test(t) || s.test(t)) e.pid = e.refpid,
+                e.refpid = null;
+                return r.replace(t, e)
+            })
+        }
+        function p(e, t, n) {
+            var i = {},
+            s, o;
+            return i.pvid = e.pvid,
+            i.p = e.pid,
+            s = n + (e.refpos ? f(e.refpos, n) : l(t, "f", n)),
+            i.f = h({
+                refpos: s,
+                refpid: e.pid
+            }),
+            o = r.get(t, "b"),
+            !o || (i.b = n + o),
+            i
+        }
+        function d(e, t, r) {
+            var i = n.mix({},
+            e, !0, ["pvid", "pid"]);
+            return refpos = e.refpos ? f(e.refpos, r) : l(t, "l", r),
+            refpos = r + refpos,
+            i.l = h({
+                refpos: refpos,
+                refpid: e.pid
+            }),
+            i
+        }
+        function v(e, t) {
+            var n, r;
+            for (n in e) r = t[n],
+            r.test(e[n]) || (window.console && console.log && console.log(n + ": " + e[n] + " does not match " + r), e[n] = DEFAULTS[n] || "")
+        }
+        function m(e) {
+            var t = e.innerEle,
+            i = t.getElementsByTagName("a"),
+            s = a(e),
+            o = r.get(location.href, ["pid", "refpos", "pvid"]);
+            v(o, {
+                pid: /^(?:mm|tt)_\d+_\d+_\d+$/,
+                refpos: /^[-_a-z0-9,]+$/i,
+                pvid: /^[-_a-z0-9]+$/i
+            });
+            var f, c, h, m, g;
+            for (f = 0; f < i.length; f++) c = i[f],
+            h = c.href,
+            g = null,
+            m = null,
+            /*-- 原代码 --*/
+            //u(h, "redirect") || u(h, "click.mz") ? g = p(o, h, s + f) : u(h, "stat") ? g = d(o, h, s + f) : h.indexOf("http://re.taobao.com") === 0 ? (m = l(h, !1, s + f), g = {
+            /*-- 本地代码 --*/
+            u(h, "redirect") || u(h, "click.mz") ? g = p(o, h, s + f) : u(h, "stat") ? g = d(o, h, s + f) : h.indexOf("./re.taobao.com") === 0 ? (m = l(h, !1, s + f), g = {
+                refpos: s + f + m,
+                refpid: o.pid
+            /*-- 原代码 --*/
+            //}) : h.indexOf("http://www.taobao.com") === 0 && (m = l(h, !1, s + f), g = {
+            /*-- 本地代码 --*/
+            }) : h.indexOf("./www.taobao.com") === 0 && (m = l(h, !1, s + f), g = {
+                refpos: s + f + m,
+                pid: o.pid
+            }),
+            n.iPO(g) && (c.href = r.replace(h, g))
+        }
+        var n = e("ent"),
+        r = e("cc/util/params"),
+        /*-- 原代码 --*/
+        /*
+        i = /^http:\/\/s8.(taobao|etao).com/,
+        s = /^http:\/\/www.taobao.com/,
+        o = /^http:\/\/re.taobao.com/;
+        */
+        /*-- 本地代码 --*/
+        i = /^http:\/\/s8.(taobao|etao).com/,
+        s = /^http:\/\/www.taobao.com/,
+        o = /^http:\/\/re.taobao.com/;
+        t.on = {
+            afterRender: function(t) {
+                m(t),
+                e("../tanxclick").bind(t)
+            }
+        }
+    });
+    define("cc/vender/p4p/dp_hook", ["./wt_hook", "../trident/discount"],
+    function(a, b) {
+        b.on = {
+            afterRender: function(b) {
+                a("./wt_hook").on.afterRender(b),
+                a("../trident/discount").inject(b)
+            }
+        }
+    });
+    define("cc/tutil/label", [],
+    function(a, b) {
+        b.label = function(a) {
+            var b = a.items,
+            c;
+            for (c = 0; c < b.length; c++) b[c].cc_label = c + 1
+        }
+    });
+    define("cc/util/et", [],
+    function(a, b, c) {
+        function f() {}
+        function g(a, b) {
+            return !! a && a.nodeType == b
+        }
+        var d = a("ent"),
+        e = 1;
+        d.mix(f, {
+            is: g,
+            addClass: function(a, b) {
+                if (!g(a, e) || !b) return;
+                if (!a.className) {
+                    a.className = b;
+                    return
+                }
+                f.hasClass(a, b) || (a.className += " " + b)
+            },
+            removeClass: function(a, b) {
+                if (!g(a, e) || !a.className || !b) return;
+                var c = a.className.split(" "),
+                d;
+                for (d = 0; d < c.length; d++) if (b === c[d]) break;
+                c.splice(d, 1),
+                a.className = c.join(" ")
+            },
+            hasClass: function(a, b) {
+                if (!g(a, e) || !a.className || !b) return ! 1;
+                var c = a.className.split(" "),
+                d;
+                for (d = 0; d < c.length; d++) if (c[d] === b) return ! 0;
+                return ! 1
+            },
+            siblings: function(a, b) {
+                if (!g(a, e)) return;
+                var c = a.nextSibling;
+                while (c) g(c, e) && b(c),
+                c = c.nextSibling;
+                c = a.previousSibling;
+                while (c) g(c, e) && b(c),
+                c = c.previousSibling
+            },
+            children: function(a) {
+                if (!g(a, e)) return;
+                var b = a.childNodes,
+                c, d, f = b.length,
+                h = [];
+                for (c = 0; c < f; c++) d = b[c],
+                g(d, e) && h.push(d);
+                return h
+            },
+            index: function(a) {
+                if (!g(a, e) || !a.parentNode) return - 1;
+                var b = 0,
+                c = a.parentNode.firstChild;
+                while (c !== a) g(c, e) && b++,
+                c = c.nextSibling;
+                return b
+            },
+            css: function(a, b) {
+                if (!g(a, e) || !d.iPO(b)) return;
+                var c;
+                for (c in b) b.hasOwnProperty(c) && (a.style[c] = b[c])
+            },
+            first: function(a) {
+                var b, c = 0;
+                do {
+                    b = a[c++];
+                    if (g(b, e)) return b
+                } while ( c < a . length )
+            },
+            last: function(a) {
+                var b, c = a.length - 1;
+                do {
+                    b = a[c--];
+                    if (g(b, e)) return b
+                } while ( c >= 0 )
+            },
+            find: function(a, b) {
+                return a.getElementsByTagName(b)
+            },
+            text: function(a, b) {
+                if (typeof b == "undefined") return a.innerText || a.textContent;
+                typeof a.innerText == "undefined" ? a.innerText = b: a.textContent = b
+            },
+            html: function(a, b) {
+                if (typeof b == "undefined") return a.innerHTML;
+                a.innerHTML = b
+            },
+            next: function(a, b) {
+                while (a = a.nextSibling) if (g(a, e)) if (!b || f.match(a, b)) break;
+                return a
+            },
+            match: function(a, b) {
+                var c = b.charAt(0);
+                return a.tagName.toLowerCase() === b
+            },
+            version: "0.1"
+        }),
+        c.exports = f
+    });
+    define("cc/effect/switchable", ["cc/util/et"],
+    function(e, t, n) {
+        function o(e, t) {
+            if (!e) return;
+            t = i.mix(t || {},
+            s, !1),
+            /[?&]adx_type=1/.test(location.href) && (t.stopsAt = 3e4);
+            var n = t.win || window,
+            o = n.document,
+            u = o.getElementById(e),
+            a,
+            f,
+            l = [],
+            c = [],
+            h,
+            p,
+            d;
+            for (h = 0; h < t.triggerCount; h++) {
+                d = e + "-triggers" + (h === 0 ? "": h + 1),
+                a = o.getElementById(d),
+                f = r.children(a);
+                for (p = 0; p < f.length; p++) f[p].setAttribute("tt-index", l.length),
+                l.push(f[p])
+            }
+            for (h = 0; h < t.frameCount; h++) d = e + "-frames" + (h === 0 ? "": h + 1),
+            a = o.getElementById(d),
+            c[h] = r.children(a);
+            this.config = t,
+            this.win = n,
+            this.doc = o,
+            this.id = e,
+            this.frames = c,
+            this.triggers = l,
+            this.dawn = +(new Date),
+            this.bind(),
+            this.show(0)
+        }
+        var r = e("cc/util/et"),
+        i = e("ent"),
+        s;
+        return s = {
+            eventType: "mouseover",
+            currentClass: "current",
+            triggerClass: "j-trigger",
+            auto: !0,
+            interval: 5e3,
+            triggerCount: 1,
+            frameCount: 1,
+            stopsAt: -1
+        },
+        i.mix(o.prototype, {
+            getBox: function() {
+                return document.getElementById(this.id)
+            },
+            bind: function() {
+                var e = this.getBox(),
+                t = this.config,
+                n = t.eventType,
+                r = t.auto,
+                i = this;
+                e["on" + n] = function(e) {
+                    i.dispatch(e)
+                },
+                r && (e.onmouseout = function(e) {
+                    var t = i.getBox();
+                    t.getAttribute("tt-switchable-debug") || i.start(e)
+                })
+            },
+            dispatch: function(e) {
+                e = e || this.win.event;
+                var t = e.target || e.srcElement,
+                n, i = this.config.triggerClass,
+                s = this.config.currentClass;
+                r.hasClass(t, i) ? (n = parseInt(t.getAttribute("tt-index"), 10), this.show(n), this.stop()) : r.hasClass(t.parentNode, i) ? (n = parseInt(t.parentNode.getAttribute("tt-index"), 10), this.show(n), this.stop()) : r.hasClass(t, "j-frame") && this.stop()
+            },
+            show: function(e) {
+                function a(e) {
+                    r.removeClass(e, t)
+                }
+                var t = this.config.currentClass,
+                n = this.triggers,
+                i = this.frames,
+                s, o, u = n[e];
+                for (s = 0; s < i.length; s++) o = i[s][e],
+                r.addClass(o, t),
+                r.siblings(o, a),
+                o && !o.getAttribute("tt-image-loaded") && this.loadImg(o);
+                for (s = 0; s < n.length; s++) r.removeClass(n[s], t);
+                r.addClass(u, t)
+            },
+            loadImg: function(e) {
+                var t = e.getElementsByTagName("img"),
+                n,
+                r;
+                for (n = 0; n < t.length; n++) r = t[n],
+                r.src = r.getAttribute("data-src");
+                e.setAttribute("tt-image-loaded", !0)
+            },
+            stop: function() {
+                this.timer && this.clearTimer()
+            },
+            clearTimer: function() {
+                clearInterval(this.timer),
+                this.timer = null,
+                this.getBox().removeAttribute("tt-switchable-interval")
+            },
+            start: function() {
+                var e = this;
+                this.timer && this.clearTimer(),
+                this.timer = setInterval(function() {
+                    var t = e.config.stopsAt,
+                    n = +(new Date) - e.dawn;
+                    t >= 0 && n >= t ? e.stop() : e.next()
+                },
+                e.config.interval),
+                this.getBox().setAttribute("tt-switchable-interval", this.timer)
+            },
+            next: function() {
+                var e = this.cur();
+                e >= 0 && (e = e + 1 < this.triggers.length ? e + 1 : 0, this.show(e))
+            },
+            cur: function() {
+                var e = this.config.currentClass,
+                t = 0,
+                n = !1,
+                i, s = this.triggers;
+                for (t = 0; t < s.length; t++) {
+                    i = s[t];
+                    if (r.hasClass(i, e) || r.hasClass(i.parentNode, e)) {
+                        n = !0;
+                        break
+                    }
+                }
+                return n ? t: -1
+            },
+            prev: function() {
+                var e = this.cur();
+                e >= 0 && (e = e - 1 >= 0 ? e - 1 : this.triggers.length - 1, this.show(e))
+            }
+        }),
+        o
+    });
+    define("cc/dataservice",
+    function(a, b) {
+        var c = a("ent");
+        b.getData = function(b, d, e) {
+            var f = "cc/datasource/" + b.datasource[d].ds_sn;
+            a.async(f,
+            function(a) {
+                a.getData(b, d,
+                function() {
+                    c.iF(b.afterGetData) && b.afterGetData(b, d),
+                    e()
+                })
+            })
+        }
+    });
+    define("cc/templets/meta", [],
+    function(e, t) {
+        function n(e, t) {
+            var n, r, i = e.css,
+            s = e.uid,
+            o = i.split("}"),
+            u = !t || !t.asIs,
+            a;
+            for (r = 0; r < o.length; r++) {
+                if (o[r].indexOf("{") < 0) continue;
+                n = o[r].split("{"),
+                u ? a = n[0].replace(/\./g, "." + s + "-") : a = n[0].replace(/\./g, "#tbcc-c-" + s + " ."),
+                o[r] = a + "{" + n[1]
+            }
+            return o.join("}\n")
+        }
+        t.attachStyle = function(e, t) {
+            var r = e.uid,
+            i = "j-" + r + "-css",
+            s = e.doc || document,
+            o = s.getElementsByTagName("head")[0],
+            u = s.getElementsByTagName("body")[0],
+            a = s.createElement("style"),
+            f = s.getElementById(i),
+            l = n(e, t),
+            c = s.createElement("div");
+            f && f.parentNode.removeChild(f),
+            c.id = i,
+            c.innerHTML = '&nbsp;<!--[if IE 8]><style type="text/css">' + l + "</style><![endif]-->",
+            c.style.cssText = "margin:0;padding:0;height:0;overflow:hidden;",
+            u.appendChild(c),
+            s.getElementById(i).getElementsByTagName("style").length === 0 && (l = s.createTextNode(l), a.type = "text/css", a.styleSheet ? a.styleSheet.cssText = l.nodeValue: a.appendChild(l), a.id = i, o.appendChild(a))
+        }
+    });
+    var Mustache = function() {
+        var e = function() {};
+        return e.prototype = {
+            otag: "{{",
+            ctag: "}}",
+            pragmas: {},
+            buffer: [],
+            pragmas_implemented: {
+                "IMPLICIT-ITERATOR": !0
+            },
+            context: {},
+            render: function(e, t, n, r) {
+                r || (this.context = t, this.buffer = []);
+                if (!this.includes("", e)) {
+                    if (r) return e;
+                    this.send(e);
+                    return
+                }
+                e = this.render_pragmas(e);
+                var i = this.render_section(e, t, n);
+                if (r) return this.render_tags(i, t, n, r);
+                this.render_tags(i, t, n, r)
+            },
+            send: function(e) {
+                e != "" && this.buffer.push(e)
+            },
+            render_pragmas: function(e) {
+                if (!this.includes("%", e)) return e;
+                var t = this,
+                n = new RegExp(this.otag + "%([\\w-]+) ?([\\w]+=[\\w]+)?" + this.ctag);
+                return e.replace(n,
+                function(e, n, r) {
+                    if (!t.pragmas_implemented[n]) throw {
+                        message: "This implementation of mustache doesn't understand the '" + n + "' pragma"
+                    };
+                    t.pragmas[n] = {};
+                    if (r) {
+                        var i = r.split("=");
+                        t.pragmas[n][i[0]] = i[1]
+                    }
+                    return ""
+                })
+            },
+            render_partial: function(e, t, n) {
+                e = this.trim(e);
+                if (!n || n[e] === undefined) throw {
+                    message: "unknown_partial '" + e + "'"
+                };
+                return typeof t[e] != "object" ? this.render(n[e], t, n, !0) : this.render(n[e], t[e], n, !0)
+            },
+            render_section: function(e, t, n) {
+                if (!this.includes("#", e) && !this.includes("^", e)) return e;
+                var r = this,
+                i = new RegExp(this.otag + "(\\^|\\#)\\s*(.+)\\s*" + this.ctag + "\n*([\\s\\S]+?)" + this.otag + "\\/\\s*\\2\\s*" + this.ctag + "\\s*", "mg");
+                return e.replace(i,
+                function(e, i, s, o) {
+                    var u = r.find(s, t);
+                    if (i == "^") return ! u || r.is_array(u) && u.length === 0 ? r.render(o, t, n, !0) : "";
+                    if (i == "#") return r.is_array(u) ? r.map(u,
+                    function(e) {
+                        return r.render(o, r.create_context(e), n, !0)
+                    }).join("") : r.is_object(u) ? r.render(o, r.create_context(u), n, !0) : typeof u == "function" ? u.call(t, o,
+                    function(e) {
+                        return r.render(e, t, n, !0)
+                    }) : u ? r.render(o, t, n, !0) : ""
+                })
+            },
+            render_tags: function(e, t, n, r) {
+                var i = this,
+                s = function() {
+                    return new RegExp(i.otag + "(=|!|>|\\{|%)?([^\\/#\\^]+?)\\1?" + i.ctag + "+", "g")
+                },
+                o = s(),
+                u = function(e, r, u) {
+                    switch (r) {
+                    case "!":
+                        return "";
+                    case "=":
+                        return i.set_delimiters(u),
+                        o = s(),
+                        "";
+                    case ">":
+                        return i.render_partial(u, t, n);
+                    case "{":
+                        return i.find(u, t);
+                    default:
+                        return i.escape(i.find(u, t))
+                    }
+                },
+                a = e.split("\n");
+                for (var f = 0; f < a.length; f++) a[f] = a[f].replace(o, u, this),
+                r || this.send(a[f]);
+                if (r) return a.join("\n")
+            },
+            set_delimiters: function(e) {
+                var t = e.split(" ");
+                this.otag = this.escape_regex(t[0]),
+                this.ctag = this.escape_regex(t[1])
+            },
+            escape_regex: function(e) {
+                if (!arguments.callee.sRE) {
+                    var t = ["/", ".", "*", "+", "?", "|", "(", ")", "[", "]", "{", "}", "\\"];
+                    arguments.callee.sRE = new RegExp("(\\" + t.join("|\\") + ")", "g")
+                }
+                return e.replace(arguments.callee.sRE, "\\$1")
+            },
+            find: function(e, t) {
+                function n(e) {
+                    return e === !1 || e === 0 || e
+                }
+                e = this.trim(e);
+                var r;
+                return n(t[e]) ? r = t[e] : n(this.context[e]) && (r = this.context[e]),
+                typeof r == "function" ? r.apply(t) : r !== undefined ? r: ""
+            },
+            includes: function(e, t) {
+                return t.indexOf(this.otag + e) != -1
+            },
+            escape: function(e) {
+                return e = String(e === null ? "": e),
+                e.replace(/&(?!\w+;)|["<>\\]/g,
+                function(e) {
+                    switch (e) {
+                    case "&":
+                        return "&amp;";
+                    case "\\":
+                        return "\\\\";
+                    case '"':
+                        return '"';
+                    case "<":
+                        return "&lt;";
+                    case ">":
+                        return "&gt;";
+                    default:
+                        return e
+                    }
+                })
+            },
+            create_context: function(e) {
+                if (this.is_object(e)) return e;
+                var t = ".";
+                this.pragmas["IMPLICIT-ITERATOR"] && (t = this.pragmas["IMPLICIT-ITERATOR"].iterator);
+                var n = {};
+                return n[t] = e,
+                n
+            },
+            is_object: function(e) {
+                return e && typeof e == "object"
+            },
+            is_array: function(e) {
+                return Object.prototype.toString.call(e) === "[object Array]"
+            },
+            trim: function(e) {
+                return e.replace(/^\s*|\s*$/g, "")
+            },
+            map: function(e, t) {
+                if (typeof e.map == "function") return e.map(t);
+                var n = [],
+                r = e.length;
+                for (var i = 0; i < r; i++) n.push(t(e[i]));
+                return n
+            }
+        },
+        {
+            name: "mustache.js",
+            version: "0.3.0",
+            to_html: function(t, n, r, i) {
+                var s = new e;
+                i && (s.send = i),
+                s.render(t, n, r);
+                if (!i) return s.buffer.join("\n")
+            }
+        }
+    } ();
+    define("cc/mustache", [],
+    function(e, t) {
+        function r(e, t) {
+            var s, o;
+            for (s in e) {
+                if (!e.hasOwnProperty(s)) continue;
+                o = e[s],
+                n.iA(o) ? i(o) : n.iPO(o) && typeof o.nodeType == "undefined" && typeof o.jquery == "undefined" && t < 5 && r(o, t + 1)
+            }
+        }
+        function i(e) {
+            var t, r;
+            for (t = 0; t < e.length; t++) r = e[t],
+            n.iPO(r) && (t === 0 ? r.__first__ = !0 : t == e.length - 1 ? r.__last__ = !0 : r.__mid__ = !0, r.__index__ = t)
+        }
+        var n = e("ent");
+        t.name = Mustache.name,
+        t.version = Mustache.version,
+        t.to_html = function() {
+            var e, t, i, s, o = arguments[1];
+            return n.iPO(o) && r(o, 0),
+            Mustache.to_html.apply(this, arguments)
+        }
+    });
+    define("cc/templets/p4p/dp4/300x250yc", ["cc/mustache", "cc/templets/meta", "cc/dataservice", "cc/effect/switchable", "cc/tutil/label"],
+    function(a, b) {
+        var c = a("cc/mustache"),
+        d = a("cc/templets/meta"),
+        e = a("cc/dataservice"),
+        f = a("cc/effect/switchable"),
+        g,
+        h;
+        h = ".global{font-size:12px;font-family:tahoma,Arial,B8BF53;overflow:hidden;*zoom:1;border:1px solid #ececec;width:298px;height:248px;background-color:#F3F3F3;position:relative;}.global,.global a,.global img,ul,li{padding:0;margin:0;text-decoration:none;list-style:none;}.global em{font-style:normal}.frames{float:left;}.frame{display:none;margin:0px;}.frames .current{display:block;}.item{float:left;width:248px;height:248px;text-align:center;background:#fff;position:relative;margin:0;overflow:hidden;}.pic{display:table-cell;vertical-align:middle;line-height:210px\\9;width:248px;height:248px;*display:block;*font-size:222px;*font-family:arial}.pic img{vertical-align:middle;border:none;}.item .count,.item .price{position:absolute;width:124px;color:#fff;filter:alpha(opacity=90);line-height:15px;text-align:center;cursor:pointer;}.item .count:hover,.item .price:hover{text-decoration:none;}.item .count:visited,.item .price:visited{color:#fff;}.item .price{background:#ff5400;bottom:0;left:0;white-space:nowrap;height:32px;}.item .price span{display:block;padding:8px 0 6px;}.item .price em{font-size:14px;font-style:normal;font-weight:bold;color:#fff;font-family:Verdana;display:inline-block;padding:0 3px;}.item .price .price-promo{padding:0;padding-top:2px;}.item .price .price-old{padding:0;text-decoration:line-through;height:12px;line-height:12px;overflow:hidden;}.item .price-old em{font-size:12px;text-decoration:line-through;padding:0;font-weight:normal;}.item .price .hidden{display:none;}.item .count{height:18px;padding:7px 0;background:#9f9e9e;bottom:0;right:0;color:#fff;}.item .count em{font-weight:bold;color:#fff;font-family:tahoma;font-size:14px;display:inline-block;padding:0 3px;}.triggers{float:left;width:50px;margin-top:1px;text-align:center;}.triggers a,.triggers a:visited{margin:4px auto;display:block;color:#fff;text-align:center;background:url(../../img01.taobaocdn.com/tps/i1/T1rmqlXopLXXXXXXXX-47-20.png) no-repeat;width:20px;height:20px;line-height:18px;}.triggers a:hover{text-decoration:none}.triggers .current,.triggers .current:visited{background-position:-27px 0;}",
+        g = '<div class="{{uid}}-global" id="j-{{uid}}-sa">{{#data}}{{#ds1}}<div class="{{uid}}-frames" id="j-{{uid}}-sa-frames">{{#items}}<div class="{{uid}}-frame"><div class="{{uid}}-item"><a href="{{ds_clickurl}}" target="_blank" class="{{uid}}-pic">{{#ds_img}}<img data-src="{{src}}"/>{{/ds_img}}</a><a href="{{ds_clickurl}}" class="{{uid}}-price" target="_blank"><span tbcc-itemid="{{ds_itemid}}">\u4fc3\u9500\u4ef7:<em>{{ds_price}}</em>\u5143</span><span class="{{uid}}-hidden">\u539f\u4ef7\uff1a<em></em>\u5143</span></a><a href="{{ds_clickurl}}" class="{{uid}}-count" target="_blank">\u5df2\u552e\u51fa<em>{{ds_sell}}</em>\u4ef6</a><a href="{{ds_clickurl}}" class="{{uid}}-label" target="_blank"><em>{{cc_label}}</em></a><a href="{{ds_clickurl}}" class="{{uid}}-title" target="_blank">{{ds_title}}</a></div></div>{{/items}}</div><div class="{{uid}}-triggers" id="j-{{uid}}-sa-triggers">{{#items}}<a href="javascript:void(0)" class="j-trigger">{{cc_label}}</a>{{/items}}</div>{{/ds1}}{{/data}}</div>',
+        b.render = function(b, f) {
+            e.getData(b, "ds1",
+            function() {
+                a("cc/tutil/label").label(b.data.ds1);
+                var e = c.to_html(g, b);
+                b.sHTML = e,
+                b.renderer.render(b),
+                b.css = h,
+                d.attachStyle(b),
+                f()
+            })
+        },
+        b.bind = function(a) {
+            var b = "j-" + a.uid + "-sa",
+            c, d;
+            c = {
+                currentClass: a.uid + "-current"
+            },
+            a.sa = new f(b, c),
+            a.sa.bind()
+        },
+        b.sync = function(a) {
+            a.sa.show(0),
+            a.sa.start()
+        }
+    });
+    define("cc/renderer/tbcc", [],
+    function(a, b) {
+        b.render = function(a) {
+            var b = document.getElementById("tbcc-c-" + a.uid),
+            c,
+            d = a.info,
+            e = "";
+            d.width > 0 && (e += "width:" + d.width + "px;"),
+            d.height > 0 && (e += "height:" + d.height + "px;"),
+            b.style.cssText = e + "display:block;overflow:hidden;*zoom:1;",
+            b.setAttribute("tbcc-templet", a.info.templet),
+            c = b.firstElementChild || b.children[0],
+            c.innerHTML = a.sHTML,
+            a.outerEle = b,
+            a.innerEle = c
+        }
+    });
+    define("cc/show", [],
+    function(a, b) {
+        function d(a, b) {
+            var e, f;
+            for (e in b) f = b[e],
+            c.iPO(f) ? (c.iPO(a[e]) || (a[e] = {}), d(a[e], f)) : c.iA(f) ? a[e] = [].concat(f) : a[e] = f;
+            return a
+        }
+        function e(b, c, e, g) {
+            g && g.dup && (e = d({},
+            e));
+            var h = "cc/templets/" + e.info.templet,
+            i = "cc/renderer/" + (window.tbcc_renderer || "tbcc"),
+            j = e.info.hook,
+            k = [h, i]; ! e.sans_hook && j && k.push("cc/vender/" + j),
+            e.uid = c,
+            e.id = b,
+            a.async(k,
+            function(a, b, c) {
+                f(e, a, b, c)
+            })
+        }
+        function f(a, b, d, e) {
+            g(a, e),
+            a.renderer = d,
+            b.render(a,
+            function() {
+                c.iF(b.bind) && b.bind(a),
+                c.iF(b.sync) && b.sync(a),
+                c.iF(a.afterRender) && a.afterRender(a)
+            })
+        }
+        function g(a, b) {
+            var d, e;
+            if (!b || !c.iPO(b.on)) return;
+            for (d in b.on) c.iF(a[d]) ? (e = a[d], a[d] = function(a) {
+                e(a),
+                b.on[d](a)
+            }) : a[d] = b.on[d]
+        }
+        var c = a("ent");
+        b.show = function(b, d, f, g) {
+            window.setTimeout(function() {
+                c.iPO(f) ? e(b, d, f, g) : a.async("cc/creations/" + b,
+                function(a) {
+                    e(b, d, a, g)
+                })
+            },
+            0)
+        }
+    });
+    define('cc/creations/2013_1/102679', {
+        "info": {
+            "width": 300,
+            "height": 250,
+            "templet": "p4p/dp4/300x250yc",
+            "hook": "p4p/dp_hook",
+            "templet_id": 329,
+            "xml": null
+        },
+        "datasource": {
+            "ds1": {
+                "ds_sn": "p4p",
+                /*- 原代码 -*/
+                //"ds_host":"http://tns.simba.taobao.com/?name=itemdsp&count={qp_count}&o=j&p4p={qp_callback}",
+                /*- 本地代码 -*/
+                "ds_host":"../../tns.simba.taobao.com/s.js?name=itemdsp&count={qp_count}&o=j&p4p={qp_callback}",
+                "qp_count": 10,
+                "qp_imgsize": 250,
+                "qp_decimal": 0
+            }
+        }
+    });
+</script>
+<script>
+(function(id){
+    var doc = document,
+        uid = 'c' + id.replace(/[^a-z0-9\-]/ig, '-') + '-' + (+new Date());
+
+    doc.createElement('tbcc');
+    doc.write('<tbcc id="tbcc-c-' + uid + '" style="display:none"><tbcc></tbcc></tbcc>');
+    seajs.use(['cc/show', 'cc/creations/'+id], function(cc, $c){
+        cc.show(id, uid, $c);
+    });
+})('2013_1/102679');
+
+</script>
+
+  </body>
+</html>
+
