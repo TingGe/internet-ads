@@ -1,0 +1,31 @@
+GUMGUM.startServices({
+  "ins": {"active": true},
+  "at": {"ot": 70, "zo": 10, "of": false, "mh": 200, "sf": true, "mw": 250, "tr": 0, "ps": false},
+  "pxs": {
+    "qac": "p-00TsOkvHvnsZU",
+    "vrt": "ENTERTAINMENT",
+    "dom": "demo.gumgum.com",
+    "bluekaiIdSwap": true,
+    "c3": 1,
+    "liveramp": true,
+    "vst": "3866771e-5ad5-4759-8641-ea88d9c56014",
+    "exelate": true,
+    "c2": "15039634",
+    "quantcast": true,
+    "visitorId": "3866771e-5ad5-4759-8641-ea88d9c56014",
+    "qsg": "Entertainment.ggumtest",
+    "tid": "ggumtest",
+    "comscore": true,
+    "bluekai": true,
+    "lmt": 6,
+    "partner_uuid": "3866771e-5ad5-4759-8641-ea88d9c56014"
+  },
+  "ads": {"coverage": 1},
+  "nat": {
+    "plc": [{"id": 10, "cs": "body > .container > p:nth-child(2)"}, {
+      "id": 15,
+      "cs": "#feed .feed_item:nth-child(1)"
+    }], "active": true
+  },
+  "pag": {"css": "#fake_fix { position: inherit; }", "pvid": "02369117-b052-49ab-a94e-3f153f089241", "js": ""}
+});
