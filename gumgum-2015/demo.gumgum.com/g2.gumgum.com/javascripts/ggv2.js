@@ -1678,7 +1678,8 @@ if (window.GUMGUM) {
             O.adUnit = f.parseHTML("<div style='display:block;width:100%;height:100%'>" + M + "</div>");
             I(G, O.adUnit)
           }
-          I(G, f.parseHTML('<img src="//c.gumgum.com/images/pixel.gif" class="ad-standalone-img" style="display:none;visibility:hidden;">'));
+          //I(G, f.parseHTML('<img src="//c.gumgum.com/images/pixel.gif" class="ad-standalone-img" style="display:none;visibility:hidden;">'));
+          I(G, f.parseHTML('<img src="../../../c.gumgum.com/images/pixel.gif" class="ad-standalone-img" style="display:none;visibility:hidden;">'));
           if (f.subs.slot) {
             t.fire(f.container, "gumgum.slot.load", {container: G, ad: f.getOffset(O.adUnit)})
           }
@@ -1836,14 +1837,126 @@ if (window.GUMGUM) {
       return
     }
     bo.ggv2 = 1;
-    var O = null, bb = false, ag = true, bu = "length", x = "push", y = "style", aV = "width", bh = "height", a = "display", aK = "className", aC = "innerHTML", aN = "parentNode", aS = "top", ap = "left", az = "right", aO = "bottom", e = "block", B = "none", S = "visibility", l = "zIndex", Y = "hidden", d = "offsetWidth", bG = "offsetHeight", bt = "opacity", ad = "visible", ac = "overflow", s = "getTime", bz = "getTimezoneOffset", C = "replace", q = "toLowerCase", aT = "data", an = "container", aM = "element", bp = "cacheImages", F = "cacheImagesIndex", bl = "cacheImagesNatural", aL = aQ.Math, V = aL.max, br = aL.floor, aW = aL.random, L = aL.ceil, ae = aL.abs, Q = bo.getType, bi = bo.toJSON, al = bo.newEl, am = bo.addNode, aU = bo.rmNode, c = bo.inDOM, aq = bo.byId, T = bo.bySelector, a0 = bo.byTag, aP = bo.parseHTML, bk = bo.iframeHTML, aJ = bo.tpl, bc = bo.getStyle, X = bo.setStyle, aF = bo.getWH, bH = bo.getOffset, af = bo.getImageSrc, a3 = bo.getHighestZindex, K = bo.containsEl, bI = bo.isElementVisible, p = bo.evp, N = bo.shrinkURL, bd = bo.onError, b = bo.getJSONP, u = bo.getDigiTrustID, E = bo.loadScript, D = bo.loadImg, g = bo.loadObj, H = bo.loadHTML, a5 = bo.reportAd, J = bo.openModal, bE = aQ.ggaffid ? ("&ai=" + encodeURIComponent(aQ.ggaffid)) : "", ax = bo.baseUrl, bA = bo.sbf, aH = bq.documentElement, at = bo.flashEnabled, bf = bo[an], a6 = bo.ieVersion, j = bo.infoModalMinHeight, ak = bo.infoModalMinWidth, W = bo.infoModalOps, w = "//c.gumgum.com/ads/com/gumgum/gumgum-info.html", R = bo.msie, i = bo.revision, aw = 850, f = bo.swfcid, bm = aQ.ggv2id, av = '<img src="//c.gumgum.com/images/pixel.gif" class="ad-standalone-img" alt="gumgum-verify" style="pointer-events:none!important;position:absolute!important;top:0!important;left:0!important;width:100%!important;height:100%!important;opacity:0!important;filter:alpha(opacity=0);z-index:-1" />', a4 = O, v = 2147483640, P, bw, bj, aA, bC, aD, aY, bF, a2, I, ay, aR, a7, au, m, be, ao, by, ah, a1, ab, r, n = function () {
-    }, bx = function (G, bJ) {
+    var O = null,
+      bb = false,
+      ag = true,
+      bu = "length",
+      x = "push",
+      y = "style",
+      aV = "width",
+      bh = "height",
+      a = "display",
+      aK = "className",
+      aC = "innerHTML",
+      aN = "parentNode",
+      aS = "top",
+      ap = "left",
+      az = "right",
+      aO = "bottom",
+      e = "block",
+      B = "none",
+      S = "visibility",
+      l = "zIndex",
+      Y = "hidden",
+      d = "offsetWidth",
+      bG = "offsetHeight",
+      bt = "opacity",
+      ad = "visible",
+      ac = "overflow",
+      s = "getTime",
+      bz = "getTimezoneOffset",
+      C = "replace",
+      q = "toLowerCase",
+      aT = "data",
+      an = "container",
+      aM = "element",
+      bp = "cacheImages",
+      F = "cacheImagesIndex",
+      bl = "cacheImagesNatural",
+      aL = aQ.Math,
+      V = aL.max,
+      br = aL.floor,
+      aW = aL.random,
+      L = aL.ceil,
+      ae = aL.abs,
+      Q = bo.getType,
+      bi = bo.toJSON,
+      al = bo.newEl,
+      am = bo.addNode,
+      aU = bo.rmNode,
+      c = bo.inDOM,
+      aq = bo.byId,
+      T = bo.bySelector,
+      a0 = bo.byTag,
+      aP = bo.parseHTML,
+      bk = bo.iframeHTML,
+      aJ = bo.tpl,
+      bc = bo.getStyle,
+      X = bo.setStyle,
+      aF = bo.getWH,
+      bH = bo.getOffset,
+      af = bo.getImageSrc,
+      a3 = bo.getHighestZindex,
+      K = bo.containsEl,
+      bI = bo.isElementVisible,
+      p = bo.evp,
+      N = bo.shrinkURL,
+      bd = bo.onError,
+      b = bo.getJSONP,
+      u = bo.getDigiTrustID,
+      E = bo.loadScript,
+      D = bo.loadImg,
+      g = bo.loadObj,
+      H = bo.loadHTML,
+      a5 = bo.reportAd,
+      J = bo.openModal,
+      bE = aQ.ggaffid ? ("&ai=" + encodeURIComponent(aQ.ggaffid)) : "",
+      ax = bo.baseUrl,
+      bA = bo.sbf,
+      aH = bq.documentElement,
+      at = bo.flashEnabled,
+      bf = bo[an],
+      a6 = bo.ieVersion,
+      j = bo.infoModalMinHeight,
+      ak = bo.infoModalMinWidth,
+      W = bo.infoModalOps,
+      //w = "//c.gumgum.com/ads/com/gumgum/gumgum-info.html",
+      w = "../../../c.gumgum.com/ads/com/gumgum/gumgum-info.html",
+      R = bo.msie,
+      i = bo.revision,
+      aw = 850,
+      f = bo.swfcid,
+      bm = aQ.ggv2id,
+      av = '<img src="//c.gumgum.com/images/pixel.gif" class="ad-standalone-img" alt="gumgum-verify" style="pointer-events:none!important;position:absolute!important;top:0!important;left:0!important;width:100%!important;height:100%!important;opacity:0!important;filter:alpha(opacity=0);z-index:-1" />',
+      a4 = O,
+      v = 2147483640, P, bw, bj, aA, bC, aD, aY, bF, a2, I, ay, aR, a7, au, m, be, ao, by, ah, a1, ab, r,
+      n = function () {
+    },
+      bx = function (G, bJ) {
       return Object.prototype.hasOwnProperty.call(G, bJ)
-    }, bs = bo.euc, bg = bo.getTS, h = aQ.navigator, aI = aQ.location, aj = aI.protocol, a9 = (aj === "https:"), aG = aQ.setTimeout, bv = aQ.clearTimeout, ar = aQ.setInterval, bn = aQ.clearInterval, aX = function () {
-    }, ba = aQ.console || {
+    },
+      bs = bo.euc,
+      bg = bo.getTS,
+      h = aQ.navigator,
+      aI = aQ.location,
+      aj = aI.protocol,
+      a9 = (aj === "https:"),
+      aG = aQ.setTimeout,
+      bv = aQ.clearTimeout,
+      ar = aQ.setInterval,
+      bn = aQ.clearInterval,
+      aX = function () {
+    },
+      ba = aQ.console || {
         log: aX,
         warn: aX
-      }, o = aE, t = aE, Z = ag, k = {}, ai = {}, z = {}, bB, A, aB, U, bD, aZ = bo.Emile, a8 = bo.Bean, M = bo.Klass;
+      },
+      o = aE,
+      t = aE,
+      Z = ag, k = {}, ai = {}, z = {}, bB, A, aB, U, bD,
+      aZ = bo.Emile,
+      a8 = bo.Bean,
+      M = bo.Klass;
 
     function aa(G) {
       this.name = "GumGum Error";
@@ -2299,7 +2412,8 @@ if (window.GUMGUM) {
       }, bK = function (b3, b5, b7, b4, b8) {
         var b6 = aP('<iframe name="__bkframe" style="_CLEARCSS_" height="0" width="0" frameborder="0"></iframe>'), b2 = {
           desktop: {
-            u: "//www.bkrtx.com/js/bk-static.js",
+            //u: "//www.bkrtx.com/js/bk-static.js",
+            u: "../../../www.bkrtx.com/js/bk-static.js",
             c: function () {
               var b9 = "bk_addPageCtx";
               if (aQ[b9]) {
@@ -2340,86 +2454,101 @@ if (window.GUMGUM) {
             D("//g2.gumgum.com/bluekai/categories?" + b2.join("&"), bB[an])
           }
         })
-      }, bR = function (b2) {
-        if (b2) {
-          D("http" + (a9 ? "s://s" : "://") + "tags.bluekai.com/site/15333?id=" + b2, bB[an])
-        }
-      }, G = function () {
-        var b2 = aP('<iframe name="_rlcdn" width=0 height=0 frameborder=0 src="http://rc.rlcdn.com/366098.html"></iframe>');
-        am(bB[an], b2)
-      }, bW = function () {
-        E("//loadus.exelator.com/load/?p=233&g=001&j=d", bB[an])
-      }, bT = function () {
-        E("//loadr.exelator.com/load/?p=104&g=810&j=0", bB[an])
-      }, bQ = function (b2) {
-        var b3 = bq.referrer, b4 = {
-          c1: 8,
-          c2: b2.c2,
-          c3: b2.c3,
-          c4: bs(bm),
-          c7: bs(aI.href),
-          c8: bs(("" + bq.title)[C](/\s{2,}/g, "").substring(0, 1024)),
-          c9: bs(b3)
-        };
-        D(aJ("http" + (a9 ? "s://sb" : "://b") + ".scorecardresearch.com/p?c1={:c1:}&c2={:c2:}&c3={:c3:}&c4={:c4:}&c7={:c7:}&c8={:c8:}&c9={:c9:}&cv=2.0&cj=1&ns__t=" + (bg()), b4), bB[an])
-      }, b1 = function (b2) {
-        b2.c1 = 8;
-        D(aJ("http" + (a9 ? "s://sb" : "://b") + ".scorecardresearch.com/p?c1={:c1:}&c2={:c2:}&c3={:c3:}&ns_ap_it=b&rn=" + (bg()), b2), bB[an])
-      }, bL = function () {
-        D("//fei.pro-market.net/engine?site=134602;size=1x1;mimetype=img;", bB[an])
-      }, bP = function () {
-        var b7 = "bc493968-5e59-406d-ad27-2698a5771d21", b3 = aQ, b2 = "", b4 = O, ca = "http:", b6 = encodeURIComponent, b8 = 0, b5 = bq.createElement("script");
-        b3.FLITE = b3.FLITE || {};
-        b3.FLITE.config = b3.FLITE.config || {};
-        b3.FLITE.config[b7] = b3.FLITE.config[b7] || {};
-        b3.FLITE.config[b7].cb = aW();
-        b3.FLITE.config[b7].ts = (+new Date());
-        try {
-          b2 = (top === self && top.location) ? top.location.href : bq.referrer || (top.location && top.location.href) || ""
-        } catch (b9) {
-          b8 = 1
-        }
-        try {
-          ca = aI && aI.protocol === "https:" ? aI.protocol : ca
-        } catch (b9) {
-          b8 += 2
-        }
-        try {
-          b4 = b2.match(new RegExp("[A-Za-z]+:[/][/][A-Za-z0-9.-]+"))
-        } catch (b9) {
-          b8 += 4
-        }
-        b5.src = [ca, "//r.flite.com/syndication/uscript.js?i=", b6(b7), "&v=3", "&x=us", b8, "&cb=", b3.FLITE.config[b7].cb, "&d=", b6((b4 && b4[0]) || b2)].join("");
-        am(bB[an], b5)
-      }, bN = function () {
-        E("//cdn.doubleverify.com/dvtp_src.js?ctx=1241058&cmp=2285192&sid=gumgum&plc=22851921&num=&adid=&advid=1241059&adsrv=0&region=30&btreg=&btadsrv=&crt=&crtname=&chnl=&unit=&pid=&uid=&dvtagver=6.1.src", bB[an])
-      }, bM = function () {
-        E("//cdn.digitru.st/prod/v1/dt.js", bf, function () {
-          aQ.DigiTrust.getIdentityAsync(bo.dtCredentials, function (b2) {
-            var b3 = "/visitor/digitrust?id={:id:}&version={:version:}&domain={:domain:}&created={:created:}&modified={:modified:}&lastRead={:lastRead:}&optout={:optout:}", b4;
-            if (b2 && b2.success) {
-              b4 = b2.identity;
-              b4.optout = b4.privacy.optout;
-              D(ax + aJ(b3, b4));
-              return
-            }
-            return bd("startDigitrust", b2.error)
-          })
-        }, bb)
-      }, bV = function (b2) {
-        D("//idsync.rlcdn.com/395736.gif?partner_uid=" + b2, bB[an])
-      }, bX = function (b2) {
-        if (b2.cs) {
-          bQ(b2.cs)
-        }
-        if (b2.scr && b2.scr[bu]) {
-          bY(b2.scr)
-        }
-      }, bY = function (b4) {
-        for (var b3 = 0, b2; (b2 = b4[b3++]);) {
-          g(b2.u, {parent: bf, type: b2.t})
-        }
+      },
+      bR = function (b2) {
+      if (b2) {
+        D("http" + (a9 ? "s://s" : "://") + "tags.bluekai.com/site/15333?id=" + b2, bB[an])
+      }
+    },
+      G = function () {
+      var b2 = aP('<iframe name="_rlcdn" width=0 height=0 frameborder=0 src="http://rc.rlcdn.com/366098.html"></iframe>');
+      am(bB[an], b2)
+    },
+      bW = function () {
+        // E("//loadus.exelator.com/load/?p=233&g=001&j=d", bB[an])
+        // µÚÈý·½¼à²â
+        E("../../../loadus.exelator.com/load/p?p=233&g=001&j=d", bB[an])
+      },
+      bT = function () {
+      E("//loadr.exelator.com/load/?p=104&g=810&j=0", bB[an])
+    },
+      bQ = function (b2) {
+      var b3 = bq.referrer, b4 = {
+        c1: 8,
+        c2: b2.c2,
+        c3: b2.c3,
+        c4: bs(bm),
+        c7: bs(aI.href),
+        c8: bs(("" + bq.title)[C](/\s{2,}/g, "").substring(0, 1024)),
+        c9: bs(b3)
       };
+      D(aJ("http" + (a9 ? "s://sb" : "://b") + ".scorecardresearch.com/p?c1={:c1:}&c2={:c2:}&c3={:c3:}&c4={:c4:}&c7={:c7:}&c8={:c8:}&c9={:c9:}&cv=2.0&cj=1&ns__t=" + (bg()), b4), bB[an])
+    },
+      b1 = function (b2) {
+      b2.c1 = 8;
+      D(aJ("http" + (a9 ? "s://sb" : "://b") + ".scorecardresearch.com/p?c1={:c1:}&c2={:c2:}&c3={:c3:}&ns_ap_it=b&rn=" + (bg()), b2), bB[an])
+    },
+      bL = function () {
+      D("//fei.pro-market.net/engine?site=134602;size=1x1;mimetype=img;", bB[an])
+    },
+      bP = function () {
+      var b7 = "bc493968-5e59-406d-ad27-2698a5771d21", b3 = aQ, b2 = "", b4 = O, ca = "http:", b6 = encodeURIComponent, b8 = 0, b5 = bq.createElement("script");
+      b3.FLITE = b3.FLITE || {};
+      b3.FLITE.config = b3.FLITE.config || {};
+      b3.FLITE.config[b7] = b3.FLITE.config[b7] || {};
+      b3.FLITE.config[b7].cb = aW();
+      b3.FLITE.config[b7].ts = (+new Date());
+      try {
+        b2 = (top === self && top.location) ? top.location.href : bq.referrer || (top.location && top.location.href) || ""
+      } catch (b9) {
+        b8 = 1
+      }
+      try {
+        ca = aI && aI.protocol === "https:" ? aI.protocol : ca
+      } catch (b9) {
+        b8 += 2
+      }
+      try {
+        b4 = b2.match(new RegExp("[A-Za-z]+:[/][/][A-Za-z0-9.-]+"))
+      } catch (b9) {
+        b8 += 4
+      }
+      b5.src = [ca, "//r.flite.com/syndication/uscript.js?i=", b6(b7), "&v=3", "&x=us", b8, "&cb=", b3.FLITE.config[b7].cb, "&d=", b6((b4 && b4[0]) || b2)].join("");
+      am(bB[an], b5)
+    },
+      bN = function () {
+      E("//cdn.doubleverify.com/dvtp_src.js?ctx=1241058&cmp=2285192&sid=gumgum&plc=22851921&num=&adid=&advid=1241059&adsrv=0&region=30&btreg=&btadsrv=&crt=&crtname=&chnl=&unit=&pid=&uid=&dvtagver=6.1.src", bB[an])
+    },
+      bM = function () {
+      E("//cdn.digitru.st/prod/v1/dt.js", bf, function () {
+        aQ.DigiTrust.getIdentityAsync(bo.dtCredentials, function (b2) {
+          var b3 = "/visitor/digitrust?id={:id:}&version={:version:}&domain={:domain:}&created={:created:}&modified={:modified:}&lastRead={:lastRead:}&optout={:optout:}", b4;
+          if (b2 && b2.success) {
+            b4 = b2.identity;
+            b4.optout = b4.privacy.optout;
+            D(ax + aJ(b3, b4));
+            return
+          }
+          return bd("startDigitrust", b2.error)
+        })
+      }, bb)
+    },
+      bV = function (b2) {
+      D("//idsync.rlcdn.com/395736.gif?partner_uid=" + b2, bB[an])
+    },
+      bX = function (b2) {
+      if (b2.cs) {
+        bQ(b2.cs)
+      }
+      if (b2.scr && b2.scr[bu]) {
+        bY(b2.scr)
+      }
+    },
+      bY = function (b4) {
+      for (var b3 = 0, b2; (b2 = b4[b3++]);) {
+        g(b2.u, {parent: bf, type: b2.t})
+      }
+    };
       bo.PXS = (bB = {});
       bB.triggerAssetPixels = bX;
       bB.log = [];
@@ -2718,7 +2847,8 @@ if (window.GUMGUM) {
         G.pollTO = ar(function () {
           G.pollSelector()
         }, 50)
-      }, triggerEvent: function (bP, bN, bM) {
+      },
+      triggerEvent: function (bP, bN, bM) {
         var bK = this, bJ = bK[aT], G = new Date(), bO = {}, bL = [], bQ = 0;
         bM = bM || {};
         bM.type = bM.type || "img";
@@ -2742,7 +2872,8 @@ if (window.GUMGUM) {
           }
         }
         g(ax + bP + "?" + bL.join("&"), bM)
-      }, pollSelector: function () {
+      },
+      pollSelector: function () {
         var bK = this, bL = bK[aT], G = bL.cs, bJ = O;
         bJ = T(G);
         if (bJ && bJ[bu]) {
@@ -2757,9 +2888,44 @@ if (window.GUMGUM) {
           }
         }
         return ag
-      }, showUI: function () {
-        var bP = this, bL = bP[aT], bN = bL.mobile ? T("body > :first-child")[0] : bP.elements[0], bJ = new Date(), G = "GGSA" + (bJ[s]()), bO = O, bM = O, bK = bL.md === "replace" ? "static" : "absolute", bS = bL.zi || a3() + 9, bQ = V(bN.scrollWidth, bN[d]), bR = V(bN.scrollHeight, bN[bG]);
-        bO = '<div id="_ID_" style="position:' + bK + ";z-index:" + bS + ";width:" + bQ + "px;height:" + bR + 'px">                <br style="display:none"><style>                   #_ID_{text-align:center;background:transparent url(//c.gumgum.com/ads/com/gumgum/bg/white85.png);position:absolute;font:normal 14px/1 arial}                   #_ID_-body{display:block;width:100%;height:auto}                   #_ID_-sponsor,#_ID_-content{padding-top:1em}                   #_ID_-header{margin-bottom:1em;padding:1em 2em 0}                   #_ID_-header span{display:inline-block;width:32.5%;border:1px solid #ccc;text-align:center;vertical-align:middle;font-size:inherit}                   #_ID_-skip{margin-bottom:1em;opacity:0;filter:alpha(opacity=0);transition:all 1s;-wekbit-transition:all 1s;-moz-transition:all 1s}                   #_ID_-skip button{border:1px solid #ccc;padding:0.5em 1em;color:#444;background:rgba(249,249,249,.5)}                   #_ID_-skip._ss{opacity:1;filter:alpha(opacity=100)}                   #_ID_-skip._ss button:hover{border:1px solid #9f9f9f;color:#000;background:#fff}                   #_ID_-sponsor{margin-bottom:1em}                   #_ID_-sponsor *{font:bold 1.4em/1 arial;color:#555}                   #_ID_-content{margin-bottom:1em}                   html body .gumgum-blur{filter:blur(3px)!important;-webkit-filter:blur(3px)!important;-moz-filter:blur(3px)!important;-o-filter:blur(3px)!important;-ms-filter:blur(3px)!important;filter:url(//c.gumgum.com/ads/com/gumgum/bg/blur.svg#blur)!important;filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius=\'3\')!important}                </style>                <div id="_ID_-body">                   <div id="_ID_-header">                       <span></span><span style="border:0 none">Sponsored Video</span><span></span>                       <div id="_ID_-sponsor"></div>                       <div id="_ID_-skip"></div>                   </div>                   <div id="_ID_-content">' + bL.am + "</div>                </div>            </div>";
+      },
+      showUI: function () {
+        var bP = this,
+          bL = bP[aT],
+          bN = bL.mobile ? T("body > :first-child")[0] : bP.elements[0],
+          bJ = new Date(),
+          G = "GGSA" + (bJ[s]()),
+          bO = O,
+          bM = O,
+          bK = bL.md === "replace" ? "static" : "absolute",
+          bS = bL.zi || a3() + 9, bQ = V(bN.scrollWidth, bN[d]),
+          bR = V(bN.scrollHeight, bN[bG]);
+
+        bO = '<div id="_ID_" style="position:' + bK + ";z-index:" + bS + ";width:" + bQ + "px;height:" + bR + 'px">' +
+          '<br style="display:none">' +
+          '<style>' +
+          '#_ID_{text-align:center;background:transparent url(//c.gumgum.com/ads/com/gumgum/bg/white85.png);position:absolute;font:normal 14px/1 arial}' +
+          '#_ID_-body{display:block;width:100%;height:auto}#_ID_-sponsor,#_ID_-content{padding-top:1em}' +
+          '#_ID_-header{margin-bottom:1em;padding:1em 2em 0}' +
+          '#_ID_-header span{display:inline-block;width:32.5%;border:1px solid #ccc;text-align:center;vertical-align:middle;font-size:inherit}' +
+          '#_ID_-skip{margin-bottom:1em;opacity:0;filter:alpha(opacity=0);transition:all 1s;-wekbit-transition:all 1s;-moz-transition:all 1s}' +
+          '#_ID_-skip button{border:1px solid #ccc;padding:0.5em 1em;color:#444;background:rgba(249,249,249,.5)}' +
+          '#_ID_-skip._ss{opacity:1;filter:alpha(opacity=100)}' +
+          '#_ID_-skip._ss button:hover{border:1px solid #9f9f9f;color:#000;background:#fff}' +
+          '#_ID_-sponsor{margin-bottom:1em}' +
+          '#_ID_-sponsor *{font:bold 1.4em/1 arial;color:#555}' +
+          '#_ID_-content{margin-bottom:1em}' +
+          'html body .gumgum-blur{filter:blur(3px)!important;-webkit-filter:blur(3px)!important;-moz-filter:blur(3px)!important;-o-filter:blur(3px)!important;-ms-filter:blur(3px)!important;filter:url(//c.gumgum.com/ads/com/gumgum/bg/blur.svg#blur)!important;filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius=\'3\')!important}' +
+          '</style>' +
+          '<div id="_ID_-body">' +
+          '<div id="_ID_-header">' +
+          '<span></span><span style="border:0 none">Sponsored Video</span><span></span>' +
+          '<div id="_ID_-sponsor"></div>' +
+          '<div id="_ID_-skip"></div>' +
+          '</div>' +
+          '<div id="_ID_-content">' + bL.am + "</div>" +
+          "</div>" +
+          "</div>";
         bO = bO[C](/_ID_/g, G);
         bM = aP(bO);
         bN[aN].insertBefore(bM, bN);

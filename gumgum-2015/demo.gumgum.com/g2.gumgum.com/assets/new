@@ -22,7 +22,8 @@ GUMGUM.jsonp.cb0({
     "id": 500,
     "cs": {},
     "scr": [{
-      "u": "http://js.moatads.com/gumgum409323403/moatad.js?moatClientLevel1=156&moatClientLevel2=1503&moatClientLevel3=0&moatClientLevel4=29994&moatClientSlicer1=demo.gumgum.com&moatClientSlicer2=ggumtest",
+      //"u": "http://js.moatads.com/gumgum409323403/moatad.js?moatClientLevel1=156&moatClientLevel2=1503&moatClientLevel3=0&moatClientLevel4=29994&moatClientSlicer1=demo.gumgum.com&moatClientSlicer2=ggumtest",
+      "u": "../../../js.moatads.com/gumgum409323403/moatad.js?moatClientLevel1=156&moatClientLevel2=1503&moatClientLevel3=0&moatClientLevel4=29994&moatClientSlicer1=demo.gumgum.com&moatClientSlicer2=ggumtest",
       "t": "s",
       "e": "IMPRESSION"
     }]
