@@ -644,8 +644,8 @@ try {
                 if (!f && 10 > window["Moat#EMC"]) {
                   window["Moat#EMC"]++;
                   try {
-                    var s = "//v4.moatads.com/pixel.gif?e=24&d=data%3Adata%3Adata%3Adata&i=" + escape("GUMGUM1") + "&ac=1&k=" + escape(g) + "&ar=" + escape("cffd3ad-clean") + "&j=" + escape(document.referrer) + "&cs=" +
-                      (new r).getTime(), k = new Image(1, 1);
+                    //var s = "//v4.moatads.com/pixel.gif?e=24&d=data%3Adata%3Adata%3Adata&i=" + escape("GUMGUM1") + "&ac=1&k=" + escape(g) + "&ar=" + escape("cffd3ad-clean") + "&j=" + escape(document.referrer) + "&cs=" + (new r).getTime(), k = new Image(1, 1);
+                    var s = "/v4.moatads.com/pixel.gif?e=24&d=data%3Adata%3Adata%3Adata&i=" + escape("GUMGUM1") + "&ac=1&k=" + escape(g) + "&ar=" + escape("cffd3ad-clean") + "&j=" + escape(document.referrer) + "&cs=" + (new r).getTime(), k = new Image(1, 1);
                     k.src = s
                   } catch (u) {
                   }
@@ -653,7 +653,8 @@ try {
                   window["Moat#EMC"] = 1;
                   window["Moat#ETS"] = d;
                   try {
-                    s = "//v4.moatads.com/pixel.gif?e=24&d=data%3Adata%3Adata%3Adata&i=" + escape("GUMGUM1") + "&ac=1&k=" + escape(g) + "&ar=" + escape("cffd3ad-clean") + "&j=" + escape(document.referrer) + "&cs=" + (new r).getTime(), k = new Image(1, 1), k.src = s
+                    //s = "//v4.moatads.com/pixel.gif?e=24&d=data%3Adata%3Adata%3Adata&i=" + escape("GUMGUM1") + "&ac=1&k=" + escape(g) + "&ar=" + escape("cffd3ad-clean") + "&j=" + escape(document.referrer) + "&cs=" + (new r).getTime(), k = new Image(1, 1), k.src = s
+                    s = "/v4.moatads.com/pixel.gif?e=24&d=data%3Adata%3Adata%3Adata&i=" + escape("GUMGUM1") + "&ac=1&k=" + escape(g) + "&ar=" + escape("cffd3ad-clean") + "&j=" + escape(document.referrer) + "&cs=" + (new r).getTime(), k = new Image(1, 1), k.src = s
                   } catch (R) {
                   }
                 }
@@ -3254,7 +3255,8 @@ try {
         w.yk = function (c, d) {
           q = !0;
           var e = a + ".yh.", f = {};
-          f.src = "https:" === d ? "https://z.moatads.com/swf/MessageSenderV2.swf" : "http://s.moatads.com/swf/MessageSenderV2.swf";
+          //f.src = "https:" === d ? "https://z.moatads.com/swf/MessageSenderV2.swf" : "http://s.moatads.com/swf/MessageSenderV2.swf";
+          f.src = "/s.moatads.com/swf/MessageSenderV2.swf";
           f.flashVars = "r=" + e + "zb&s=" + e + "zc&e=" + e + "zd&td=" + c;
           return f
         };
@@ -3267,7 +3269,8 @@ try {
         w.qb = function (a, b) {
           t = !0;
           var c = {};
-          c.src = "https:" === b ? "https://z.moatads.com/swf/cap.swf" : "http://s.moatads.com/swf/cap.swf";
+          //c.src = "https:" === b ? "https://z.moatads.com/swf/cap.swf" : "http://s.moatads.com/swf/cap.swf";
+          c.src = "/s.moatads.com/swf/cap.swf";
           return c
         };
         w.qa = function () {
@@ -3424,9 +3427,10 @@ try {
       6: "",
       7: ""
     };
-    "string" === typeof m.b.protocol && (H = ("https:" ===
-      m.b.protocol ? m.b.protocol : "http:") + "//v4.moatads.com");
-    H || (H = "//v4.moatads.com");
+    //"string" === typeof m.b.protocol && (H = ("https:" === m.b.protocol ? m.b.protocol : "http:") + "//v4.moatads.com");
+    "string" === typeof m.b.protocol && (H = "/v4.moatads.com");
+    //H || (H = "//v4.moatads.com");
+    H || (H = "/v4.moatads.com");
     var A = m.b.c;
     m.w.a(A);
     var x = A[m.b.d];
@@ -3477,7 +3481,9 @@ try {
   if (!hourElapsed && 10 > window["Moat#EMC"]) {
     window["Moat#EMC"]++;
     try {
-      var pixelDomain = "v4.moatads.com", pxSrc = "//" + pixelDomain + "/pixel.gif?e=24&d=data%3Adata%3Adata%3Adata&i=" + escape("GUMGUM1") + "&ac=1&k=" + escape(msg) + "&ar=" +
+      var pixelDomain = "v4.moatads.com",
+        //pxSrc = "//" + pixelDomain + "/pixel.gif?e=24&d=data%3Adata%3Adata%3Adata&i=" + escape("GUMGUM1") + "&ac=1&k=" + escape(msg) + "&ar=" +
+        pxSrc = "/" + pixelDomain + "/pixel.gif?e=24&d=data%3Adata%3Adata%3Adata&i=" + escape("GUMGUM1") + "&ac=1&k=" + escape(msg) + "&ar=" +
         escape("cffd3ad-clean") + "&j=" + escape(document.referrer) + "&cs=" + (new Date).getTime(), px = new Image(1, 1);
       px.src = pxSrc
     } catch (e$$69) {
@@ -3486,7 +3492,9 @@ try {
     window["Moat#EMC"] = 1;
     window["Moat#ETS"] = ct;
     try {
-      pixelDomain = "v4.moatads.com", pxSrc = "//" + pixelDomain + "/pixel.gif?e=24&d=data%3Adata%3Adata%3Adata&i=" + escape("GUMGUM1") + "&ac=1&k=" + escape(msg) + "&ar=" + escape("cffd3ad-clean") + "&j=" + escape(document.referrer) + "&cs=" + (new Date).getTime(), px = new Image(1, 1), px.src = pxSrc
+      pixelDomain = "v4.moatads.com",
+      //pxSrc = "//" + pixelDomain + "/pixel.gif?e=24&d=data%3Adata%3Adata%3Adata&i=" + escape("GUMGUM1") + "&ac=1&k=" + escape(msg) + "&ar=" + escape("cffd3ad-clean") + "&j=" + escape(document.referrer) + "&cs=" + (new Date).getTime(), px = new Image(1, 1), px.src = pxSrc
+      pxSrc = "/" + pixelDomain + "/pixel.gif?e=24&d=data%3Adata%3Adata%3Adata&i=" + escape("GUMGUM1") + "&ac=1&k=" + escape(msg) + "&ar=" + escape("cffd3ad-clean") + "&j=" + escape(document.referrer) + "&cs=" + (new Date).getTime(), px = new Image(1, 1), px.src = pxSrc
     } catch (e$$70) {
     }
   }

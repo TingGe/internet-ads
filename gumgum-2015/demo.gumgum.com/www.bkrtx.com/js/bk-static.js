@@ -1165,6 +1165,7 @@
           };
           if (!r.excludeBkParams && !r.excludeTitle && "" !== document.title && l.addBkParam("t", document.title), !r.excludeBkParams && !r.excludeKeywords && l.addBkParam("k", b.getKwds()), !r.excludeBkParams && !r.excludeReferrer && "referrer" in document && "" !== document.referrer && l.addBkParam("pr", document.referrer), !r.excludeBkParams && !r.excludeLocation && l.addBkParam("l", window.location.toString()), r.callback ? l.addParam("jscb", encodeURIComponent(r.callback)) : "undefined" != typeof r.limit && l.addParam("limit", encodeURIComponent(r.limit)), r.allData === !0 && l.addParam("data", "all"), r.disableMobile !== !0 && r.suppressStatidPayload !== !0 && (b.isMobile() || r.sendStatidPayload) && "undefined" != typeof d && l.addParam("bknms", j.get()), r.suppressEventScheduling !== !0 && r.eventScheduling === !0 && b.addEvent("message", function (a) {
               if ("http://tags.bluekai.com" === a.origin) {
+
                 var b = document.getElementById("__bkframe"), c = function (a) {
                   return function () {
                     b.contentWindow.postMessage(JSON.stringify({event: a}), "*"), b.contentWindow.postMessage(JSON.stringify({schedule: "run"}), "*");
@@ -1186,7 +1187,9 @@
             }
           }
           r.suppressCacheBusting !== !0 && l.addParam("r", parseInt(99999999 * Math.random(), 10));
-          var y = "https://stags.bluekai.com/", z = "http://tags.bluekai.com/", A = ("https:" === document.location.protocol ? r.pixelSecure ? r.pixelSecure : y : r.pixelUrl ? r.pixelUrl : z) + (u ? "psite" : "site") + "/" + r.site, B = A + "?" + h.join("&");
+          //var y = "https://stags.bluekai.com/", z = "http://tags.bluekai.com/",
+          var y = "/stags.bluekai.com/", z = "/tags.bluekai.com/",
+            A = ("https:" === document.location.protocol ? r.pixelSecure ? r.pixelSecure : y : r.pixelUrl ? r.pixelUrl : z) + (u ? "psite" : "site") + "/" + r.site, B = A + "?" + h.join("&");
           if (r.limitGetLength && (B = B.substr(0, 2000)), BKTAG._dest = l._dest = B, r.callback) {
             if (r.useImage) {
               var C = document.createElement("span");

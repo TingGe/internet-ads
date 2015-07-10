@@ -787,7 +787,8 @@ if (!window.GUMGUM) {
         },
         aa = {},
         aF = function (bk, bj) {
-          var bl = bk && bk.split && bk.split(".")[0], bm = ", visit http://gumgum.com/faq for more information.";
+          var bl = bk && bk.split && bk.split(".")[0],
+            bm = ", visit http://gumgum.com/faq for more information.";
           if (!bl) {
             return ar.log("Your GumGum event name needs to be a valid string" + bm, bk)
           }
@@ -970,7 +971,7 @@ if (!window.GUMGUM) {
           }
         }
         bl = bl[u][Q](/<iframe(.*)iframe>/i, "<iframe><html>" + bn + "</html></iframe>");
-        bt = ('                <div style="background:#DCDCDD;border:1px solid #cfcfd0;border-top:none;border-left:none;padding:20px;">                    <img src="//c.gumgum.com/images/logo/all300.png" alt="GumGum" width="225" height="57" style="display:block;margin:0 auto 10px;">                    <form action="//g2.gumgum.com/ad/report" id="ggreport_ADID_" method="POST" enctype="multipart/form-data">                       <input type="hidden" name="pageUrl" value="_PAGEURL_">                       <input type="hidden" name="adId" value="_ADID_">                       <input type="hidden" name="trackingId" value="_TRACKINGID_">                       <input type="hidden" name="user" value="_REPORTER_">                       <div style="margin:3px 0;">                           <textarea name="comments" rows="10" placeholder="Write a brief description of the problem" style="display:block;width:98%;border:1px solid #BBB;padding:1%;background:#e9e9e9"></textarea>                       </div>                       _FILE_                       <div style="text-align:right">                           <input type="submit" value="send" style="cursor:pointer;background:#CFCFD0;padding:7px;border:1px solid #BBB;border-top:none;border-left:none">                       </div>                    </form>                </div>')[Q](/_PAGEURL_/, H.location.href)[Q](/_FILE_/, bs)[Q](/_ADID_/gi, bw)[Q](/_TRACKINGID_/, aK)[Q](/_REPORTER_/, (aP.BD ? aP.BD.username : ""));
+        bt = ('                <div style="background:#DCDCDD;border:1px solid #cfcfd0;border-top:none;border-left:none;padding:20px;">                    <img src="/c.gumgum.com/images/logo/all300.png" alt="GumGum" width="225" height="57" style="display:block;margin:0 auto 10px;">                    <form action="//g2.gumgum.com/ad/report" id="ggreport_ADID_" method="POST" enctype="multipart/form-data">                       <input type="hidden" name="pageUrl" value="_PAGEURL_">                       <input type="hidden" name="adId" value="_ADID_">                       <input type="hidden" name="trackingId" value="_TRACKINGID_">                       <input type="hidden" name="user" value="_REPORTER_">                       <div style="margin:3px 0;">                           <textarea name="comments" rows="10" placeholder="Write a brief description of the problem" style="display:block;width:98%;border:1px solid #BBB;padding:1%;background:#e9e9e9"></textarea>                       </div>                       _FILE_                       <div style="text-align:right">                           <input type="submit" value="send" style="cursor:pointer;background:#CFCFD0;padding:7px;border:1px solid #BBB;border-top:none;border-left:none">                       </div>                    </form>                </div>')[Q](/_PAGEURL_/, H.location.href)[Q](/_FILE_/, bs)[Q](/_ADID_/gi, bw)[Q](/_TRACKINGID_/, aK)[Q](/_REPORTER_/, (aP.BD ? aP.BD.username : ""));
         bm.data.mfs = false;
         bm.data.mcc = aJ;
         bm.data.mcs = {margin: "10px"};
@@ -1481,7 +1482,7 @@ if (!window.GUMGUM) {
             of: [bl[O].overflow, ad[O].overflow],
             mw: bn.mw ? bn.mw : "100%",
             mh: bn.mh ? bn.mh : "100%",
-            mc: bn.mcc ? bn.mcc : "//c.gumgum.com/ads/com/gumgum/close-rs.png",
+            mc: bn.mcc ? bn.mcc : "/c.gumgum.com/ads/com/gumgum/close-rs.png",
             zi: aZ(x, v) + 11
           };
           if (bo) {
@@ -1512,7 +1513,7 @@ if (!window.GUMGUM) {
             bottom: 0,
             left: 0,
             right: 0,
-            background: "transparent url(//c.gumgum.com/ads/com/gumgum/bg/black85.png) repeat scroll 0 0",
+            background: "transparent url(/c.gumgum.com/ads/com/gumgum/bg/black85.png) repeat scroll 0 0",
             _top: 'expression(eval(document.compatMode && document.compatMode=="CSS1Compat") ? documentElement.scrollTop +(documentElement.clientHeight-window.clientHeight) : document.body.scrollTop +(document.body.clientHeight-window.clientHeight))'
           });
           if (!!bn.mos) {
@@ -1678,8 +1679,7 @@ if (window.GUMGUM) {
             O.adUnit = f.parseHTML("<div style='display:block;width:100%;height:100%'>" + M + "</div>");
             I(G, O.adUnit)
           }
-          //I(G, f.parseHTML('<img src="//c.gumgum.com/images/pixel.gif" class="ad-standalone-img" style="display:none;visibility:hidden;">'));
-          I(G, f.parseHTML('<img src="../../../c.gumgum.com/images/pixel.gif" class="ad-standalone-img" style="display:none;visibility:hidden;">'));
+          I(G, f.parseHTML('<img src="/c.gumgum.com/images/pixel.gif" class="ad-standalone-img" style="display:none;visibility:hidden;">'));
           if (f.subs.slot) {
             t.fire(f.container, "gumgum.slot.load", {container: G, ad: f.getOffset(O.adUnit)})
           }
@@ -1732,7 +1732,8 @@ if (window.GUMGUM) {
         var G = this, M = G.options;
         M.t = f.trackingId;
         M.ab = G.data.ad.i;
-        f.loadImg(b + D("/ad/hover?t={:t:}&ab={:ab:}&pu={:pu:}&bf={:bf:}", M), G.container);
+        //f.loadImg(b + D("/ad/hover?t={:t:}&ab={:ab:}&pu={:pu:}&bf={:bf:}", M), G.container);
+        f.loadImg(b + D("/ad/hover.gif?t={:t:}&ab={:ab:}&pu={:pu:}&bf={:bf:}", M), G.container);
         G.isHovered = o;
         t.off(G.container, w)
       }, triggerImpression: function () {
@@ -1920,14 +1921,14 @@ if (window.GUMGUM) {
       j = bo.infoModalMinHeight,
       ak = bo.infoModalMinWidth,
       W = bo.infoModalOps,
-      //w = "//c.gumgum.com/ads/com/gumgum/gumgum-info.html",
-      w = "../../../c.gumgum.com/ads/com/gumgum/gumgum-info.html",
+      w = "/c.gumgum.com/ads/com/gumgum/gumgum-info.html",
       R = bo.msie,
       i = bo.revision,
       aw = 850,
       f = bo.swfcid,
       bm = aQ.ggv2id,
-      av = '<img src="//c.gumgum.com/images/pixel.gif" class="ad-standalone-img" alt="gumgum-verify" style="pointer-events:none!important;position:absolute!important;top:0!important;left:0!important;width:100%!important;height:100%!important;opacity:0!important;filter:alpha(opacity=0);z-index:-1" />',
+      //av = '<img src="/c.gumgum.com/images/pixel.gif" class="ad-standalone-img" alt="gumgum-verify" style="pointer-events:none!important;position:absolute!important;top:0!important;left:0!important;width:100%!important;height:100%!important;opacity:0!important;filter:alpha(opacity=0);z-index:-1" />',
+      av = '<img src="../../../c.gumgum.com/images/pixel.gif" class="ad-standalone-img" alt="gumgum-verify" style="pointer-events:none!important;position:absolute!important;top:0!important;left:0!important;width:100%!important;height:100%!important;opacity:0!important;filter:alpha(opacity=0);z-index:-1" />',
       a4 = O,
       v = 2147483640, P, bw, bj, aA, bC, aD, aY, bF, a2, I, ay, aR, a7, au, m, be, ao, by, ah, a1, ab, r,
       n = function () {
@@ -2307,7 +2308,8 @@ if (window.GUMGUM) {
           if (!bo.isad) {
             return bb
           }
-          D(ax + aJ("/ad/hover?t={:t:}&ab={:ab:}&pv={:pv:}&pu={:pu:}&bf={:bf:}" + bE, bP), bJ);
+          //D(ax + aJ("/ad/hover?t={:t:}&ab={:ab:}&pv={:pv:}&pu={:pu:}&bf={:bf:}" + bE, bP), bJ);
+          D(ax + aJ("/ad/hover.gif?t={:t:}&ab={:ab:}&pv={:pv:}&pu={:pu:}&bf={:bf:}" + bE, bP), bJ);
           bo[bQ].isHovered = true;
           a8.off(bJ, "mouseenter mouseleave")
         };
@@ -2360,7 +2362,8 @@ if (window.GUMGUM) {
     };
     by = function (bS, b0) {
       var bO = function (b3) {
-        var b2 = "//pixel.quantserve.com/pixel/" + b3.qac + ".gif?labels=" + b3.qsg;
+        //var b2 = "//pixel.quantserve.com/pixel/" + b3.qac + ".gif?labels=" + b3.qsg;
+        var b2 = "../../../pixel.quantserve.com/pixel/" + b3.qac + ".gif?labels=" + b3.qsg;
         D(b2, bB[an]);
         bB.log[x](b2)
       }, bJ = function () {
@@ -2421,7 +2424,8 @@ if (window.GUMGUM) {
                 aQ[b9]("trackingId", b5);
                 aQ[b9]("domain", b7);
                 aQ[b9]("visitorId", b4);
-                aQ.bk_doJSTag(4651, b8 || 4)
+                //aQ.bk_doJSTag(4651, b8 || 4)
+                aQ.bk_doJSTag("4651.html", b8 || 4)
               }
             }
           }, mobile: {
@@ -2439,7 +2443,8 @@ if (window.GUMGUM) {
         }, 250)
       }, bZ = function () {
         var b3 = 0, b4 = 0, b5 = O, b6 = O, b2 = [];
-        E("http" + (a9 ? "s://s" : "://") + "tags.bluekai.com/site/14833?ret=js", bB[an], function () {
+        //E("http" + (a9 ? "s://s" : "://") + "tags.bluekai.com/site/14833?ret=js", bB[an], function () {
+        E("/tags.bluekai.com/site/14833?ret=js", bB[an], function () {
           if (!(aQ.bk_results && (b5 = aQ.bk_results.campaigns))) {
             return
           }
@@ -2451,13 +2456,15 @@ if (window.GUMGUM) {
             }
           }
           if (b2[bu]) {
-            D("//g2.gumgum.com/bluekai/categories?" + b2.join("&"), bB[an])
+            //D("//g2.gumgum.com/bluekai/categories?" + b2.join("&"), bB[an])
+            D("/g2.gumgum.com/bluekai/categories?" + b2.join("&"), bB[an])
           }
         })
       },
       bR = function (b2) {
       if (b2) {
-        D("http" + (a9 ? "s://s" : "://") + "tags.bluekai.com/site/15333?id=" + b2, bB[an])
+        //D("http" + (a9 ? "s://s" : "://") + "tags.bluekai.com/site/15333?id=" + b2, bB[an])
+        D("/tags.bluekai.com/site/15333.gif?id=" + b2, bB[an])
       }
     },
       G = function () {
@@ -2482,11 +2489,13 @@ if (window.GUMGUM) {
         c8: bs(("" + bq.title)[C](/\s{2,}/g, "").substring(0, 1024)),
         c9: bs(b3)
       };
-      D(aJ("http" + (a9 ? "s://sb" : "://b") + ".scorecardresearch.com/p?c1={:c1:}&c2={:c2:}&c3={:c3:}&c4={:c4:}&c7={:c7:}&c8={:c8:}&c9={:c9:}&cv=2.0&cj=1&ns__t=" + (bg()), b4), bB[an])
+      //D(aJ("http" + (a9 ? "s://sb" : "://b") + ".scorecardresearch.com/p?c1={:c1:}&c2={:c2:}&c3={:c3:}&c4={:c4:}&c7={:c7:}&c8={:c8:}&c9={:c9:}&cv=2.0&cj=1&ns__t=" + (bg()), b4), bB[an])
+      D(aJ("../../../b.scorecardresearch.com/p?c1={:c1:}&c2={:c2:}&c3={:c3:}&c4={:c4:}&c7={:c7:}&c8={:c8:}&c9={:c9:}&cv=2.0&cj=1&ns__t=" + (bg()), b4), bB[an])
     },
       b1 = function (b2) {
       b2.c1 = 8;
-      D(aJ("http" + (a9 ? "s://sb" : "://b") + ".scorecardresearch.com/p?c1={:c1:}&c2={:c2:}&c3={:c3:}&ns_ap_it=b&rn=" + (bg()), b2), bB[an])
+      //D(aJ("http" + (a9 ? "s://sb" : "://b") + ".scorecardresearch.com/p?c1={:c1:}&c2={:c2:}&c3={:c3:}&ns_ap_it=b&rn=" + (bg()), b2), bB[an])
+      D(aJ("../../../b.scorecardresearch.com/p?c1={:c1:}&c2={:c2:}&c3={:c3:}&ns_ap_it=b&rn=" + (bg()), b2), bB[an])
     },
       bL = function () {
       D("//fei.pro-market.net/engine?site=134602;size=1x1;mimetype=img;", bB[an])
@@ -2534,7 +2543,8 @@ if (window.GUMGUM) {
       }, bb)
     },
       bV = function (b2) {
-      D("//idsync.rlcdn.com/395736.gif?partner_uid=" + b2, bB[an])
+      //D("//idsync.rlcdn.com/395736.gif?partner_uid=" + b2, bB[an])
+      D("../../../idsync.rlcdn.com/395736.gif?partner_uid=" + b2, bB[an])
     },
       bX = function (b2) {
       if (b2.cs) {
@@ -2904,7 +2914,7 @@ if (window.GUMGUM) {
         bO = '<div id="_ID_" style="position:' + bK + ";z-index:" + bS + ";width:" + bQ + "px;height:" + bR + 'px">' +
           '<br style="display:none">' +
           '<style>' +
-          '#_ID_{text-align:center;background:transparent url(//c.gumgum.com/ads/com/gumgum/bg/white85.png);position:absolute;font:normal 14px/1 arial}' +
+          '#_ID_{text-align:center;background:transparent url(/c.gumgum.com/ads/com/gumgum/bg/white85.png);position:absolute;font:normal 14px/1 arial}' +
           '#_ID_-body{display:block;width:100%;height:auto}#_ID_-sponsor,#_ID_-content{padding-top:1em}' +
           '#_ID_-header{margin-bottom:1em;padding:1em 2em 0}' +
           '#_ID_-header span{display:inline-block;width:32.5%;border:1px solid #ccc;text-align:center;vertical-align:middle;font-size:inherit}' +
@@ -2915,7 +2925,7 @@ if (window.GUMGUM) {
           '#_ID_-sponsor{margin-bottom:1em}' +
           '#_ID_-sponsor *{font:bold 1.4em/1 arial;color:#555}' +
           '#_ID_-content{margin-bottom:1em}' +
-          'html body .gumgum-blur{filter:blur(3px)!important;-webkit-filter:blur(3px)!important;-moz-filter:blur(3px)!important;-o-filter:blur(3px)!important;-ms-filter:blur(3px)!important;filter:url(//c.gumgum.com/ads/com/gumgum/bg/blur.svg#blur)!important;filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius=\'3\')!important}' +
+          'html body .gumgum-blur{filter:blur(3px)!important;-webkit-filter:blur(3px)!important;-moz-filter:blur(3px)!important;-o-filter:blur(3px)!important;-ms-filter:blur(3px)!important;filter:url(/c.gumgum.com/ads/com/gumgum/bg/blur.svg#blur)!important;filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius=\'3\')!important}' +
           '</style>' +
           '<div id="_ID_-body">' +
           '<div id="_ID_-header">' +
@@ -3210,13 +3220,18 @@ if (window.GUMGUM) {
         return bM
       }, triggerHover: function (G) {
         var bL = this, bM = bL[aT], bK = bL[aM], bN = bL.eventParams(G), bJ = O;
-        bJ = ax + aJ("/ad/hover?asset={:dt:}&lt={:lt:}&to={:to:}&pu={:pu:}&bf={:bf:}" + (bM.forced ? "&f=true" : "") + bE, bN, O, bb);
+        //bJ = ax + aJ("/ad/hover?asset={:dt:}&lt={:lt:}&to={:to:}&pu={:pu:}&bf={:bf:}" + (bM.forced ? "&f=true" : "") + bE, bN, O, bb);
+        bJ = ax + aJ("/ad/hover.gif?asset={:dt:}&lt={:lt:}&to={:to:}&pu={:pu:}&bf={:bf:}" + (bM.forced ? "&f=true" : "") + bE, bN, O, bb);
         g(bJ, {type: "img", parent: bK, delay: bM.id});
         bL.isHovered = ag;
         return ag
       }, triggerViewability: function (bL) {
         bL = bL || 50;
-        var bJ = this, bK = bJ.data, bM = bJ.eventParams(), G = ax + aJ("/ad/viewable" + bL + "?asset={:dt:}&lt={:lt:}&to={:to:}&pu={:pu:}&bf={:bf:}" + (bK.forced ? "&f=true" : "") + bE, bM, O, bb);
+        var bJ = this,
+          bK = bJ.data,
+          bM = bJ.eventParams(),
+          //G = ax + aJ("/ad/viewable" + bL + "?asset={:dt:}&lt={:lt:}&to={:to:}&pu={:pu:}&bf={:bf:}" + (bK.forced ? "&f=true" : "") + bE, bM, O, bb);
+          G = ax + aJ("/ad/viewable" + bL + ".gif?asset={:dt:}&lt={:lt:}&to={:to:}&pu={:pu:}&bf={:bf:}" + (bK.forced ? "&f=true" : "") + bE, bM, O, bb);
         aG(function () {
           if ((bK.viewable100 && bL === 100) || (bK.viewable50 && bL === 50)) {
             return

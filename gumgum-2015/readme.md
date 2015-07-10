@@ -35,22 +35,15 @@
 
 #### 前端系统入口点（ggv2.js） ####
 
-阿里妈妈的广告前端系统的入口点（ggv2.js）中，首先对包和模块进行定义。代码如下：
+Gumgum的广告前端系统的入口点（ggv2.js）中,代码结构如下：
 
-    var l = {
-        lt_pkgs: {
-            inf: "http://a.alimama.cn/",
-            packages: "http://a.alimama.cn/inf/"
-        },
-        lt_v: "1.1.5",
-        lt_t: "20130523.js"
-    };
+    if (!window.GUMGUM) {…}
+    if (window.GUMGUM) {…}
+    if (window.GUMGUM) {…}
 
 意义如下：
 
-- lt_pkgs：包路径信息。
-- lt_v：版本 如 1.1.5。
-- lt_t：时间戳比如 20101129.js
+- 
 
 参见kslite框架开发团队的github项目[etaoux/kslite](https://github.com/etaoux/kslite)
 
