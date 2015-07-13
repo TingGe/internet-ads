@@ -1,0 +1,35 @@
+/*@import url(/ads.gumgum.com/com/yahooapis/cssreset-3.14.1-min.css);*/
+@import url(/ads.gumgum.com/com/yahooapis/cssreset-3.14.1-min.css);
+
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background: transparent
+}
+
+html, body {
+    font: normal 12px/14px sans-serif;
+    background: transparent
+}
+
+@font-face {
+    font-family: "pnr";
+    font-weight: lighter;
+    src: url(/gumgum.com/css/font/pns-light-webfont.eot);
+    src: url(/gumgum.com/css/font/pns-light-webfont.eot?iefix) format('eot'), url(/gumgum.com/css/font/pns-light-webfont.woff) format('woff'), url(/gumgum.com/css/font/pns-light-webfont.ttf) format('truetype'), url(/gumgum.com/css/font/pns-light-webfont.svg) format('svg')
+}
+
+@font-face {
+    font-family: "pnr";
+    font-weight: normal;
+    src: url(/gumgum.com/css/font/pns-regular-webfont.eot);
+    src: url(/gumgum.com/css/font/pns-regular-webfont.eot?iefix) format('eot'), url(/gumgum.com/css/font/pns-regular-webfont.woff) format('woff'), url(/gumgum.com/css/font/pns-regular-webfont.ttf) format('truetype'), url(/gumgum.com/css/font/pns-regular-webfont.svg) format('svg')
+}
+
+@font-face {
+    font-family: "pnr";
+    font-weight: bold;
+    src: url(/gumgum.com/css/font/pns-bold-webfont.eot);
+    src: url(/gumgum.com/css/font/pns-bold-webfont.eot?iefix) format('eot'), url(/gumgum.com/css/font/pns-bold-webfont.woff) format('woff'), url(/gumgum.com/css/font/pns-bold-webfont.ttf) format('truetype'), url(/gumgum.com/css/font/pns-bold-webfont.svg) format('svg')
+}
