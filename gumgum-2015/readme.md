@@ -43,90 +43,82 @@ Gumgum的广告前端系统的入口点（ggv2.js）中,代码结构如下：
 
 意义如下：
 
-- 
+- GUMGUM
+- GUMGUM.slots
+- GUMGUM.ggv2
 
-参见kslite框架开发团队的github项目[etaoux/kslite](https://github.com/etaoux/kslite)
+### 常规的广告调度系统（http://g2.gumgum.com/services/get） ###
 
-kslite框架会根据包和模块的定义，异步加载模块的入口点（inf/main.js）。
-
-#### 模块入口点（inf/main.js） ####
-
-kslite框架加载模块入口点（inf/main.js）脚本时，会携带参数。如下：
-
-**GET参数**
-
-- _t：20130523.js，向服务器要求指定构建版本的脚本文件。
-
-在模块的入口点（inf/main.js）脚本中，负责向常规广告调度系统发出广告调度请求。
-
-### 常规的广告调度系统（http://p.tanx.com/ex） ###
-
-提供常规广告调度服务的URL地址是http://p.tanx.com/ex，负责接收由阿里妈妈广告前端系统发起的广告调度请求，进行常规的、不限于TANX SSP的广告调度。
+提供常规广告调度服务的URL地址是http://g2.gumgum.com/services/get，负责接收由GUMGUM广告前端系统发起的广告调度请求，进行广告调度。
 
 #### 广告调度请求的参数 ####
 
 **GET参数**
 
-- 参数i：广告位编号，如mm_37227883_3484494_11371704。
-
+- callback:"GUMGUM.startServices"
+- pubdata:"{"t":"ggumtest","v":1,"r":"release-912-24-gb86d974","fs":true,"rf":"","pu":"http://demo.gumgum.com/dailynews/index.html#ggad=UvWNj-3VcH7p9DPtdSLg-fajd1ONNIq7clqN41uXnL9CktCrsSZxlcYnRBIHcUk5YMyKNTFaDlAEyHg0SKs71w/","ce":true,"vp":{"ii":false,"w":490,"h":765},"sc":{"w":1600,"h":900,"d":1}}"
+- bf："b8ec5468aa3bdceffae5d6423254db161a18be59"
+- lt:"1436782376784"
+- to:"-480"
+- eAdBuyId:"UvWNj-3VcH7p9DPtdSLg-fajd1ONNIq7clqN41uXnL9CktCrsSZxlcYnRBIHcUk5YMyKNTFaDlAEyHg0SKs71w/"
+- _1436782376785:""
+	
 **Cookie参数**
 
-- cna：域为.tanx.com，路径为/，过期时间是25年以后。值如mqEwCpEPWVYCAfKFf3xLEFf3。
-
-当客户端存有TANX域的Cookie时，广告调度请求携带Cookie参数。没有Cookie，则不必携带。
 
 #### 广告调度请求的响应 ####
 
-在接收到以广告位编号为主要参数的调度请求后，调度系统根据特定的广告调度逻辑，确定是否为该广告位提供TANX服务，然后回复特定分支的200 OK响应。
+在接收到以广告位编号为主要参数的调度请求后，调度系统根据特定的广告调度逻辑，确定是否为该广告位提供GUMGUM服务，然后回复特定分支的200 OK响应。
 
 200 OK中定义TANX服务的关键数据如下：
 
-    var o = { 
-    		... ...
-    		sd : "toruk.tanx.com" 
-    	}, 
-    	p = { 
-        	c : 'gbk', 
-        	s : 'http://cdn.tanx.com/t/tanxssp.js' 
-    	}; 
+    GUMGUM.startServices({
+      "ins": {"active": true},
+      "at": {"ot": 70, "zo": 10, "of": false, "mh": 200, "sf": true, "mw": 250, "tr": 0, "ps": false},
+      "pxs": {
+        "qac": "p-00TsOkvHvnsZU",
+        "vrt": "ENTERTAINMENT",
+        "dom": "demo.gumgum.com",
+        "bluekaiIdSwap": true,
+        "c3": 1,
+        "liveramp": true,
+        "vst": "3866771e-5ad5-4759-8641-ea88d9c56014",
+        "exelate": true,
+        "c2": "15039634",
+        "quantcast": true, //旧金山定向广告公司Quantcast
+        "visitorId": "3866771e-5ad5-4759-8641-ea88d9c56014",
+        "qsg": "Entertainment.ggumtest",
+        "tid": "ggumtest",
+        "comscore": true,
+        "bluekai": true,
+        "lmt": 6,
+        "partner_uuid": "3866771e-5ad5-4759-8641-ea88d9c56014"
+      },
+      "ads": {"coverage": 1},
+      "nat": {
+        "plc": [
+            {
+              "id": 10, 
+              "cs": "body > .container > p:nth-child(2)"
+            }, {
+              "id": 15,
+              "cs": "#feed .feed_item:nth-child(1)"
+            }
+        ], 
+        "active": true
+      },
+      "pag": {"css": "#fake_fix { position: inherit; }", "pvid": "02369117-b052-49ab-a94e-3f153f089241", "js": ""}
+    });
 
 主要定义的是：
 
-- TANX调度服务器域名的定义。
-- TANX服务的入口点脚本（tanxssp.js）
+- 广告实现脚本所需数据
+- GUMGUM.startServices
 
-这一设计，为广告流量的灵活分配提供了可能性，可以用于小流量测试、负载分担、单一化系统职责等各种场景。
+
 
 #### 加载TANX服务的入口点脚本（tanxssp.js） ####
 
-广告调度请求的200 OK响应会执行程序，加载TANX SSP的广告前端系统的入口点脚本（tanxssp.js）。
-
-**Cookie参数**
-
-- cna：域为.tanx.com，路径为/，过期时间是25年以后。值如mqEwCpEPWVYCAfKFf3xLEFf3。
-
-如果浏览器客户端存在TANX域的Cookie，在加载入口点时携带Cookie信息。如果没有，则不必携带。
-
-### TANX SSP的广告前端系统 ###
-
-#### 系统的入口点（tanxssp.js） ####
-
-如同阿里妈妈的入口点脚本，TANX SSP的入口点（tanxssp.js）也首先对模块和包进行了定义。如：
-
-    var l = {
-        lt_pkgs: {
-            tanxssp: "http://cdn.tanx.com/t/",
-            charset: "gbk"
-        },
-        lt_v: "1.0.0",
-        lt_t: "20130516.js"
-    };
-
-与其不同的是，对同步加载时需要的模块入口点地址也进行了定义。如：
-
-    var a = "http://cdn.tanx.com/t/tanxssp/main.js?_t=20130516";
-
-kslite框架会异步或同步的加载模块的入口文件（tanxssp/main.js）。
 
 #### 模块的入口点（tanxssp/main.js） ####
 
