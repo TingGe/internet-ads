@@ -3379,7 +3379,7 @@ if (window.GUMGUM) {
     /** @type {string} */
     var _width = "width";
     /** @type {string} */
-    var _heigth = "height";
+    var _height = "height";
     /** @type {string} */
     var path = "display";
     /** @type {string} */
@@ -3468,11 +3468,11 @@ if (window.GUMGUM) {
     var cp = self.getJSONP;
     var successCallback = self.getDigiTrustID;
     var _loadScript = self.loadScript;
-    var req = self.loadImg;
+    var _loadImg = self.loadImg;
     var trigger = self.loadObj;
     var proxy = self.loadHTML;
     var result = self.reportAd;
-    var value = self.openModal;
+    var openModal = self.openModal;
     /** @type {string} */
     var param = global.ggaffid ? "&ai=" + encodeURIComponent(global.ggaffid) : "";
     var url = self.baseUrl;
@@ -3494,7 +3494,7 @@ if (window.GUMGUM) {
     var remaining = self.swfcid;
     var t = global.ggv2id;
     /** @type {string} */
-    var av = '<img src="../../../c.gumgum.com/images/pixel.gif" class="ad-standalone-img" alt="gumgum-verify" style="pointer-events:none!important;position:absolute!important;top:0!important;left:0!important;width:100%!important;height:100%!important;opacity:0!important;filter:alpha(opacity=0);z-index:-1" />';
+    var av = '<img src="/c.gumgum.com/images/pixel.gif" class="ad-standalone-img" alt="gumgum-verify" style="pointer-events:none!important;position:absolute!important;top:0!important;left:0!important;width:100%!important;height:100%!important;opacity:0!important;filter:alpha(opacity=0);z-index:-1" />';
     /** @type {null} */
     var stats = context;
     /** @type {number} */
@@ -3691,14 +3691,14 @@ if (window.GUMGUM) {
       var b = parseInt(self.bodyEl.scrollTop || documentElement.scrollTop, 10);
       /** @type {number} */
       var max = parseInt(self.bodyEl.scrollLeft || documentElement.scrollLeft, 10);
-      var ts = types[key];
-      var idx = types[type];
+      var ts = types[_height];
+      var idx = types[_width];
       var t = b + ts;
       var determinant = max + idx;
       var a = data[index];
       var v = data[k];
-      var x = data[key] || 1;
-      var d = data[type];
+      var x = data[_height] || 1;
+      var d = data[_width];
       var c = a + x;
       var u = v + d;
       /** @type {boolean} */
@@ -3818,11 +3818,11 @@ if (window.GUMGUM) {
         vp : {
           ii : global[index] && top !== global,
           w : data[_width],
-          h : data[_heigth]
+          h : data[_height]
         },
         sc : {
           w : global.screen[_width],
-          h : global.screen[_heigth],
+          h : global.screen[_height],
           d : global.devicePixelRatio || 1
         }
       };
@@ -3834,7 +3834,7 @@ if (window.GUMGUM) {
         e.dt = fix;
       }
       /** @type {boolean} */
-      item[idx].mfs = data[_width] < to || data[_heigth] < from;
+      item[idx].mfs = data[_width] < to || data[_height] < from;
       if (param) {
         e.ai = global.ggaffid;
       }
@@ -4010,7 +4010,7 @@ if (window.GUMGUM) {
         e.id = id;
         e[prop] += " ggnative";
         el.one(e, "click", "[href], [onclick]", function() {
-          req(options.cu, e, element, preserve);
+          _loadImg(options.cu, e, element, preserve);
         });
         if (self.subs[timeoutKey]) {
           el.fire(target, "gumgum.native.load", {
@@ -4105,7 +4105,7 @@ if (window.GUMGUM) {
           if (extend(event, stats) < data.pct) {
             return;
           }
-          req(missing);
+          _loadImg(missing);
           if (data.pct === 100) {
             el.off(global, "inscreen.scroll inscreen.resize", start);
           }
@@ -4128,7 +4128,7 @@ if (window.GUMGUM) {
         }
         if (data.h) {
           /** @type {string} */
-          container[id][_heigth] = data.h + "px";
+          container[id][_height] = data.h + "px";
         }
         container[id].zIndex = origContext;
         if (self.subs.inscreen) {
@@ -4148,7 +4148,7 @@ if (window.GUMGUM) {
          */
         self[i].closeAd = function(preserve) {
           if (!preserve) {
-            req(url + equal("/ad/close?t={:t:}&ab={:ab:}&pv={:pv:}&pu={:pu:}&bf={:bf:}" + param, result));
+            _loadImg(url + equal("/ad/close?t={:t:}&ab={:ab:}&pv={:pv:}&pu={:pu:}&bf={:bf:}" + param, result));
           }
           el.off(container, "inscreen");
           if (filter(target, self[i].el)) {
@@ -4168,7 +4168,7 @@ if (window.GUMGUM) {
           if (!self.isad) {
             return element;
           }
-          req(url + equal("/ad/hover.gif?t={:t:}&ab={:ab:}&pv={:pv:}&pu={:pu:}&bf={:bf:}" + param, result), container);
+          _loadImg(url + equal("/ad/hover.gif?t={:t:}&ab={:ab:}&pv={:pv:}&pu={:pu:}&bf={:bf:}" + param, result), container);
           /** @type {boolean} */
           self[i].isHovered = true;
           el.off(container, "mouseenter mouseleave");
@@ -4194,8 +4194,8 @@ if (window.GUMGUM) {
          * @return {undefined}
          */
         self[i].showInfo = function(message, context) {
-          req(url + equal("/ad/info?t={:t:}&ab={:ab:}&pv={:pv:}&pu={:pu:}&bf={:bf:}" + param, result));
-          value.call(context || item, message || event);
+          _loadImg(url + equal("/ad/info?t={:t:}&ab={:ab:}&pv={:pv:}&pu={:pu:}&bf={:bf:}" + param, result));
+          openModal.call(context || item, message || event);
         };
         if (data.ipu) {
           trigger(data.ipu, {
@@ -4265,8 +4265,8 @@ if (window.GUMGUM) {
        */
       var log = function(message) {
         /** @type {string} */
-        var val = "../../../pixel.quantserve.com/pixel/" + message.qac + ".gif?labels=" + message.qsg;
-        req(val, args[x]);
+        var val = "/pixel.quantserve.com/pixel/" + message.qac + ".gif?labels=" + message.qsg;
+        _loadImg(val, args[x]);
         args.log[method](val);
       };
       /**
@@ -4333,7 +4333,7 @@ if (window.GUMGUM) {
             }
           }
         }
-        req(val, args[x]);
+        _loadImg(val, args[x]);
         args.log[method](val);
       };
       /**
@@ -4347,7 +4347,7 @@ if (window.GUMGUM) {
         /** @type {string} */
         cache[id][_width] = "1px";
         /** @type {string} */
-        cache[id][_heigth] = "1px";
+        cache[id][_height] = "1px";
         /** @type {boolean} */
         cache.frameborder = element;
         append(args[x], cache);
@@ -4365,7 +4365,7 @@ if (window.GUMGUM) {
         var last = $('<iframe name="__bkframe" style="_CLEARCSS_" height="0" width="0" frameborder="0"></iframe>');
         var data = {
           desktop : {
-            u : "../../../www.bkrtx.com/js/bk-static.js",
+            u : "/www.bkrtx.com/js/bk-static.js",
             /**
              * @return {undefined}
              */
@@ -4431,7 +4431,7 @@ if (window.GUMGUM) {
             }
           }
           if (ret[ii]) {
-            req("/g2.gumgum.com/bluekai/categories?" + ret.join("&"), args[x]);
+            _loadImg("/g2.gumgum.com/bluekai/categories?" + ret.join("&"), args[x]);
           }
         });
       };
@@ -4441,7 +4441,7 @@ if (window.GUMGUM) {
        */
       var trigger = function(extra) {
         if (extra) {
-          req("/tags.bluekai.com/site/15333.gif?id=" + extra, args[x]);
+          _loadImg("/tags.bluekai.com/site/15333.gif?id=" + extra, args[x]);
         }
       };
       /**
@@ -4455,7 +4455,7 @@ if (window.GUMGUM) {
        * @return {undefined}
        */
       var inject = function() {
-        _loadScript("../../../loadus.exelator.com/load/p?p=233&g=001&j=d", args[x]);
+        _loadScript("/loadus.exelator.com/load/p?p=233&g=001&j=d", args[x]);
       };
       /**
        * @return {undefined}
@@ -4479,7 +4479,7 @@ if (window.GUMGUM) {
           c8 : fn(("" + doc.title)[replace](/\s{2,}/g, "").substring(0, 1024)),
           c9 : fn(view)
         };
-        req(equal("../../../b.scorecardresearch.com/p?c1={:c1:}&c2={:c2:}&c3={:c3:}&c4={:c4:}&c7={:c7:}&c8={:c8:}&c9={:c9:}&cv=2.0&cj=1&ns__t=" + getTime(), originalEvent), args[x]);
+        _loadImg(equal("/b.scorecardresearch.com/p?c1={:c1:}&c2={:c2:}&c3={:c3:}&c4={:c4:}&c7={:c7:}&c8={:c8:}&c9={:c9:}&cv=2.0&cj=1&ns__t=" + getTime(), originalEvent), args[x]);
       };
       /**
        * @param {Object} collection
@@ -4488,13 +4488,13 @@ if (window.GUMGUM) {
       var process = function(collection) {
         /** @type {number} */
         collection.c1 = 8;
-        req(equal("../../../b.scorecardresearch.com/p?c1={:c1:}&c2={:c2:}&c3={:c3:}&ns_ap_it=b&rn=" + getTime(), collection), args[x]);
+        _loadImg(equal("/b.scorecardresearch.com/p?c1={:c1:}&c2={:c2:}&c3={:c3:}&ns_ap_it=b&rn=" + getTime(), collection), args[x]);
       };
       /**
        * @return {undefined}
        */
       var req = function() {
-        req("//fei.pro-market.net/engine?site=134602;size=1x1;mimetype=img;", args[x]);
+        _loadImg("/fei.pro-market.net/engine?site=134602;size=1x1;mimetype=img;", args[x]);
       };
       /**
        * @return {undefined}
@@ -4563,7 +4563,7 @@ if (window.GUMGUM) {
             if (opts && opts.success) {
               fn = opts.identity;
               fn.optout = fn.privacy.optout;
-              req(url + equal(data, fn));
+              _loadImg(url + equal(data, fn));
               return;
             }
             return cb("startDigitrust", opts.error);
@@ -4575,7 +4575,7 @@ if (window.GUMGUM) {
        * @return {undefined}
        */
       var checkPending = function(newTagName) {
-        req("../../../idsync.rlcdn.com/395736.gif?partner_uid=" + newTagName, args[x]);
+        _loadImg("/idsync.rlcdn.com/395736.gif?partner_uid=" + newTagName, args[x]);
       };
       /**
        * @param {?} self
@@ -4611,6 +4611,7 @@ if (window.GUMGUM) {
       args.log = [];
       args[x] = $('<div id="GG_PXS" style="display:none"></div>');
       append(target, args[x]);
+
       if (data.quantcast) {
         log(data);
       }
@@ -4689,7 +4690,7 @@ if (window.GUMGUM) {
       options.inViewRatio = settings.tr || 0;
       options.vpDimension = {
         w : data[_width],
-        h : data[_heigth]
+        h : data[_height]
       };
       /** @type {number} */
       options.UUID = 0;
@@ -4704,7 +4705,7 @@ if (window.GUMGUM) {
         var path = text(node);
         var index = createElement(path);
         var newWidth = container[_width];
-        var newHeight = container[_heigth];
+        var newHeight = container[_height];
         var value = node.naturalWidth;
         var val = node.naturalHeight;
         /** @type {null} */
@@ -4719,10 +4720,10 @@ if (window.GUMGUM) {
             obj.src = path;
             o = {};
             o[_width] = obj[_width];
-            o[_heigth] = obj[_heigth];
+            o[_height] = obj[_height];
           }
           value = o[_width];
-          val = o[_heigth];
+          val = o[_height];
           options[j][index] = o;
         }
         return value >= options.minWidth && val >= options.minHeight && (!isNaN(newWidth) && !isNaN(newHeight) && (newWidth >= options.minWidth && newHeight >= options.minHeight && (!(newWidth === 160 && newHeight === 600) && (!(newWidth === 180 && newHeight === 150) && (!(newWidth === 200 && newHeight === 200) && (!(newWidth === 250 && newHeight === 250) && (!(newWidth === 300 && newHeight === 250) && (!(newWidth === 300 && newHeight === 600) && !(newWidth === 336 && newHeight === 280)))))))));
@@ -4761,11 +4762,11 @@ if (window.GUMGUM) {
           vp : {
             ii : global[index] && top !== global,
             w : data[_width],
-            h : data[_heigth]
+            h : data[_height]
           },
           sc : {
             w : global.screen[_width],
-            h : global.screen[_heigth],
+            h : global.screen[_height],
             d : global.devicePixelRatio || 1
           }
         };
@@ -4835,11 +4836,11 @@ if (window.GUMGUM) {
           i : b.id,
           u : createElement(text(element)),
           w : data[_width],
-          h : data[_heigth],
+          h : data[_height],
           x : data[k],
           y : data[index],
           lt : lt,
-          af : data[index] + data[key] < tileSize.h && data[k] + data[type] < tileSize.w
+          af : data[index] + data[_height] < tileSize.h && data[k] + data[_width] < tileSize.w
         };
         if (el.tagName[cssprop]() === "a" && (form = el.href || el.getAttribute("href"))) {
           self.lu = createElement(form);
@@ -4916,11 +4917,11 @@ if (window.GUMGUM) {
         _ref3 = a[ii];
         for (;_i < _ref3;_i++) {
           e = a[_i];
-          if (e[type] <= 100 || e[key] <= 100) {
+          if (e[_width] <= 100 || e[_height] <= 100) {
             continue;
           }
           json = empty(e);
-          if (!json || (json[type] < 100 || (json[key] < 100 || (json[index] < 0 || json[k] < 0)))) {
+          if (!json || (json[_width] < 100 || (json[_height] < 100 || (json[index] < 0 || json[k] < 0)))) {
             continue;
           }
           img = text(e);
@@ -4942,7 +4943,7 @@ if (window.GUMGUM) {
             /** @type {boolean} */
             origContext = data.src === text(e);
             /** @type {boolean} */
-            o = abs(json[type] - data.ofs[type]) < 5 && abs(json[key] - data.ofs[key]) < 5;
+            o = abs(json[_width] - data.ofs[_width]) < 5 && abs(json[_height] - data.ofs[_height]) < 5;
             c = locate(node) && prepend(node);
             if (last && (origContext && (o && (c && (log(e) === data.ggnoad && fn(e) === data.classr))))) {
               data.ofs = json;
@@ -5287,7 +5288,7 @@ if (window.GUMGUM) {
         t[parentNode].insertBefore(cur, t.nextSibling);
         expected.event_info.lt = frontObj[field]();
         expected.event_info.to = frontObj[frontName]();
-        req(url + equal("/sa/leavebehind/view?t={:tid:}&p={:pu:}&a={:ai:}&lt={:lt:}&to={:to:}", expected.event_info));
+        _loadImg(url + equal("/sa/leavebehind/view?t={:tid:}&p={:pu:}&a={:ai:}&lt={:lt:}&to={:to:}", expected.event_info));
       },
       /**
        * @param {Event} deepDataAndEvents
@@ -5300,7 +5301,7 @@ if (window.GUMGUM) {
         deepDataAndEvents.stop();
         expected.event_info.lt = frontObj[field]();
         expected.event_info.to = frontObj[frontName]();
-        req(url + equal("/sa/leavebehind/click?t={:tid:}&p={:pu:}&a={:ai:}&lt={:lt:}&to={:to:}", expected.event_info));
+        _loadImg(url + equal("/sa/leavebehind/click?t={:tid:}&p={:pu:}&a={:ai:}&lt={:lt:}&to={:to:}", expected.event_info));
         return window.open(expected[idx].lc, "ggsalbclick");
       },
       /**
@@ -5486,7 +5487,7 @@ if (window.GUMGUM) {
             }
           }
           if (p.modal) {
-            value.call(o, i);
+            openModal.call(o, i);
           } else {
             global.open(i);
           }
@@ -5513,7 +5514,7 @@ if (window.GUMGUM) {
             pv : self.pvid,
             seq : data.i,
             pu : current,
-            af : stats[index] + stats[key] < tileSize.h && stats[k] + stats[type] < tileSize.w
+            af : stats[index] + stats[_height] < tileSize.h && stats[k] + stats[_width] < tileSize.w
           };
           var originalEvent;
           if (options.inViewRatio) {
@@ -5530,7 +5531,7 @@ if (window.GUMGUM) {
             preserve.preventDefault();
           }
           if (!data.forced) {
-            req(url + equal("/ad/close?asset={:dt:}&lt={:lt:}&to={:to:}&pu={:pu:}&bf={:bf:}" + param, originalEvent), item[name]);
+            _loadImg(url + equal("/ad/close?asset={:dt:}&lt={:lt:}&to={:to:}&pu={:pu:}&bf={:bf:}" + param, originalEvent), item[name]);
           }
           if (data.uid && self[data.uid]) {
             delete self[data.uid];
@@ -5561,7 +5562,7 @@ if (window.GUMGUM) {
             pv : self.pvid,
             seq : res.i,
             pu : current,
-            af : data[index] + data[key] < tileSize.h && data[k] + data[type] < tileSize.w
+            af : data[index] + data[_height] < tileSize.h && data[k] + data[_width] < tileSize.w
           };
           var originalEvent;
           if (options.inViewRatio) {
@@ -5575,9 +5576,9 @@ if (window.GUMGUM) {
             bf : currentTarget
           };
           if (!res.forced) {
-            req(url + equal("/ad/info?asset={:dt:}&lt={:lt:}&to={:to:}&pu={:pu:}&bf={:bf:}" + param, originalEvent), result[name]);
+            _loadImg(url + equal("/ad/info?asset={:dt:}&lt={:lt:}&to={:to:}&pu={:pu:}&bf={:bf:}" + param, originalEvent), result[name]);
           }
-          value.call(context || item, message || event);
+          openModal.call(context || item, message || event);
         },
         /**
          * @param {Node} deepDataAndEvents
@@ -5600,7 +5601,7 @@ if (window.GUMGUM) {
             ab : c.ab,
             seq : c.i,
             pv : self.pvid,
-            af : stats[index] + stats[key] < tileSize.h && stats[k] + stats[type] < tileSize.w
+            af : stats[index] + stats[_height] < tileSize.h && stats[k] + stats[_width] < tileSize.w
           };
           var pu = {};
           if (options.inViewRatio) {
@@ -5665,7 +5666,7 @@ if (window.GUMGUM) {
               /** @type {boolean} */
               data.viewable100 = preserve;
             }
-            req(missing);
+            _loadImg(missing);
           }, 1E3);
           return preserve;
         },
@@ -5711,9 +5712,9 @@ if (window.GUMGUM) {
           if (data.ii && !/\x3c!--iframe--\x3e/im.test(data.ad)) {
             b = max(data.ad, c);
             /** @type {(number|string)} */
-            b[key] = !o.adf.assettall ? data.add.h * (data.add.s || 1) : "100%";
+            b[_height] = !o.adf.assettall ? data.add.h * (data.add.s || 1) : "100%";
             /** @type {(number|string)} */
-            b[type] = !o.adf.assetwide ? data.add.w * (data.add.s || 1) : "100%";
+            b[_width] = !o.adf.assetwide ? data.add.w * (data.add.s || 1) : "100%";
           } else {
             append(c, $(data.ad));
           }
@@ -5722,10 +5723,10 @@ if (window.GUMGUM) {
             y : ("" + o.adp.y)[cssprop]()
           };
           if (o.adf.assetwide) {
-            obj[id][type] = img[width] + "px";
+            obj[id][_width] = img[width] + "px";
           }
           if (o.adf.assettall) {
-            obj[id][key] = img[d] + "px";
+            obj[id][_height] = img[d] + "px";
           }
           if (o.adf.animated) {
             event.requireAnimation = o.adf.animated;
@@ -5837,9 +5838,9 @@ if (window.GUMGUM) {
             /** @type {string} */
             value[id][i] = undef;
             /** @type {string} */
-            value[id][type] = result + "px";
+            value[id][_width] = result + "px";
             /** @type {string} */
-            value[id][key] = dim + "px";
+            value[id][_height] = dim + "px";
             switch(position) {
               case o:
                 result = {
@@ -5918,13 +5919,13 @@ if (window.GUMGUM) {
               break;
             case "b":
               /** @type {number} */
-              result[index] = data[index] + data[key] - max;
+              result[index] = data[index] + data[_height] - max;
               break;
             case "m":
-              result[index] = data[index] + (data[key] - max) / 2;
+              result[index] = data[index] + (data[_height] - max) / 2;
               break;
             default:
-              result[index] = ~~p.y > 0 ? data[index] + ~~p.y : data[index] + data[key] - max + ~~p.y;
+              result[index] = ~~p.y > 0 ? data[index] + ~~p.y : data[index] + data[_height] - max + ~~p.y;
               break;
           }
           css(value, {
@@ -5968,6 +5969,8 @@ if (window.GUMGUM) {
           }
         }
       });
+
+    // 入口方法
     if (errorCB()) {
       self.onReady(success);
     }
