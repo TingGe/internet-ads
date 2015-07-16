@@ -142,23 +142,26 @@ GUMGUM.startServices是在前端系统入口点（ggv2.js）脚本中定义的�
 ### 域名整理 ###
 
 - demo.gumgum.com: 模拟媒体网页
-- ads.gumgum.com： 存储GumGum Ad Information页的样式
+- g2.gumgum.com： 访客在广告上的行为监测（ad）、广告资源（assets）、前端投放JS（javascripts）、广告调度（services）
+- pixel.quantserve.com:监测服务、广告定向，[官网](https://www.quantserve.com/)
+- tags.bluekai.com:BlueKai的Ad Exchange
 - b.scorecardresearch.com: 第三方监测域名,[官网](http://www.scorecardresearch.com/Home.aspx)
-- c.gumgum.com：广告素材包（模版+广告创意）
-- das.uk.experian.com：在线广告偏好,参见[网站](http://das.uk.experian.com/experianoptout/)
+- loadus.exelator.com:DMP及广告定向数据公司,[官网](http://exelate.com/)
+- idsync.rlcdn.com:未知
+- ib.mookie1.com：未知，[官网](http://www.mookie1.com)
 - exelate.d.chango.com：Chango的广告再定位服务
-- g2.gumgum.com
-- gumgum.com
-- ib.mookie1.com
-- idsync.rlcdn.com
-- js.moatads.com
-- loadus.exelator.com
-- p.univide.com
-- pixel.quantserve.com
-- s.moatads.com
-- tags.bluekai.com
-- v4.moatads.com
-- www.bkrtx.com
+- das.uk.experian.com：在线广告偏好,参见[网站](http://das.uk.experian.com/experianoptout/)
+- p.univide.com：未知
+- www.bkrtx.com：BlueKai的js
+- c.gumgum.com：广告素材包（模版+广告创意）
+- js.moatads.com:存储Moatads的js,品牌分析，[官网](http://www.moat.com/)
+- v4.moatads.com：Moatads的数据采集Server
+- s.moatads.com：存储Moatads的swf
+- ads.gumgum.com： 存储GumGum Ad Information页的样式
+- gumgum.com：存储GumGum Ad Information页的字体库
+
+
+
 
 ### 代码评点 ###
 
