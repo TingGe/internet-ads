@@ -20,7 +20,7 @@
 
 ### Gumgum的系统入口 ###
 
-做为Gumgum的系统入口，需要在网站(如[demo.gumgum.com](http://demo.gumgum.com/dailynews/index.html#ggad=UvWNj-3VcH7p9DPtdSLg-fajd1ONNIq7clqN41uXnL9CktCrsSZxlcYnRBIHcUk5YMyKNTFaDlAEyHg0SKs71w))上嵌入Gumgum的广告调度代码。如：
+做为Gumgum的系统入口，需要在网站(示例 [http://demo.gumgum.com/dailynews/index.html#ggad=UvWNj-3VcH7p9DPtdSLg-fajd1ONNIq7clqN41uXnL9CktCrsSZxlcYnRBIHcUk5YMyKNTFaDlAEyHg0SKs71w](http://demo.gumgum.com/dailynews/index.html#ggad=UvWNj-3VcH7p9DPtdSLg-fajd1ONNIq7clqN41uXnL9CktCrsSZxlcYnRBIHcUk5YMyKNTFaDlAEyHg0SKs71w))上嵌入Gumgum的广告调度代码。如：
 
     <script>ggv2id="ggumtest"</script>
     <script src="//g2.gumgum.com/javascripts/ggv2.js"></script>
@@ -57,19 +57,46 @@ Gumgum的广告前端系统的入口点（ggv2.js）中,代码结构如下：
 
 提供常规广告调度服务的URL地址是http://g2.gumgum.com/services/get，负责接收由GUMGUM广告前端系统发起的广告调度请求，进行广告调度。
 
+示例：[http://g2.gumgum.com/services/get?callback=GUMGUM.startServices&pubdata={%22t%22:%22ggumtest%22,%22v%22:1,%22r%22:%22release-912-24-gb86d974%22,%22fs%22:true,%22rf%22:%22%22,%22pu%22:%22http%3A%2F%2Fdemo.gumgum.com%2Fdailynews%2Findex.html%22,%22ce%22:true,%22vp%22:{%22ii%22:false,%22w%22:419,%22h%22:774},%22sc%22:{%22w%22:1600,%22h%22:900,%22d%22:1}}&bf=80f6f94cf21f4648fdfcfc9fd4b5551dbcd5b275&lt=1437030491923&to=-480&_1437030491924](http://g2.gumgum.com/services/get?callback=GUMGUM.startServices&pubdata={%22t%22:%22ggumtest%22,%22v%22:1,%22r%22:%22release-912-24-gb86d974%22,%22fs%22:true,%22rf%22:%22%22,%22pu%22:%22http%3A%2F%2Fdemo.gumgum.com%2Fdailynews%2Findex.html%22,%22ce%22:true,%22vp%22:{%22ii%22:false,%22w%22:419,%22h%22:774},%22sc%22:{%22w%22:1600,%22h%22:900,%22d%22:1}}&bf=80f6f94cf21f4648fdfcfc9fd4b5551dbcd5b275&lt=1437030491923&to=-480&_1437030491924)
+
 #### 广告调度请求的参数 ####
 
 **GET参数**
 
-- callback:"GUMGUM.startServices"
-- pubdata:"{"t":"ggumtest","v":1,"r":"release-912-24-gb86d974","fs":true,"rf":"","pu":"http://demo.gumgum.com/dailynews/index.html#ggad=UvWNj-3VcH7p9DPtdSLg-fajd1ONNIq7clqN41uXnL9CktCrsSZxlcYnRBIHcUk5YMyKNTFaDlAEyHg0SKs71w/","ce":true,"vp":{"ii":false,"w":490,"h":765},"sc":{"w":1600,"h":900,"d":1}}"
-- bf："b8ec5468aa3bdceffae5d6423254db161a18be59"
-- lt:"1436782376784"
-- to:"-480"
-- eAdBuyId:"UvWNj-3VcH7p9DPtdSLg-fajd1ONNIq7clqN41uXnL9CktCrsSZxlcYnRBIHcUk5YMyKNTFaDlAEyHg0SKs71w/"
+- callback: 回调方法名称 "GUMGUM.startServices"
+- pubdata: 媒体网页数据，参见 pubdata数据
+- bf： "80f6f94cf21f4648fdfcfc9fd4b5551dbcd5b275"
+- lt: 请求时的时间戳 "1437030491923"
+- to: 协调通用时间(UTC)与当前主机时间之间的分钟差值 "-480"
+- eAdBuyId: ggad参数，"UvWNj-3VcH7p9DPtdSLg-fajd1ONNIq7clqN41uXnL9CktCrsSZxlcYnRBIHcUk5YMyKNTFaDlAEyHg0SKs71w/"
 - _1436782376785:""
+
+***pubdata数据***
+
+    {
+      "t":"ggumtest",
+      "v":1,
+      "r":"release-912-24-gb86d974",
+      "fs":true,
+      "rf":"",
+      "pu":"http://demo.gumgum.com/dailynews/index.html",
+      "ce":true,
+      "vp":{
+        "ii":false,
+        "w":419,
+        "h":774
+      },
+      "sc":{
+        "w":1600,
+        "h":900,
+        "d":1
+      }
+    }
 	
 **Cookie参数**
+
+- loc：6Q8bXh_kUS1xpW2IKmfLOMlibLmh7twfAkO7WjaNLAqNLubhrzJ3pig4GmK04XKc0NmSZ9r4BKwaUfsVCD6NkQ
+- vst：6ec0eccd-9b56-44c1-9216-bec21fbe5c7d
 
 
 #### 广告调度请求的响应 ####
@@ -114,28 +141,48 @@ GUMGUM广告调度系统(http://g2.gumgum.com/services/get)响应的内容格式
       "pag": {"css": "#fake_fix { position: inherit; }", "pvid": "02369117-b052-49ab-a94e-3f153f089241", "js": ""}
     });
 
-GUMGUM.startServices是在前端系统入口点（ggv2.js）脚本中定义的回调函数，负责将“data”字段中的iframe标签文本输出到页面中，向舞女页面发起请求。舞女页面是整个系统的神来之笔，后文会使用一个比较大的篇幅专题分析。
+GUMGUM.startServices是在前端系统入口点（ggv2.js）脚本中定义的回调函数。
 
 主要定义的是：
 
-- GUMGUM.startServices
-- quantcast:位于旧金山，经营代理定向显示广告的新创公司，[官网](http://www.quantcast.com)
-- media6:
-- across33: 33Across公司，社会化广告服务
-- bluekai:美国著名在线数据拍卖平台，[官网](http://www.bluekai.com/)
-- bluekaiIdSwap
-- bluekaiBuyer
-- comscore:美国知名的互联网统计公司、互联网流量跟踪分析公司和市场调研公司，[官网](http://www.comscore.com/)
-- comscoreMobile
-- jug
-- exelate：尼尔森
-- exelateRtd
-- datonicsBuyer
-- flite:基于云端媒体广告平台是美国的一家知名的互联网媒体广告投放服务平台,[官网](http://flite.com/)
-- dvbot
-- digitrust
-- partner_uuid
+- GUMGUM.startServices 回调方法
+- ads:
+- trk:
+- at:
 
+- nat:
+- nat.active
+
+- pag
+- pag.mobile
+- pag.js
+- pvid
+
+- spa
+- spa.active
+- spa.bdg
+
+- ins
+
+- pxs
+    - quantcast:位于旧金山，经营代理定向显示广告的新创公司，[官网](http://www.quantcast.com)
+    - media6:
+    - across33: 33Across公司，社会化广告服务
+    - bluekai:美国著名在线数据拍卖平台，[官网](http://www.bluekai.com/)
+    - bluekaiIdSwap
+    - bluekaiBuyer
+    - comscore:美国知名的互联网统计公司、互联网流量跟踪分析公司和市场调研公司，[官网](http://www.comscore.com/)
+    - comscoreMobile
+    - jug
+    - exelate：尼尔森
+    - exelateRtd
+    - datonicsBuyer
+    - flite:基于云端媒体广告平台是美国的一家知名的互联网媒体广告投放服务平台,[官网](http://flite.com/)
+    - dvbot
+    - digitrust
+    - partner_uuid
+
+- bdg
 
 ## 学习后记 ##
 
@@ -159,8 +206,6 @@ GUMGUM.startServices是在前端系统入口点（ggv2.js）脚本中定义的�
 - s.moatads.com：存储Moatads的swf
 - ads.gumgum.com： 存储GumGum Ad Information页的样式
 - gumgum.com：存储GumGum Ad Information页的字体库
-
-
 
 
 ### 代码评点 ###

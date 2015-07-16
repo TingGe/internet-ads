@@ -51,7 +51,7 @@ if (!window.GUMGUM) {
         /** @type {Array} */
         var tmp_arr = [];
         /** @type {number} */
-        var b = c[eventName] * 4;
+        var b = c[_length] * 4;
         var srcByte;
         /** @type {number} */
         var a = 0;
@@ -67,7 +67,7 @@ if (!window.GUMGUM) {
         var parent;
         var node;
         var context;
-        var r = c[eventName];
+        var r = c[_length];
         /** @type {number} */
         var v = 1732584193;
         /** @type {number} */
@@ -131,14 +131,14 @@ if (!window.GUMGUM) {
         /** @type {number} */
         var U = 255;
         /** @type {number} */
-        var padLength = a[eventName] * 8;
+        var padLength = a[_length] * 8;
         /** @type {number} */
         var i = 0;
         for (;i < padLength;i += 8) {
           binarray[i >> 5] |= (a.charCodeAt(i / 8) & U) << 24 - i % 32;
         }
         return binarray;
-      }(o).slice(), o[eventName] * 8));
+      }(o).slice(), o[_length] * 8));
     }
     /** @type {null} */
     var name = null;
@@ -147,7 +147,7 @@ if (!window.GUMGUM) {
     /** @type {boolean} */
     var node = true;
     /** @type {string} */
-    var eventName = "length";
+    var _length = "length";
     /** @type {string} */
     var i = "push";
     /** @type {string} */
@@ -191,7 +191,7 @@ if (!window.GUMGUM) {
     /** @type {string} */
     var rp = "replace";
     /** @type {string} */
-    var x = "toLowerCase";
+    var _toLowerCase = "toLowerCase";
     /**
      * @param {Object} object
      * @param {number} keepData
@@ -283,7 +283,7 @@ if (!window.GUMGUM) {
       var special = function(hash, o, i) {
         /** @type {number} */
         i = 0;
-        for (;i < o[eventName];i++) {
+        for (;i < o[_length];i++) {
           if (o[i]) {
             /** @type {number} */
             hash[o[i]] = 1;
@@ -434,7 +434,7 @@ if (!window.GUMGUM) {
          * @return {undefined}
          */
         var Event = function(event, e, isNative) {
-          if (!arguments[eventName]) {
+          if (!arguments[_length]) {
             return;
           }
           event = event || ((e.ownerDocument || (e.document || e)).parentWindow || win).event;
@@ -459,7 +459,7 @@ if (!window.GUMGUM) {
             if (!fixer) {
               /** @type {number} */
               i = 0;
-              c = typeFixers[eventName];
+              c = typeFixers[_length];
               for (;i < c;i++) {
                 if (typeFixers[i].reg.test(type)) {
                   typeFixerMap[type] = fixer = typeFixers[i].fix;
@@ -468,7 +468,7 @@ if (!window.GUMGUM) {
               }
             }
             props = fixer(event, this, type);
-            i = props[eventName];
+            i = props[_length];
             for (;i--;) {
               if (!((p = props[i]) in this)) {
                 if (p in event) {
@@ -608,16 +608,16 @@ if (!window.GUMGUM) {
           if (!this.namespaces) {
             return false;
           }
-          i = c[eventName];
+          i = c[_length];
           for (;i--;) {
-            j = this.namespaces[eventName];
+            j = this.namespaces[_length];
             for (;j--;) {
               if (c[i] == this.namespaces[j]) {
                 behavior++;
               }
             }
           }
-          return c[eventName] === behavior;
+          return c[_length] === behavior;
         }, RegEntry.prototype.matches = function(checkElement, checkOriginal, checkHandler) {
           return this.element === checkElement && ((!checkOriginal || this.original === checkOriginal) && (!checkHandler || this.handler === checkHandler));
         }, RegEntry;
@@ -653,7 +653,7 @@ if (!window.GUMGUM) {
             if (!list) {
               return;
             }
-            num = list[eventName];
+            num = list[_length];
             for (;i < num;i++) {
               if ((all || list[i].matches(element, original, handler)) && !fn(list[i], list, i, type)) {
                 return;
@@ -672,7 +672,7 @@ if (!window.GUMGUM) {
           var i;
           var c = map[(root ? "r" : "$") + keepData];
           if (c) {
-            i = c[eventName];
+            i = c[_length];
             for (;i--;) {
               if (!c[i].root && c[i].matches(property, original, null)) {
                 return true;
@@ -712,7 +712,7 @@ if (!window.GUMGUM) {
          */
         var del = function(entry) {
           forAll(entry.element, entry.type, null, entry.handler, entry.root, function(entry, c, end) {
-            return c.splice(end, 1), entry.removed = true, c[eventName] === 0 && delete map[(entry.root ? "r" : "$") + entry.type], false;
+            return c.splice(end, 1), entry.removed = true, c[_length] === 0 && delete map[(entry.root ? "r" : "$") + entry.type], false;
           });
         };
         /**
@@ -749,7 +749,7 @@ if (!window.GUMGUM) {
        * @return {undefined}
        */
       var setSelectorEngine = function(e) {
-        if (arguments[eventName]) {
+        if (arguments[_length]) {
           /** @type {Function} */
           selectorEngine = e;
         } else {
@@ -771,7 +771,7 @@ if (!window.GUMGUM) {
           return;
         }
         var events = registry.get(this, type || event.type, null, false);
-        var entries = events[eventName];
+        var entries = events[_length];
         /** @type {number} */
         var i = 0;
         event = new Event(event, this, true);
@@ -838,7 +838,7 @@ if (!window.GUMGUM) {
         var c;
         /** @type {number} */
         i = 0;
-        c = handlers[eventName];
+        c = handlers[_length];
         for (;i < c;i++) {
           if (!handler || handlers[i].original === handler) {
             if (handlers[i].inNamespaces(l)) {
@@ -875,7 +875,7 @@ if (!window.GUMGUM) {
           var i;
           var array = isString(selector) ? selectorEngine(selector, root) : selector;
           for (;target && target !== root;target = target[parentNode]) {
-            i = array[eventName];
+            i = array[_length];
             for (;i--;) {
               if (array[i] === target) {
                 return target;
@@ -927,7 +927,7 @@ if (!window.GUMGUM) {
         var i;
         if (isTypeStr && typeSpec.indexOf(" ") > 0) {
           typeSpec = f(typeSpec);
-          i = typeSpec[eventName];
+          i = typeSpec[_length];
           for (;i--;) {
             off(element, typeSpec[i], fn);
           }
@@ -995,7 +995,7 @@ if (!window.GUMGUM) {
         if (this === ONE) {
           fn = once(off, element, events, fn, originalFn);
         }
-        k = c[eventName];
+        k = c[_length];
         for (;k--;) {
           aL = registry.put(entry = new RegEntry(element, c[k][rp](nameRegex, ""), fn, originalFn, f(c[k][rp](r, ""), "."), args, false));
           if (entry[eventSupport]) {
@@ -1014,7 +1014,7 @@ if (!window.GUMGUM) {
        * @return {?}
        */
       var add = function(context, events, selector, delfn) {
-        return on.apply(null, isString(selector) ? [context, selector, events, delfn].concat(arguments[eventName] > 3 ? __slice.call(arguments, 5) : []) : __slice.call(arguments));
+        return on.apply(null, isString(selector) ? [context, selector, events, delfn].concat(arguments[_length] > 3 ? __slice.call(arguments, 5) : []) : __slice.call(arguments));
       };
       /**
        * @return {?}
@@ -1035,7 +1035,7 @@ if (!window.GUMGUM) {
         var handler;
         var a;
         var handlers;
-        c = o[eventName];
+        c = o[_length];
         for (;c--;) {
           type = o[c][rp](nameRegex, "");
           if (a = o[c][rp](r, "")) {
@@ -1049,7 +1049,7 @@ if (!window.GUMGUM) {
             args = [false].concat(args);
             /** @type {number} */
             j = 0;
-            handler = handlers[eventName];
+            handler = handlers[_length];
             for (;j < handler;j++) {
               if (handlers[j].inNamespaces(a)) {
                 handlers[j].handler.apply(element, args);
@@ -1067,7 +1067,7 @@ if (!window.GUMGUM) {
        */
       var clone = function(element, from, type) {
         var handlers = registry.get(from, type, null, false);
-        var handler = handlers[eventName];
+        var handler = handlers[_length];
         /** @type {number} */
         var j = 0;
         var args;
@@ -1178,7 +1178,7 @@ if (!window.GUMGUM) {
               v[i](~~c[j]);
             }
           } else {
-            if (c[eventName] == 4) {
+            if (c[_length] == 4) {
               /** @type {string} */
               c = "#" + s(c, 1) + s(c, 1) + s(c, 2) + s(c, 2) + s(c, 3) + s(c, 3);
             }
@@ -1222,7 +1222,7 @@ if (!window.GUMGUM) {
         var options;
         var result = {};
         /** @type {string} */
-        var letter = map[eventName];
+        var letter = map[_length];
         var v;
         /** @type {string} */
         parseEl.innerHTML = '<div style="' + models + '"></div>';
@@ -1287,7 +1287,7 @@ if (!window.GUMGUM) {
         R = 1;
         /** @type {number} */
         var evtName = 0;
-        var eventListeners = listeners[eventName];
+        var eventListeners = listeners[_length];
         for (;evtName < eventListeners;evtName++) {
           listeners[evtName]();
         }
@@ -1525,7 +1525,7 @@ if (!window.GUMGUM) {
           var el;
           /** @type {number} */
           method = 0;
-          for (;method < a[eventName];method++) {
+          for (;method < a[_length];method++) {
             if ((prev = obj[typeof(el = a[method])]) && typeof(el = prev(el)) === "string") {
               types[i](el);
             }
@@ -1660,7 +1660,7 @@ if (!window.GUMGUM) {
       var against = new Date;
       /** @type {string} */
       var allCallbacks = "abcdefghijklmnopqrstuvwxyz";
-      var E = allCallbacks[~~(nativeRandom() * allCallbacks[eventName])] + +against;
+      var E = allCallbacks[~~(nativeRandom() * allCallbacks[_length])] + +against;
       var update;
       /** @type {number} */
       var mw = 550;
@@ -1849,7 +1849,7 @@ if (!window.GUMGUM) {
             }
             return result;
           };
-          if (events[eventName]) {
+          if (events[_length]) {
             for (type in events) {
               if (hasOwnProperty(events, type) && ((map = events[type]) && map.name)) {
                 /** @type {Array} */
@@ -2047,7 +2047,7 @@ if (!window.GUMGUM) {
         c = $(c);
         if (/\x3c!--iframe--\x3e/im.test(c)) {
           c = c[rp](/\r|\f|\n|^\s*|\s*$/ig, "").split("\x3c!--iframe--\x3e");
-          if (c[eventName] === 3) {
+          if (c[_length] === 3) {
             a[id] = c[0] + '<div class="gumgum-iframe-placeholder"></div>' + c[2];
             next(c[1], query.call(a, "gumgum-iframe-placeholder")[0], node);
           } else {
@@ -2118,10 +2118,10 @@ if (!window.GUMGUM) {
           /** @type {number} */
           var c = 0;
           var methods = b[rp](/\[for\b/gi, "[htmlFor").split(",");
-          method = methods[eventName];
+          method = methods[_length];
           for (;method--;) {
             ss.addRule(methods[method], "k:v");
-            c = a[eventName];
+            c = a[_length];
             for (;c--;) {
               if (a[c].currentStyle.k) {
                 contact[i](a[c]);
@@ -2148,7 +2148,7 @@ if (!window.GUMGUM) {
           /** @type {number} */
           var key = 0;
           var result = jQuery.call(doc, "*");
-          var existingType = result[eventName];
+          var existingType = result[_length];
           /** @type {Array} */
           var match = [];
           /** @type {number} */
@@ -2185,12 +2185,12 @@ if (!window.GUMGUM) {
       };
       /** @type {function (Object): ?} */
       self.toArray = makeArray = function(array) {
-        if (!array[eventName]) {
+        if (!array[_length]) {
           return[];
         }
         return!match ? Array.prototype.slice.call(array, 0) : function(element) {
           var OWNER_DOCUMENT;
-          var current = element[eventName];
+          var current = element[_length];
           var doc;
           /** @type {Array} */
           var callbacks = [];
@@ -2206,7 +2206,7 @@ if (!window.GUMGUM) {
       self.inArray = inArray = function(c, elem) {
         /** @type {number} */
         var i = 0;
-        var r = c[eventName];
+        var r = c[_length];
         for (;i < r;i++) {
           if (c[i] === elem) {
             return i;
@@ -2349,7 +2349,7 @@ if (!window.GUMGUM) {
         var i = 0;
         /** @type {null} */
         var v = name;
-        var n = c ? c[eventName] : 0;
+        var n = c ? c[_length] : 0;
         for (;i < n && (v = c[i]);i++) {
           if (v.u && (!opts.evt || opts.evt && v.e === opts.evt)) {
             load(v.u[rp](/GGUID/ig, opts.gguid || i), {
@@ -2462,14 +2462,14 @@ if (!window.GUMGUM) {
           return;
         }
         try {
-          if (format(element) !== "array" && element[eventName]) {
+          if (format(element) !== "array" && element[_length]) {
             element = makeArray(element);
           }
           if (format(element) !== "array") {
             /** @type {Array} */
             element = [element];
           }
-          subLn = element[eventName];
+          subLn = element[_length];
           /** @type {number} */
           j = 0;
           for (;j < subLn;j++) {
@@ -2515,24 +2515,24 @@ if (!window.GUMGUM) {
       /** @type {function (Object): ?} */
       self.getWH = draw = function(obj) {
         /** @type {null} */
-        var size = name;
+        var _height = name;
         /** @type {null} */
-        var t = name;
+        var _width = name;
         if ("setInterval" in obj) {
-          t = min(docEl.clientWidth || 9E6, global.innerWidth || 9E6);
-          size = min(docEl.clientHeight || 9E6, global.innerHeight || 9E6);
+          _width = min(docEl.clientWidth || 9E6, global.innerWidth || 9E6);
+          _height = min(docEl.clientHeight || 9E6, global.innerHeight || 9E6);
         } else {
           if (obj.nodeType === 9) {
-            t = max(docEl.clientWidth, docEl[implementation], docEl.scrollWidth);
-            size = max(docEl.clientHeight, docEl[val], docEl.scrollHeight);
+            _width = max(docEl.clientWidth, docEl[implementation], docEl.scrollWidth);
+            _height = max(docEl.clientHeight, docEl[val], docEl.scrollHeight);
           } else {
-            size = _getStyle(obj, "height") || obj[val];
-            t = _getStyle(obj, "width") || obj[implementation];
+            _height = _getStyle(obj, "height") || obj[val];
+            _width = _getStyle(obj, "width") || obj[implementation];
           }
         }
         return{
-          width : _parseInt(t),
-          height : _parseInt(size)
+          width : _parseInt(_width),
+          height : _parseInt(_height)
         };
       };
       /** @type {function (Element): ?} */
@@ -2653,7 +2653,7 @@ if (!window.GUMGUM) {
       /** @type {function (Object, boolean): ?} */
       self.caseCSS = camelize = function(str, target) {
         return target ? str[rp](/([A-Z]{1})/g, function(dataAndEvents, m1) {
-          return m1 ? "-" + m1[x]() : dataAndEvents;
+          return m1 ? "-" + m1[_toLowerCase]() : dataAndEvents;
         }) : str[rp](/-([a-z]{1})/g, function(failed, result) {
           return result ? result.toUpperCase() : failed;
         });
@@ -2875,7 +2875,7 @@ if (!window.GUMGUM) {
           ret = node;
           /** @type {number} */
           var ext = 0;
-          for (;ext < c[eventName];ext++) {
+          for (;ext < c[_length];ext++) {
             c[ext]();
           }
         } else {
@@ -3369,7 +3369,7 @@ if (window.GUMGUM) {
     /** @type {boolean} */
     var element = false;
     /** @type {boolean} */
-    var preserve = true;
+    var _true = true;
     /** @type {string} */
     var ii = "length";
     /** @type {string} */
@@ -3401,7 +3401,7 @@ if (window.GUMGUM) {
     /** @type {string} */
     var lt = "none";
     /** @type {string} */
-    var eventName = "visibility";
+    var visibility = "visibility";
     /** @type {string} */
     var rootProperty = "zIndex";
     /** @type {string} */
@@ -3419,7 +3419,7 @@ if (window.GUMGUM) {
     /** @type {string} */
     var field = "getTime";
     /** @type {string} */
-    var frontName = "getTimezoneOffset";
+    var getTimezoneOffset = "getTimezoneOffset";
     /** @type {string} */
     var replace = "replace";
     /** @type {string} */
@@ -3427,7 +3427,7 @@ if (window.GUMGUM) {
     /** @type {string} */
     var idx = "data";
     /** @type {string} */
-    var x = "container";
+    var _container = "container";
     /** @type {string} */
     var name = "element";
     /** @type {string} */
@@ -3456,7 +3456,7 @@ if (window.GUMGUM) {
     var equal = self.tpl;
     var getComputedStyle = self.getStyle;
     var css = self.setStyle;
-    var getElementById = self.getWH;
+    var _getWH = self.getWH;
     var empty = self.getOffset;
     var text = self.getImageSrc;
     var w = self.getHighestZindex;
@@ -3475,12 +3475,12 @@ if (window.GUMGUM) {
     var openModal = self.openModal;
     /** @type {string} */
     var param = global.ggaffid ? "&ai=" + encodeURIComponent(global.ggaffid) : "";
-    var url = self.baseUrl;
+    var _baseUrl = self.baseUrl;
     var currentTarget = self.sbf;
     /** @type {Element} */
     var documentElement = doc.documentElement;
     var a = self.flashEnabled;
-    var target = self[x];
+    var target = self[_container];
     var messages = self.ieVersion;
     var from = self.infoModalMinHeight;
     var to = self.infoModalMinWidth;
@@ -3492,7 +3492,7 @@ if (window.GUMGUM) {
     /** @type {number} */
     var end = 850;
     var remaining = self.swfcid;
-    var t = global.ggv2id;
+    var ggv2id = global.ggv2id;
     /** @type {string} */
     var av = '<img src="/c.gumgum.com/images/pixel.gif" class="ad-standalone-img" alt="gumgum-verify" style="pointer-events:none!important;position:absolute!important;top:0!important;left:0!important;width:100%!important;height:100%!important;opacity:0!important;filter:alpha(opacity=0);z-index:-1" />';
     /** @type {null} */
@@ -3514,7 +3514,7 @@ if (window.GUMGUM) {
     var handle;
     var ready;
     var create;
-    var success;
+    var 3;
     var init;
     var load;
     var errorCB;
@@ -3569,7 +3569,7 @@ if (window.GUMGUM) {
     /** @type {string} */
     var timestamp = no;
     /** @type {boolean} */
-    var openElement = preserve;
+    var openElement = _true;
     var array = {};
     var plugins = {};
     var elements = {};
@@ -3589,10 +3589,10 @@ if (window.GUMGUM) {
      * @return {?}
      */
     errorCB = function() {
-      if (!t) {
+      if (!ggv2id) {
         throw new CustomError("ggv2id variable not set");
       }
-      return preserve;
+      return _true;
     };
     /**
      * @param {?} qualifier
@@ -3602,7 +3602,7 @@ if (window.GUMGUM) {
     fix = function(qualifier, event) {
       /** @type {boolean} */
       var result = element;
-      switch(preserve) {
+      switch(_true) {
         case /js.moatads.com/.test(qualifier):
           result = event.moat;
           break;
@@ -3686,15 +3686,15 @@ if (window.GUMGUM) {
      * @return {?}
      */
     scroll = function(el, data) {
-      var types = stats || getElementById(global);
+      var types = stats || _getWH(global);
       /** @type {number} */
-      var b = parseInt(self.bodyEl.scrollTop || documentElement.scrollTop, 10);
+      var _scrollTop = parseInt(self.bodyEl.scrollTop || documentElement.scrollTop, 10);
       /** @type {number} */
-      var max = parseInt(self.bodyEl.scrollLeft || documentElement.scrollLeft, 10);
+      var _scrollLeft = parseInt(self.bodyEl.scrollLeft || documentElement.scrollLeft, 10);
       var ts = types[_height];
       var idx = types[_width];
-      var t = b + ts;
-      var determinant = max + idx;
+      var t = _scrollTop + ts;
+      var determinant = _scrollLeft + idx;
       var a = data[index];
       var v = data[k];
       var x = data[_height] || 1;
@@ -3702,17 +3702,17 @@ if (window.GUMGUM) {
       var c = a + x;
       var u = v + d;
       /** @type {boolean} */
-      var program = a > b && a < t;
+      var program = a > _scrollTop && a < t;
       /** @type {boolean} */
-      var inverse = c > b && c < t;
+      var inverse = c > _scrollTop && c < t;
       /** @type {boolean} */
-      var param = c > t && a < b;
+      var param = c > t && a < _scrollTop;
       /** @type {boolean} */
-      var err = v > max && v < determinant;
+      var err = v > _scrollLeft && v < determinant;
       /** @type {boolean} */
-      var err2 = u > max && u < determinant;
+      var err2 = u > _scrollLeft && u < determinant;
       /** @type {boolean} */
-      var common = v < max && u > determinant;
+      var common = v < _scrollLeft && u > determinant;
       var base = options.inViewRatio;
       var by2 = v + d * base;
       var integer = a + x * base;
@@ -3720,15 +3720,15 @@ if (window.GUMGUM) {
         return element;
       }
       if (inverse && err2) {
-        return preserve;
+        return _true;
       }
       if (!base || base > 1) {
         return(program || inverse) && (err || err2);
       }
-      if ((param || common) && (by2 < determinant && integer < b)) {
-        return preserve;
+      if ((param || common) && (by2 < determinant && integer < _scrollTop)) {
+        return _true;
       }
-      return by2 > max && by2 < determinant && (integer > b && integer < t);
+      return by2 > _scrollLeft && by2 < determinant && (integer > _scrollTop && integer < t);
     };
     /**
      * @param {Array} data
@@ -3772,7 +3772,7 @@ if (window.GUMGUM) {
       for (;i < current[ii] && (item = current[i]);i += 1) {
         if (filter(item, e)) {
           /** @type {boolean} */
-          selectElement = preserve;
+          selectElement = _true;
           break;
         }
       }
@@ -3791,7 +3791,7 @@ if (window.GUMGUM) {
       timestamp = getTime();
       el.fire(target, "inscreen.badge.close");
       if (route) {
-        self[route].closeAd(preserve);
+        self[route].closeAd(_true);
       }
       var type = is("PassbackWrapperA");
       if (type && filter(target, type)) {
@@ -3800,6 +3800,7 @@ if (window.GUMGUM) {
       _loadScript(self.baseUrl + "/services/get?callback=GUMGUM.startServices&product=IN_SCREEN&pubdata=" + self.pubdata + "&bf=" + self.sbf + "&lt=" + getTime() + "&to=" + (new Date).getTimezoneOffset() + self.affiliateId, target, context, element);
       return element;
     };
+
     /**
      * @return {undefined}
      */
@@ -3808,7 +3809,7 @@ if (window.GUMGUM) {
       var current = location.href;
       var data = stats = self.getWH(global);
       var e = {
-        t : t,
+        t : ggv2id,
         v : 1,
         r : r,
         fs : a,
@@ -3827,7 +3828,7 @@ if (window.GUMGUM) {
         }
       };
       /** @type {Date} */
-      var frontObj = new Date;
+      var _timestamp = new Date;
       var charset = (current.match(/#ggad=(.+)$/) || [context, element])[1];
       var fix = successCallback();
       if (fix) {
@@ -3839,7 +3840,7 @@ if (window.GUMGUM) {
         e.ai = global.ggaffid;
       }
       self.pubdata = parseFloat(e);
-      _loadScript(url + "/services/get?callback=GUMGUM.startServices&pubdata=" + self.pubdata + "&bf=" + currentTarget + "&lt=" + +frontObj + "&to=" + frontObj[frontName]() + (charset ? "&eAdBuyId=" + charset : ""), target, context, element);
+      _loadScript(_baseUrl + "/services/get?callback=GUMGUM.startServices&pubdata=" + self.pubdata + "&bf=" + currentTarget + "&lt=" + +_timestamp + "&to=" + _timestamp[getTimezoneOffset]() + (charset ? "&eAdBuyId=" + charset : ""), target, context, element);
     };
     /**
      * @param {Object} data
@@ -3848,6 +3849,7 @@ if (window.GUMGUM) {
     self.startServices = function(data) {
       /** @type {boolean} */
       var bL = !options && (!!data.ads || !!data.trk);
+
       var bK = data.nat && data.nat.active;
       /** @type {string} */
       var camelKey = data.pag && data.pag.mobile ? "mobile" : "desktop";
@@ -3882,7 +3884,7 @@ if (window.GUMGUM) {
       }
       self.pvid = data.pag && data.pag.pvid || (self.pvid || "0-0");
       if (data.bdg && !self.BD) {
-        _loadScript(url + "/javascripts/ggadmin.js", target, function() {
+        _loadScript(_baseUrl + "/javascripts/ggadmin.js", target, function() {
           self.startBadges(data.bdg);
           if (bL) {
             create(data.at);
@@ -3926,16 +3928,16 @@ if (window.GUMGUM) {
       /** @type {null} */
       var i = context;
       /** @type {string} */
-      var url = location.href;
+      var _location = location.href;
       /** @type {null} */
       var n = context;
       /** @type {null} */
       var obj = context;
-      var charset = (url.match(/#ggad=(.+)$/) || [context, element])[1];
+      var charset = (_location.match(/#ggad=(.+)$/) || [context, element])[1];
       var result = {
         lt : getTime(),
         to : +(new Date).getTimezoneOffset(),
-        pu : fn(url),
+        pu : fn(_location),
         ru : doc.referrer,
         ce : nav.cookieEnabled,
         fs : a,
@@ -3950,10 +3952,10 @@ if (window.GUMGUM) {
         if (obj && (obj.id && obj.cs)) {
           result.ni = obj.id;
           self.xhr({
-            url : url + equal("/native/imp?ni={:ni:}&pu={:pu:}&ru={:ru:}&ce={:ce:}&fs={:fs:}&bf={:bf:}&lt={:lt:}&to={:to:}{:forced:}", result),
+            url : _location + equal("/native/imp?ni={:ni:}&pu={:pu:}&ru={:ru:}&ce={:ce:}&fs={:fs:}&bf={:bf:}&lt={:lt:}&to={:to:}{:forced:}", result),
             /** @type {function (XMLHttpRequest): undefined} */
             success : done,
-            withCredentials : preserve
+            withCredentials : _true
           });
         }
       };
@@ -4010,7 +4012,7 @@ if (window.GUMGUM) {
         e.id = id;
         e[prop] += " ggnative";
         el.one(e, "click", "[href], [onclick]", function() {
-          _loadImg(options.cu, e, element, preserve);
+          _loadImg(options.cu, e, element, _true);
         });
         if (self.subs[timeoutKey]) {
           el.fire(target, "gumgum.native.load", {
@@ -4063,7 +4065,7 @@ if (window.GUMGUM) {
       /** @type {null} */
       var nodes = context;
       var result = {
-        t : t,
+        t : ggv2id,
         ab : data ? data.i : context,
         pv : bindingContext.pag && bindingContext.pag.pvid,
         pu : fn(location.href),
@@ -4080,7 +4082,7 @@ if (window.GUMGUM) {
         var elements = element ? getComputedStyle(element, "width") : 0;
         var json = s > elements ? self.isad : element;
         if (e && e.type === "resize") {
-          stats = getElementById(global);
+          stats = _getWH(global);
         }
         if (!done[50] && self.evp(json, stats) >= 50) {
           onComplete(50, json);
@@ -4098,9 +4100,9 @@ if (window.GUMGUM) {
         var data = result;
         var missing;
         /** @type {boolean} */
-        done[id] = preserve;
+        done[id] = _true;
         data.pct = id || 50;
-        missing = url + equal("/ad/viewable{:pct:}?t={:t:}&ab={:ab:}&pv={:pv:}&pu={:pu:}&bf={:bf:}" + param, data);
+        missing = _baseUrl + equal("/ad/viewable{:pct:}?t={:t:}&ab={:ab:}&pv={:pv:}&pu={:pu:}&bf={:bf:}" + param, data);
         next(function() {
           if (extend(event, stats) < data.pct) {
             return;
@@ -4137,18 +4139,18 @@ if (window.GUMGUM) {
           });
         }
         (function(route) {
-          return route && (self[route] && (self[route].closeAd && self[route].closeAd(preserve)));
+          return route && (self[route] && (self[route].closeAd && self[route].closeAd(_true)));
         })(route);
         route = i;
         self[i] = {};
         self[i].el = self.isad = container;
         /**
-         * @param {boolean} preserve
+         * @param {boolean} _true
          * @return {undefined}
          */
-        self[i].closeAd = function(preserve) {
-          if (!preserve) {
-            _loadImg(url + equal("/ad/close?t={:t:}&ab={:ab:}&pv={:pv:}&pu={:pu:}&bf={:bf:}" + param, result));
+        self[i].closeAd = function(_true) {
+          if (!_true) {
+            _loadImg(_baseUrl + equal("/ad/close?t={:t:}&ab={:ab:}&pv={:pv:}&pu={:pu:}&bf={:bf:}" + param, result));
           }
           el.off(container, "inscreen");
           if (filter(target, self[i].el)) {
@@ -4168,7 +4170,7 @@ if (window.GUMGUM) {
           if (!self.isad) {
             return element;
           }
-          _loadImg(url + equal("/ad/hover.gif?t={:t:}&ab={:ab:}&pv={:pv:}&pu={:pu:}&bf={:bf:}" + param, result), container);
+          _loadImg(_baseUrl + equal("/ad/hover.gif?t={:t:}&ab={:ab:}&pv={:pv:}&pu={:pu:}&bf={:bf:}" + param, result), container);
           /** @type {boolean} */
           self[i].isHovered = true;
           el.off(container, "mouseenter mouseleave");
@@ -4194,7 +4196,7 @@ if (window.GUMGUM) {
          * @return {undefined}
          */
         self[i].showInfo = function(message, context) {
-          _loadImg(url + equal("/ad/info?t={:t:}&ab={:ab:}&pv={:pv:}&pu={:pu:}&bf={:bf:}" + param, result));
+          _loadImg(_baseUrl + equal("/ad/info?t={:t:}&ab={:ab:}&pv={:pv:}&pu={:pu:}&bf={:bf:}" + param, result));
           openModal.call(context || item, message || event);
         };
         if (data.ipu) {
@@ -4202,7 +4204,7 @@ if (window.GUMGUM) {
             parent : target,
             type : "img",
             delay : data.id,
-            preserve : element
+            _true : element
           });
         }
         if (item.asc && (item.asc.scr && item.asc.scr[ii])) {
@@ -4266,7 +4268,7 @@ if (window.GUMGUM) {
       var log = function(message) {
         /** @type {string} */
         var val = "/pixel.quantserve.com/pixel/" + message.qac + ".gif?labels=" + message.qsg;
-        _loadImg(val, args[x]);
+        _loadImg(val, args[_container]);
         args.log[method](val);
       };
       /**
@@ -4333,7 +4335,7 @@ if (window.GUMGUM) {
             }
           }
         }
-        _loadImg(val, args[x]);
+        _loadImg(val, args[_container]);
         args.log[method](val);
       };
       /**
@@ -4343,14 +4345,14 @@ if (window.GUMGUM) {
         var cache = option("iframe");
         var chunk = addClass();
         /** @type {string} */
-        cache[id][eventName] = undef;
+        cache[id][visibility] = undef;
         /** @type {string} */
         cache[id][_width] = "1px";
         /** @type {string} */
         cache[id][_height] = "1px";
         /** @type {boolean} */
         cache.frameborder = element;
-        append(args[x], cache);
+        append(args[_container], cache);
         args.log[method](cache.src = "//dp2.33across.com/ps/?tt=iframe&pid=242&cgn=16066&_=" + chunk);
       };
       /**
@@ -4388,18 +4390,18 @@ if (window.GUMGUM) {
              */
             c : function() {
               /** @type {boolean} */
-              global.bk_allow_multiple_calls = preserve;
+              global.bk_allow_multiple_calls = _true;
               /** @type {boolean} */
-              global.bk_use_multiple_iframes = preserve;
+              global.bk_use_multiple_iframes = _true;
               /** @type {boolean} */
-              global.bk_send_statid_payload = preserve;
+              global.bk_send_statid_payload = _true;
               global.bk_doJSTag(11598, _url || 3);
             }
           }
         };
-        append(args[x], last);
+        append(args[_container], last);
         next(function() {
-          _loadScript(data[key].u, args[x], data[key].c);
+          _loadScript(data[key].u, args[_container], data[key].c);
         }, 250);
       };
       /**
@@ -4416,7 +4418,7 @@ if (window.GUMGUM) {
         var list = context;
         /** @type {Array} */
         var ret = [];
-        _loadScript("/tags.bluekai.com/site/14833?ret=js", args[x], function() {
+        _loadScript("/tags.bluekai.com/site/14833?ret=js", args[_container], function() {
           if (!(global.bk_results && (current = global.bk_results.campaigns))) {
             return;
           }
@@ -4431,7 +4433,7 @@ if (window.GUMGUM) {
             }
           }
           if (ret[ii]) {
-            _loadImg("/g2.gumgum.com/bluekai/categories?" + ret.join("&"), args[x]);
+            _loadImg("/g2.gumgum.com/bluekai/categories?" + ret.join("&"), args[_container]);
           }
         });
       };
@@ -4441,7 +4443,7 @@ if (window.GUMGUM) {
        */
       var trigger = function(extra) {
         if (extra) {
-          _loadImg("/tags.bluekai.com/site/15333.gif?id=" + extra, args[x]);
+          _loadImg("/tags.bluekai.com/site/15333.gif?id=" + extra, args[_container]);
         }
       };
       /**
@@ -4449,19 +4451,19 @@ if (window.GUMGUM) {
        */
       var onload = function() {
         var last = $('<iframe name="_rlcdn" width=0 height=0 frameborder=0 src="http://rc.rlcdn.com/366098.html"></iframe>');
-        append(args[x], last);
+        append(args[_container], last);
       };
       /**
        * @return {undefined}
        */
       var inject = function() {
-        _loadScript("/loadus.exelator.com/load/p?p=233&g=001&j=d", args[x]);
+        _loadScript("/loadus.exelator.com/load/p?p=233&g=001&j=d", args[_container]);
       };
       /**
        * @return {undefined}
        */
       var getDeps = function() {
-        _loadScript("//loadr.exelator.com/load/?p=104&g=810&j=0", args[x]);
+        _loadScript("//loadr.exelator.com/load/?p=104&g=810&j=0", args[_container]);
       };
       /**
        * @param {Object} config
@@ -4474,12 +4476,12 @@ if (window.GUMGUM) {
           c1 : 8,
           c2 : config.c2,
           c3 : config.c3,
-          c4 : fn(t),
+          c4 : fn(ggv2id),
           c7 : fn(location.href),
           c8 : fn(("" + doc.title)[replace](/\s{2,}/g, "").substring(0, 1024)),
           c9 : fn(view)
         };
-        _loadImg(equal("/b.scorecardresearch.com/p?c1={:c1:}&c2={:c2:}&c3={:c3:}&c4={:c4:}&c7={:c7:}&c8={:c8:}&c9={:c9:}&cv=2.0&cj=1&ns__t=" + getTime(), originalEvent), args[x]);
+        _loadImg(equal("/b.scorecardresearch.com/p?c1={:c1:}&c2={:c2:}&c3={:c3:}&c4={:c4:}&c7={:c7:}&c8={:c8:}&c9={:c9:}&cv=2.0&cj=1&ns__t=" + getTime(), originalEvent), args[_container]);
       };
       /**
        * @param {Object} collection
@@ -4488,13 +4490,13 @@ if (window.GUMGUM) {
       var process = function(collection) {
         /** @type {number} */
         collection.c1 = 8;
-        _loadImg(equal("/b.scorecardresearch.com/p?c1={:c1:}&c2={:c2:}&c3={:c3:}&ns_ap_it=b&rn=" + getTime(), collection), args[x]);
+        _loadImg(equal("/b.scorecardresearch.com/p?c1={:c1:}&c2={:c2:}&c3={:c3:}&ns_ap_it=b&rn=" + getTime(), collection), args[_container]);
       };
       /**
        * @return {undefined}
        */
       var req = function() {
-        _loadImg("/fei.pro-market.net/engine?site=134602;size=1x1;mimetype=img;", args[x]);
+        _loadImg("/fei.pro-market.net/engine?site=134602;size=1x1;mimetype=img;", args[_container]);
       };
       /**
        * @return {undefined}
@@ -4543,13 +4545,13 @@ if (window.GUMGUM) {
         }
         /** @type {string} */
         script.src = [ret, "//r.flite.com/syndication/uscript.js?i=", escape(k), "&v=3", "&x=us", cy, "&cb=", root.FLITE.config[k].cb, "&d=", escape(match && match[0] || email)].join("");
-        append(args[x], script);
+        append(args[_container], script);
       };
       /**
        * @return {undefined}
        */
       var clear = function() {
-        _loadScript("//cdn.doubleverify.com/dvtp_src.js?ctx=1241058&cmp=2285192&sid=gumgum&plc=22851921&num=&adid=&advid=1241059&adsrv=0&region=30&btreg=&btadsrv=&crt=&crtname=&chnl=&unit=&pid=&uid=&dvtagver=6.1.src", args[x]);
+        _loadScript("//cdn.doubleverify.com/dvtp_src.js?ctx=1241058&cmp=2285192&sid=gumgum&plc=22851921&num=&adid=&advid=1241059&adsrv=0&region=30&btreg=&btadsrv=&crt=&crtname=&chnl=&unit=&pid=&uid=&dvtagver=6.1.src", args[_container]);
       };
       /**
        * @return {undefined}
@@ -4563,7 +4565,7 @@ if (window.GUMGUM) {
             if (opts && opts.success) {
               fn = opts.identity;
               fn.optout = fn.privacy.optout;
-              _loadImg(url + equal(data, fn));
+              _loadImg(_baseUrl + equal(data, fn));
               return;
             }
             return cb("startDigitrust", opts.error);
@@ -4575,7 +4577,7 @@ if (window.GUMGUM) {
        * @return {undefined}
        */
       var checkPending = function(newTagName) {
-        _loadImg("/idsync.rlcdn.com/395736.gif?partner_uid=" + newTagName, args[x]);
+        _loadImg("/idsync.rlcdn.com/395736.gif?partner_uid=" + newTagName, args[_container]);
       };
       /**
        * @param {?} self
@@ -4609,8 +4611,8 @@ if (window.GUMGUM) {
       args.triggerAssetPixels = callback;
       /** @type {Array} */
       args.log = [];
-      args[x] = $('<div id="GG_PXS" style="display:none"></div>');
-      append(target, args[x]);
+      args[_container] = $('<div id="GG_PXS" style="display:none"></div>');
+      append(target, args[_container]);
 
       if (data.quantcast) {
         log(data);
@@ -4667,7 +4669,7 @@ if (window.GUMGUM) {
      * @return {undefined}
      */
     create = function(settings) {
-      var data = stats || getElementById(global);
+      var data = stats || _getWH(global);
       options = {};
       /** @type {number} */
       options.tick = 0;
@@ -4745,14 +4747,14 @@ if (window.GUMGUM) {
       };
       /** @type {function (?, string): undefined} */
       options.requestAssetsNew = callback = function(c, style) {
-        var data = stats || getElementById(global);
+        var data = stats || _getWH(global);
         /** @type {string} */
         var path = location.href;
         var n = {
           v : "1.1",
           pv : self.pvid,
           r : r,
-          t : t,
+          t : ggv2id,
           a : [c],
           rf : doc.referrer,
           p : createElement(path),
@@ -4775,7 +4777,7 @@ if (window.GUMGUM) {
         var curPunc = parseInt(style, 10) > 0 ? "&adBuyId=" + style : charset ? "&eAdBuyId=" + charset : "";
         var dt = successCallback();
         /** @type {Date} */
-        var frontObj = new Date;
+        var _timestamp = new Date;
         var val;
         if (dt) {
           n.dt = dt;
@@ -4789,13 +4791,13 @@ if (window.GUMGUM) {
         /** @type {string} */
         self.affiliateId = self.affIdParam = param || "";
         n = fn(parseFloat(n));
-        cp(url + "/assets/new?assets=" + n + "&bf=" + currentTarget + "&lt=" + +frontObj + "&to=" + frontObj[frontName]() + curPunc, function(ioArgs) {
+        cp(_baseUrl + "/assets/new?assets=" + n + "&bf=" + currentTarget + "&lt=" + +_timestamp + "&to=" + _timestamp[getTimezoneOffset]() + curPunc, function(ioArgs) {
           /** @type {boolean} */
           var target = !!(charset || (curPunc || style));
           /** @type {null} */
           var obj = context;
           /** @type {(boolean|string)} */
-          var result = target || (parent ? parent.servedAds < ceil(options.foundImages * parent.coverage) ? preserve : "blocked" : preserve);
+          var result = target || (parent ? parent.servedAds < ceil(options.foundImages * parent.coverage) ? _true : "blocked" : _true);
           if (ioArgs) {
             if (target && ioArgs.ads[0]) {
               /** @type {number} */
@@ -4909,7 +4911,7 @@ if (window.GUMGUM) {
           return err && !done(err, e) || !err && (json && done(json, e));
         };
         options.tick = getTime();
-        stats = getElementById(global);
+        stats = _getWH(global);
         _clearTimeout(options.scanTimeout);
         a = _.call(self.bodyEl, "img");
         /** @type {number} */
@@ -5063,7 +5065,7 @@ if (window.GUMGUM) {
         var plugins = this;
         var data = plugins[idx];
         /** @type {Date} */
-        var frontObj = new Date;
+        var _timestamp = new Date;
         var params = {};
         /** @type {Array} */
         var tagNameArr = [];
@@ -5076,8 +5078,8 @@ if (window.GUMGUM) {
         params.p = location.href;
         params.a = data.ai;
         params.s = data.s;
-        params.lt = frontObj[field]();
-        params.to = frontObj[frontName]();
+        params.lt = _timestamp[field]();
+        params.to = _timestamp[getTimezoneOffset]();
         params.pv = self.pvid;
         if (obj) {
           for (key in obj) {
@@ -5091,7 +5093,7 @@ if (window.GUMGUM) {
             tagNameArr.push(fn(key) + "=" + fn(params[key]));
           }
         }
-        trigger(url + eventData + "?" + tagNameArr.join("&"), e);
+        trigger(_baseUrl + eventData + "?" + tagNameArr.join("&"), e);
       },
       /**
        * @return {?}
@@ -5117,7 +5119,7 @@ if (window.GUMGUM) {
             isUndefinedOrNull(options.pollTO);
           }
         }
-        return preserve;
+        return _true;
       },
       /**
        * @return {undefined}
@@ -5218,7 +5220,7 @@ if (window.GUMGUM) {
           el = elems[method];
           i = "" + (new Date)[field]() + addClass() * addClass();
           options.elements[i] = el;
-          options.placeholders[i] = dummy.cloneNode(preserve);
+          options.placeholders[i] = dummy.cloneNode(_true);
           el[parentNode].replaceChild(options.placeholders[i], el);
         }
       },
@@ -5266,7 +5268,7 @@ if (window.GUMGUM) {
         el.off(global, "sa");
         /** @type {null} */
         self.saad = context;
-        return preserve;
+        return _true;
       },
       /**
        * @param {HTMLElement} t
@@ -5276,7 +5278,7 @@ if (window.GUMGUM) {
         var expected = this;
         var obj = expected[idx];
         /** @type {Date} */
-        var frontObj = new Date;
+        var _timestamp = new Date;
         /** @type {null} */
         var cur = context;
         cur = $(obj.lm);
@@ -5286,9 +5288,9 @@ if (window.GUMGUM) {
           });
         }
         t[parentNode].insertBefore(cur, t.nextSibling);
-        expected.event_info.lt = frontObj[field]();
-        expected.event_info.to = frontObj[frontName]();
-        _loadImg(url + equal("/sa/leavebehind/view?t={:tid:}&p={:pu:}&a={:ai:}&lt={:lt:}&to={:to:}", expected.event_info));
+        expected.event_info.lt = _timestamp[field]();
+        expected.event_info.to = _timestamp[getTimezoneOffset]();
+        _loadImg(_baseUrl + equal("/sa/leavebehind/view?t={:tid:}&p={:pu:}&a={:ai:}&lt={:lt:}&to={:to:}", expected.event_info));
       },
       /**
        * @param {Event} deepDataAndEvents
@@ -5297,11 +5299,11 @@ if (window.GUMGUM) {
       clickLeaveBehind : function(deepDataAndEvents) {
         var expected = this;
         /** @type {Date} */
-        var frontObj = new Date;
+        var _timestamp = new Date;
         deepDataAndEvents.stop();
-        expected.event_info.lt = frontObj[field]();
-        expected.event_info.to = frontObj[frontName]();
-        _loadImg(url + equal("/sa/leavebehind/click?t={:tid:}&p={:pu:}&a={:ai:}&lt={:lt:}&to={:to:}", expected.event_info));
+        expected.event_info.lt = _timestamp[field]();
+        expected.event_info.to = _timestamp[getTimezoneOffset]();
+        _loadImg(_baseUrl + equal("/sa/leavebehind/click?t={:tid:}&p={:pu:}&a={:ai:}&lt={:lt:}&to={:to:}", expected.event_info));
         return window.open(expected[idx].lc, "ggsalbclick");
       },
       /**
@@ -5322,7 +5324,7 @@ if (window.GUMGUM) {
             }
             obj.triggerEvent("/ad/viewable50", context);
             /** @type {boolean} */
-            property.viewable50 = preserve;
+            property.viewable50 = _true;
           }, 1E3);
         }
         if (!property.viewable100 && extend(address0, stats) === 100) {
@@ -5334,7 +5336,7 @@ if (window.GUMGUM) {
               delay : 1E3
             });
             /** @type {boolean} */
-            property.viewable100 = preserve;
+            property.viewable100 = _true;
             el.off(global, "sa.viewability", Player.viewability);
           }, 1E3);
         }
@@ -5451,7 +5453,7 @@ if (window.GUMGUM) {
             parent : item[name],
             type : "img",
             delay : data.id,
-            preserve : preserve
+            _true : _true
           });
         }
       }
@@ -5494,10 +5496,10 @@ if (window.GUMGUM) {
           return element;
         },
         /**
-         * @param {Object} preserve
+         * @param {Object} _true
          * @return {undefined}
          */
-        closeAd : function(preserve) {
+        closeAd : function(_true) {
           var item = this;
           var data = item[idx];
           var passes = item.asset.img;
@@ -5506,9 +5508,9 @@ if (window.GUMGUM) {
           var tileSize = options.vpDimension;
           var stats = empty(passes);
           /** @type {Date} */
-          var frontObj = new Date;
+          var _timestamp = new Date;
           var n = {
-            t : t,
+            t : ggv2id,
             u : createElement(text(passes)),
             ab : data.ab,
             pv : self.pvid,
@@ -5522,16 +5524,16 @@ if (window.GUMGUM) {
           }
           originalEvent = {
             dt : fn(parseFloat(n)),
-            lt : +frontObj,
-            to : frontObj[frontName](),
+            lt : +_timestamp,
+            to : _timestamp[getTimezoneOffset](),
             pu : fn(current),
             bf : currentTarget
           };
-          if (preserve) {
-            preserve.preventDefault();
+          if (_true) {
+            _true.preventDefault();
           }
           if (!data.forced) {
-            _loadImg(url + equal("/ad/close?asset={:dt:}&lt={:lt:}&to={:to:}&pu={:pu:}&bf={:bf:}" + param, originalEvent), item[name]);
+            _loadImg(_baseUrl + equal("/ad/close?asset={:dt:}&lt={:lt:}&to={:to:}&pu={:pu:}&bf={:bf:}" + param, originalEvent), item[name]);
           }
           if (data.uid && self[data.uid]) {
             delete self[data.uid];
@@ -5554,9 +5556,9 @@ if (window.GUMGUM) {
           var tileSize = options.vpDimension;
           var data = empty(passes);
           /** @type {Date} */
-          var frontObj = new Date;
+          var _timestamp = new Date;
           var n = {
-            t : t,
+            t : ggv2id,
             u : createElement(text(passes)),
             ab : res.ab,
             pv : self.pvid,
@@ -5570,13 +5572,13 @@ if (window.GUMGUM) {
           }
           originalEvent = {
             dt : fn(parseFloat(n)),
-            lt : +frontObj,
-            to : frontObj[frontName](),
+            lt : +_timestamp,
+            to : _timestamp[getTimezoneOffset](),
             pu : fn(current),
             bf : currentTarget
           };
           if (!res.forced) {
-            _loadImg(url + equal("/ad/info?asset={:dt:}&lt={:lt:}&to={:to:}&pu={:pu:}&bf={:bf:}" + param, originalEvent), result[name]);
+            _loadImg(_baseUrl + equal("/ad/info?asset={:dt:}&lt={:lt:}&to={:to:}&pu={:pu:}&bf={:bf:}" + param, originalEvent), result[name]);
           }
           openModal.call(context || item, message || event);
         },
@@ -5593,10 +5595,10 @@ if (window.GUMGUM) {
           var tileSize = options.vpDimension;
           var stats = empty(passes);
           /** @type {Date} */
-          var frontObj = new Date;
+          var _timestamp = new Date;
           var data = {
             pu : current,
-            t : t,
+            t : ggv2id,
             u : createElement(text(passes)),
             ab : c.ab,
             seq : c.i,
@@ -5613,8 +5615,8 @@ if (window.GUMGUM) {
           }
           pu = {
             dt : fn(parseFloat(data)),
-            lt : +frontObj,
-            to : frontObj[frontName](),
+            lt : +_timestamp,
+            to : _timestamp[getTimezoneOffset](),
             pu : fn(current),
             bf : currentTarget
           };
@@ -5631,15 +5633,15 @@ if (window.GUMGUM) {
           var originalEvent = events.eventParams(deepDataAndEvents);
           /** @type {null} */
           var self = context;
-          self = url + equal("/ad/hover.gif?asset={:dt:}&lt={:lt:}&to={:to:}&pu={:pu:}&bf={:bf:}" + (event.forced ? "&f=true" : "") + param, originalEvent, context, element);
+          self = _baseUrl + equal("/ad/hover.gif?asset={:dt:}&lt={:lt:}&to={:to:}&pu={:pu:}&bf={:bf:}" + (event.forced ? "&f=true" : "") + param, originalEvent, context, element);
           trigger(self, {
             type : "img",
             parent : previous,
             delay : event.id
           });
           /** @type {boolean} */
-          events.isHovered = preserve;
-          return preserve;
+          events.isHovered = _true;
+          return _true;
         },
         /**
          * @param {number} opt_attributes
@@ -5650,7 +5652,7 @@ if (window.GUMGUM) {
           var out = this;
           var data = out.data;
           var originalEvent = out.eventParams();
-          var missing = url + equal("/ad/viewable" + opt_attributes + ".gif?asset={:dt:}&lt={:lt:}&to={:to:}&pu={:pu:}&bf={:bf:}" + (data.forced ? "&f=true" : "") + param, originalEvent, context, element);
+          var missing = _baseUrl + equal("/ad/viewable" + opt_attributes + ".gif?asset={:dt:}&lt={:lt:}&to={:to:}&pu={:pu:}&bf={:bf:}" + (data.forced ? "&f=true" : "") + param, originalEvent, context, element);
           next(function() {
             if (data.viewable100 && opt_attributes === 100 || data.viewable50 && opt_attributes === 50) {
               return;
@@ -5660,15 +5662,15 @@ if (window.GUMGUM) {
             }
             if (opt_attributes >= 50) {
               /** @type {boolean} */
-              data.viewable50 = preserve;
+              data.viewable50 = _true;
             }
             if (opt_attributes === 100) {
               /** @type {boolean} */
-              data.viewable100 = preserve;
+              data.viewable100 = _true;
             }
             _loadImg(missing);
           }, 1E3);
-          return preserve;
+          return _true;
         },
         /**
          * @return {?}
@@ -5779,8 +5781,8 @@ if (window.GUMGUM) {
               event.openAd(deepDataAndEvents);
             });
           }
-          el.add(i, "click", function(preserve) {
-            event.closeAd(preserve);
+          el.add(i, "click", function(_true) {
+            event.closeAd(_true);
           });
           el.add(c, "mouseenter", function() {
             if (!event.isHovered) {
@@ -5937,7 +5939,7 @@ if (window.GUMGUM) {
           });
           if (self.subs.inimage && !options.emitted) {
             /** @type {boolean} */
-            options.emitted = preserve;
+            options.emitted = _true;
             el.fire(target, "gumgum.inimage.load", {
               image : options.asset.img,
               ad : empty(value)
@@ -5949,7 +5951,7 @@ if (window.GUMGUM) {
           if (!option.viewable100 && extend(value, stats) === 100) {
             options.triggerViewability(100);
           }
-          return preserve;
+          return _true;
         },
         /**
          * @return {undefined}
