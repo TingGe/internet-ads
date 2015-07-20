@@ -64,14 +64,14 @@ Gumgum的广告前端系统的入口点（ggv2.js）中,代码结构如下：
 **GET参数**
 
 - callback: 回调方法名称 "GUMGUM.startServices"
-- pubdata: 媒体网页数据，参见 pubdata数据
-- bf： "80f6f94cf21f4648fdfcfc9fd4b5551dbcd5b275"
+- pubdata: 媒体网页数据，参见 pubdata
+- bf：经算法处理后的设备和浏览器信息，具体可参考ggv2.js中第1819行test()和第7行compile(o)两个方法  "80f6f94cf21f4648fdfcfc9fd4b5551dbcd5b275"
 - lt: 请求时的时间戳 "1437030491923"
 - to: 协调通用时间(UTC)与当前主机时间之间的分钟差值 "-480"
-- eAdBuyId: ggad参数，"UvWNj-3VcH7p9DPtdSLg-fajd1ONNIq7clqN41uXnL9CktCrsSZxlcYnRBIHcUk5YMyKNTFaDlAEyHg0SKs71w/"
+- eAdBuyId: 当前页URL中ggad参数，"UvWNj-3VcH7p9DPtdSLg-fajd1ONNIq7clqN41uXnL9CktCrsSZxlcYnRBIHcUk5YMyKNTFaDlAEyHg0SKs71w/"
 - _1436782376785:""
 
-***pubdata数据***
+***pubdata***
 
     {
       "t":"ggumtest",
@@ -92,11 +92,21 @@ Gumgum的广告前端系统的入口点（ggv2.js）中,代码结构如下：
         "d":1
       }
     }
+
+- t 广告位id
+- v ？
+- r 脚本版本号
+- fs 浏览器是否支持flash插件
+- rf 编码后的当前文档来源URL
+- pu 编码后的当前页完整URL
+- ce 浏览器是否启用cookies
+- vp 当前窗口否在一个iframe中、可见区域宽高
+- sc 设备分辨率宽高和设备像素比
 	
 **Cookie参数**
 
-- loc：6Q8bXh_kUS1xpW2IKmfLOMlibLmh7twfAkO7WjaNLAqNLubhrzJ3pig4GmK04XKc0NmSZ9r4BKwaUfsVCD6NkQ
-- vst：6ec0eccd-9b56-44c1-9216-bec21fbe5c7d
+- loc：6Q8bXh_kUS1xpW2IKmfLOMlibLmh7twfAkO7WjaNLAqNLubhrzJ3pig4GmK04XKc0NmSZ9r4BKwaUfsVCD6NkQ  有效期1个月
+- vst：6ec0eccd-9b56-44c1-9216-bec21fbe5c7d 
 
 
 #### 广告调度请求的响应 ####
@@ -213,4 +223,4 @@ GUMGUM.startServices是在前端系统入口点（ggv2.js）脚本中定义的�
 
 ### 参考引用 ###
 
-- 
+- 科普：[设备像素比devicePixelRatio简单介绍](http://www.zhangxinxu.com/wordpress/2012/08/window-devicepixelratio/)

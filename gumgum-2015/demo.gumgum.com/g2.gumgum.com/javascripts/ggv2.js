@@ -1,3 +1,5 @@
+/* 原脚本： http://g2.gumgum.com/javascripts/ggv2.js */
+
 if (!window.GUMGUM) {
   (function(global, doc, a) {
     /**
@@ -145,7 +147,7 @@ if (!window.GUMGUM) {
     /** @type {boolean} */
     var value = false;
     /** @type {boolean} */
-    var node = true;
+    var _true = true;
     /** @type {string} */
     var _length = "length";
     /** @type {string} */
@@ -183,7 +185,7 @@ if (!window.GUMGUM) {
     /** @type {string} */
     var opacity = "opacity";
     /** @type {string} */
-    var unlock = "getTimezoneOffset";
+    var getTimezoneOffset = "getTimezoneOffset";
     /** @type {string} */
     var method = "getAttribute";
     /** @type {string} */
@@ -218,7 +220,7 @@ if (!window.GUMGUM) {
     /** @type {(Navigator|null)} */
     var nav = global.navigator;
     /** @type {(Screen|null)} */
-    var base = global.screen;
+    var _screen = global.screen;
     /** @type {function (this:Window, (Function|null|string), number, ...[*]): number} */
     var _setTimeout = global.setTimeout;
     /** @type {function (this:Window, (null|number|undefined)): ?} */
@@ -1584,7 +1586,7 @@ if (!window.GUMGUM) {
       /** @type {boolean} */
       var opt_path = "FormData" in global;
       /** @type {string} */
-      var user = "release-912-24-gb86d974";
+      var _version = "release-912-24-gb86d974";
       var apply;
       /** @type {boolean} */
       var ret = value;
@@ -1732,7 +1734,7 @@ if (!window.GUMGUM) {
       self.Stack = [];
       self.trackingId = _document;
       /** @type {string} */
-      self.revision = user;
+      self.revision = _version;
       /** @type {string} */
       self.baseUrl = root;
       self.Bean = view;
@@ -1820,9 +1822,9 @@ if (!window.GUMGUM) {
           /** @type {(Navigator|null)} */
           var options = nav;
           /** @type {(Screen|null)} */
-          var result = base;
+          var result = _screen;
           /** @type {(PluginArray|null)} */
-          var events = options.plugins;
+          var _plugins = options.plugins;
           /** @type {Array} */
           var qs = [];
           /** @type {null} */
@@ -1849,9 +1851,9 @@ if (!window.GUMGUM) {
             }
             return result;
           };
-          if (events[_length]) {
-            for (type in events) {
-              if (hasOwnProperty(events, type) && ((map = events[type]) && map.name)) {
+          if (_plugins[_length]) {
+            for (type in _plugins) {
+              if (hasOwnProperty(_plugins, type) && ((map = _plugins[type]) && map.name)) {
                 /** @type {Array} */
                 info = [];
                 for (key in map) {
@@ -1863,12 +1865,13 @@ if (!window.GUMGUM) {
               }
             }
           }
-          return[options.userAgent, options.platform, options.product, options.productSub, options.vendor, options.vendorSub, [result[partName], result[attr], result.colorDepth, result.pixelDepth, global.devicePixelRatio].join("x"), (new Date)[unlock](), !!global.console, !!runTest("sessionStorage"), !!runTest("localStorage"), !!runTest("indexedDB"), qs.join(";")].join("###");
+         return[options.userAgent, options.platform, options.product, options.productSub, options.vendor, options.vendorSub, [result[partName], result[attr], result.colorDepth, result.pixelDepth, global.devicePixelRatio].join("x"), (new Date)[getTimezoneOffset](), !!global.console, !!runTest("sessionStorage"), !!runTest("localStorage"), !!runTest("indexedDB"), qs.join(";")].join("###");
         } catch (expectationResult) {
           return callback("getBF", expectationResult) || "BF-ERROR";
         }
       }();
       self.sbf = test = compile(test);
+
       self.flashEnabled = values = function() {
         /** @type {null} */
         var t = name;
@@ -1885,7 +1888,7 @@ if (!window.GUMGUM) {
         if (typeof nav.plugins !== undef && typeof nav.plugins[SHOCKWAVE_FLASH] === "object") {
           if (nav.plugins[SHOCKWAVE_FLASH].description && !(typeof nav.mimeTypes !== undef && (nav.mimeTypes[FLASH_MIME_TYPE] && !nav.mimeTypes[FLASH_MIME_TYPE].enabledPlugin))) {
             /** @type {boolean} */
-            ret = node;
+            ret = _true;
           }
         } else {
           if (typeof global.ActiveXObject !== undef) {
@@ -1894,7 +1897,7 @@ if (!window.GUMGUM) {
               t = new global.ActiveXObject("ShockwaveFlash.ShockwaveFlash");
               if (t && t.GetVariable("$version")) {
                 /** @type {boolean} */
-                ret = node;
+                ret = _true;
               }
             } catch (bm) {
             }
@@ -2244,7 +2247,7 @@ if (!window.GUMGUM) {
         loadScript(filename, input, function() {
           delete self.jsonp[unlock];
         }, value);
-        return node;
+        return _true;
       };
       self.jsonp = {};
       /** @type {function (Object): ?} */
@@ -2366,7 +2369,7 @@ if (!window.GUMGUM) {
         var opts = opt_attributes || {};
         var suiteView = opts.parent || input;
         var close = opts.callback || value;
-        var targetNode = opts.preserve === value ? value : node;
+        var targetNode = opts.preserve === value ? value : _true;
         var type = opts.type || value;
         var ms = opts.delay || 10;
         /** @type {string} */
@@ -2399,7 +2402,7 @@ if (!window.GUMGUM) {
          * @return {?}
          */
         var fail = function() {
-          return close && "call" in close ? close() : node;
+          return close && "call" in close ? close() : _true;
         };
         /**
          * @param {string} status
@@ -2420,7 +2423,7 @@ if (!window.GUMGUM) {
         if (!type) {
           return false;
         }
-        switch(node) {
+        switch(_true) {
           case type === "h" || type === "html":
             try {
               src = match && i < 10 ? src[rp](/<script /gi, "<script defer=true ") : src;
@@ -2435,7 +2438,7 @@ if (!window.GUMGUM) {
             break;
           case type === "s" || (type === "scr" || type === "script"):
             el = doc.createElementNS ? doc.createElementNS(doc.head && doc.head.namespaceURI || "http://www.w3.org/1999/xhtml", "script") : createElement("script");
-            el.setAttribute("async", node);
+            el.setAttribute("async", _true);
             el.setAttribute("data-cfasync", value);
             el.setAttribute("type", "text/javascript");
             break;
@@ -2450,7 +2453,7 @@ if (!window.GUMGUM) {
         /** @type {function (string): undefined} */
         el.onload = el.onreadystatechange = el.onerror = ready;
         _setTimeout(after, ms);
-        return node;
+        return _true;
       };
       /** @type {function (Object, Object): undefined} */
       self.setStyle = css = function(element, map) {
@@ -2477,7 +2480,7 @@ if (!window.GUMGUM) {
               for (key in map) {
                 if (hasOwnProperty(map, key)) {
                   key = key.indexOf("-") > -1 ? camelize(key, value) : key;
-                  switch(node) {
+                  switch(_true) {
                     case key === subkey:
                       ;
                     case key === "zoom":
@@ -2622,7 +2625,7 @@ if (!window.GUMGUM) {
               /** @type {number} */
               max = value;
             }
-            if (el.childNodes.length && (value = normalize(el, node)) > max) {
+            if (el.childNodes.length && (value = normalize(el, _true)) > max) {
               max = value;
             }
           }
@@ -2666,7 +2669,7 @@ if (!window.GUMGUM) {
           /** @type {number} */
           var alpha2 = ~~(el[k].filter || "alpha(opacity=100)").match(/alpha\(opacity=(\d+)\)/)[1];
           /** @type {boolean} */
-          var current = node;
+          var current = _true;
           var epsilon = self.AT && self.AT.minOpaque ? self.AT.minOpaque : 70;
           /** @type {boolean} */
           var referenceElement = _getStyle(el, visibility) !== HIDDEN;
@@ -2679,7 +2682,7 @@ if (!window.GUMGUM) {
           return current && (referenceElement && drawTicks);
         } catch (expectationResult) {
           callback("isElementVisible", expectationResult);
-          return node;
+          return _true;
         }
       };
       /** @type {function (Element, Object): ?} */
@@ -2767,7 +2770,7 @@ if (!window.GUMGUM) {
             mw : settings.mw ? settings.mw : "100%",
             mh : settings.mh ? settings.mh : "100%",
             mc : settings.mcc ? settings.mcc : "/c.gumgum.com/ads/com/gumgum/close-rs.png",
-            zi : normalize(name, node) + 11
+            zi : normalize(name, _true) + 11
           };
           if (bo) {
             /** @type {string} */
@@ -2871,8 +2874,8 @@ if (!window.GUMGUM) {
       once();
       /** @type {function (boolean): undefined} */
       self.onReady = apply = function(fn) {
-        if (fn === node) {
-          ret = node;
+        if (fn === _true) {
+          ret = _true;
           /** @type {number} */
           var ext = 0;
           for (;ext < c[_length];ext++) {
@@ -2905,7 +2908,7 @@ if (!window.GUMGUM) {
             /** @type {number} */
             headers[index] = _parseInt(_getStyle(body, "margin-left")) * -1;
           }
-          apply(node);
+          apply(_true);
         } else {
           _setTimeout(render, 100);
         }
@@ -3371,7 +3374,7 @@ if (window.GUMGUM) {
     /** @type {boolean} */
     var _true = true;
     /** @type {string} */
-    var ii = "length";
+    var _length = "length";
     /** @type {string} */
     var method = "push";
     /** @type {string} */
@@ -3389,7 +3392,7 @@ if (window.GUMGUM) {
     /** @type {string} */
     var parentNode = "parentNode";
     /** @type {string} */
-    var index = "top";
+    var _top = "top";
     /** @type {string} */
     var k = "left";
     /** @type {string} */
@@ -3443,13 +3446,13 @@ if (window.GUMGUM) {
     var ceil = math.ceil;
     var abs = math.abs;
     var validate = self.getType;
-    var parseFloat = self.toJSON;
+    var _toJSON = self.toJSON;
     var option = self.newEl;
     var append = self.addNode;
     var _setTimeout = self.rmNode;
     var locate = self.inDOM;
     var is = self.byId;
-    var slice = self.bySelector;
+    var _bySelector = self.bySelector;
     var _ = self.byTag;
     var $ = self.parseHTML;
     var max = self.iframeHTML;
@@ -3479,7 +3482,7 @@ if (window.GUMGUM) {
     var currentTarget = self.sbf;
     /** @type {Element} */
     var documentElement = doc.documentElement;
-    var a = self.flashEnabled;
+    var _flashEnabled = self.flashEnabled;
     var target = self[_container];
     var messages = self.ieVersion;
     var from = self.infoModalMinHeight;
@@ -3510,11 +3513,11 @@ if (window.GUMGUM) {
     var callback;
     var remove;
     var report;
-    var parse;
+    var _parse;
     var handle;
     var ready;
     var create;
-    var 3;
+    var success;
     var init;
     var load;
     var errorCB;
@@ -3695,7 +3698,7 @@ if (window.GUMGUM) {
       var idx = types[_width];
       var t = _scrollTop + ts;
       var determinant = _scrollLeft + idx;
-      var a = data[index];
+      var a = data[_top];
       var v = data[k];
       var x = data[_height] || 1;
       var d = data[_width];
@@ -3752,7 +3755,7 @@ if (window.GUMGUM) {
         /** @type {Array} */
         var string = [];
         try {
-          string = slice(index);
+          string = _bySelector(index);
         } catch (bR) {
           if (!array[index]) {
             /** @type {string} */
@@ -3769,7 +3772,7 @@ if (window.GUMGUM) {
       current = callback(data.join(","));
       /** @type {number} */
       i = 0;
-      for (;i < current[ii] && (item = current[i]);i += 1) {
+      for (;i < current[_length] && (item = current[i]);i += 1) {
         if (filter(item, e)) {
           /** @type {boolean} */
           selectElement = _true;
@@ -3808,28 +3811,28 @@ if (window.GUMGUM) {
       /** @type {string} */
       var current = location.href;
       var data = stats = self.getWH(global);
-      var e = {
-        t : ggv2id,
-        v : 1,
-        r : r,
-        fs : a,
-        rf : fn(doc.referrer),
-        pu : fn(current),
-        ce : nav.cookieEnabled,
+      var _pubdata = {
+        t : ggv2id, //广告位id
+        v : 1, //
+        r : r, //脚本版本号
+        fs : _flashEnabled, //浏览器是否支持flash插件
+        rf : fn(doc.referrer), //编码后的当前文档来源URL
+        pu : fn(current), //编码后的当前页完整URL
+        ce : nav.cookieEnabled, // 浏览器是否启用cookies
         vp : {
-          ii : global[index] && top !== global,
-          w : data[_width],
-          h : data[_height]
+          ii : global[_top] && top !== global,//判断当前窗口否在一个iframe中
+          w : data[_width], //可见区域宽度
+          h : data[_height] //可见区域高度
         },
         sc : {
-          w : global.screen[_width],
-          h : global.screen[_height],
-          d : global.devicePixelRatio || 1
+          w : global.screen[_width], //设备宽
+          h : global.screen[_height], //设备高
+          d : global.devicePixelRatio || 1 //设备像素比
         }
       };
       /** @type {Date} */
       var _timestamp = new Date;
-      var charset = (current.match(/#ggad=(.+)$/) || [context, element])[1];
+      var _eAdBuyId = (current.match(/#ggad=(.+)$/) || [context, element])[1];
       var fix = successCallback();
       if (fix) {
         e.dt = fix;
@@ -3839,8 +3842,8 @@ if (window.GUMGUM) {
       if (param) {
         e.ai = global.ggaffid;
       }
-      self.pubdata = parseFloat(e);
-      _loadScript(_baseUrl + "/services/get?callback=GUMGUM.startServices&pubdata=" + self.pubdata + "&bf=" + currentTarget + "&lt=" + +_timestamp + "&to=" + _timestamp[getTimezoneOffset]() + (charset ? "&eAdBuyId=" + charset : ""), target, context, element);
+      self.pubdata = _toJSON(_pubdata);
+      _loadScript(_baseUrl + "/services/get?callback=GUMGUM.startServices&pubdata=" + self.pubdata + "&bf=" + currentTarget + "&lt=" + +_timestamp + "&to=" + _timestamp[getTimezoneOffset]() + (_eAdBuyId ? "&eAdBuyId=" + _eAdBuyId : ""), target, context, element);
     };
     /**
      * @param {Object} data
@@ -3849,10 +3852,10 @@ if (window.GUMGUM) {
     self.startServices = function(data) {
       /** @type {boolean} */
       var bL = !options && (!!data.ads || !!data.trk);
-
       var bK = data.nat && data.nat.active;
       /** @type {string} */
-      var camelKey = data.pag && data.pag.mobile ? "mobile" : "desktop";
+      var _deviceType = data.pag && data.pag.mobile ? "mobile" : "desktop";
+      //Todo:?
       if (data.spa && data.spa.active) {
         self.saad = new Player(data.spa);
       }
@@ -3862,6 +3865,7 @@ if (window.GUMGUM) {
           data : data.spa
         });
       }
+
       if (bK) {
         handle(data.nat);
       }
@@ -3872,7 +3876,7 @@ if (window.GUMGUM) {
         report(data.ads);
       }
       if (data.pxs && !args) {
-        load(data.pxs, camelKey);
+        load(data.pxs, _deviceType);
       }
       if (data.pag) {
         if (data.pag.css) {
@@ -3900,18 +3904,18 @@ if (window.GUMGUM) {
       }
     };
     /**
-     * @param {string} parts
+     * @param {string} cs
      * @return {?}
      */
-    parse = function(parts) {
+    _parse = function(cs) {
       /** @type {number} */
-      var objUid = 0;
-      var map = parts.split(",");
+      var i = 0;
+      var map = cs.split(",");
       /** @type {number} */
       var resp = 0;
-      for (;objUid < map[ii];objUid++) {
+      for (;i < map[_length];i++) {
         try {
-          resp = slice(map[objUid])[0];
+          resp = _bySelector(map[i])[0];
           if (resp) {
             return resp;
           }
@@ -3933,16 +3937,16 @@ if (window.GUMGUM) {
       var n = context;
       /** @type {null} */
       var obj = context;
-      var charset = (_location.match(/#ggad=(.+)$/) || [context, element])[1];
+      var _eAdBuyId = (_location.match(/#ggad=(.+)$/) || [context, element])[1];
       var result = {
         lt : getTime(),
         to : +(new Date).getTimezoneOffset(),
         pu : fn(_location),
         ru : doc.referrer,
         ce : nav.cookieEnabled,
-        fs : a,
+        fs : _flashEnabled,
         bf : currentTarget,
-        forced : charset ? "&eAdBuyId=" + charset : ""
+        forced : _eAdBuyId ? "&eAdBuyId=" + _eAdBuyId : ""
       };
       /**
        * @param {string} obj
@@ -3970,11 +3974,11 @@ if (window.GUMGUM) {
           cb("NativeAdCallback", modelData);
         }
       };
-      if (data.plc && (n = data.plc[ii])) {
+      if (data.plc && (n = data.plc[_length])) {
         /** @type {number} */
         i = 0;
         for (;i < n && (obj = data.plc[i]);i++) {
-          if (parse(obj.cs)) {
+          if (_parse(obj.cs)) {
             get(obj);
           }
         }
@@ -4003,7 +4007,7 @@ if (window.GUMGUM) {
         }
         return element;
       }
-      t = parse(value);
+      t = _parse(value);
       if (!t) {
         return element;
       }
@@ -4758,11 +4762,11 @@ if (window.GUMGUM) {
           a : [c],
           rf : doc.referrer,
           p : createElement(path),
-          fs : a,
+          fs : _flashEnabled,
           ce : nav.cookieEnabled,
           ac : parent ? parent.occurrences : {},
           vp : {
-            ii : global[index] && top !== global,
+            ii : global[_top] && top !== global,
             w : data[_width],
             h : data[_height]
           },
@@ -4772,9 +4776,9 @@ if (window.GUMGUM) {
             d : global.devicePixelRatio || 1
           }
         };
-        var charset = (path.match(/#ggad=(.+)$/) || [context, element])[1];
+        var _eAdBuyId = (path.match(/#ggad=(.+)$/) || [context, element])[1];
         /** @type {string} */
-        var curPunc = parseInt(style, 10) > 0 ? "&adBuyId=" + style : charset ? "&eAdBuyId=" + charset : "";
+        var curPunc = parseInt(style, 10) > 0 ? "&adBuyId=" + style : _eAdBuyId ? "&eAdBuyId=" + _eAdBuyId : "";
         var dt = successCallback();
         /** @type {Date} */
         var _timestamp = new Date;
@@ -4793,7 +4797,7 @@ if (window.GUMGUM) {
         n = fn(parseFloat(n));
         cp(_baseUrl + "/assets/new?assets=" + n + "&bf=" + currentTarget + "&lt=" + +_timestamp + "&to=" + _timestamp[getTimezoneOffset]() + curPunc, function(ioArgs) {
           /** @type {boolean} */
-          var target = !!(charset || (curPunc || style));
+          var target = !!(_eAdBuyId || (curPunc || style));
           /** @type {null} */
           var obj = context;
           /** @type {(boolean|string)} */
@@ -4840,9 +4844,9 @@ if (window.GUMGUM) {
           w : data[_width],
           h : data[_height],
           x : data[k],
-          y : data[index],
+          y : data[_top],
           lt : lt,
-          af : data[index] + data[_height] < tileSize.h && data[k] + data[_width] < tileSize.w
+          af : data[_top] + data[_height] < tileSize.h && data[k] + data[_width] < tileSize.w
         };
         if (el.tagName[cssprop]() === "a" && (form = el.href || el.getAttribute("href"))) {
           self.lu = createElement(form);
@@ -4916,14 +4920,14 @@ if (window.GUMGUM) {
         a = _.call(self.bodyEl, "img");
         /** @type {number} */
         _i = 0;
-        _ref3 = a[ii];
+        _ref3 = a[_length];
         for (;_i < _ref3;_i++) {
           e = a[_i];
           if (e[_width] <= 100 || e[_height] <= 100) {
             continue;
           }
           json = empty(e);
-          if (!json || (json[_width] < 100 || (json[_height] < 100 || (json[index] < 0 || json[k] < 0)))) {
+          if (!json || (json[_width] < 100 || (json[_height] < 100 || (json[_top] < 0 || json[k] < 0)))) {
             continue;
           }
           img = text(e);
@@ -5421,10 +5425,10 @@ if (window.GUMGUM) {
           showInfo : self.bindCtx(item, item.showInfo)
         });
         result = data.scr;
-        if (result && result[ii]) {
+        if (result && result[_length]) {
           /** @type {number} */
           attrs = 0;
-          for (;attrs < result[ii];attrs++) {
+          for (;attrs < result[_length];attrs++) {
             o = result[attrs];
             if (o.u && o.e === "IMPRESSION") {
               o.p = fix(o.u, {
@@ -5475,10 +5479,10 @@ if (window.GUMGUM) {
           if (!i) {
             return element;
           }
-          if (tiles && tiles[ii]) {
+          if (tiles && tiles[_length]) {
             /** @type {number} */
             index = 0;
-            for (;index < tiles[ii];index++) {
+            for (;index < tiles[_length];index++) {
               options = tiles[index];
               if (options.u && options.e === "CLICK") {
                 trigger(options.u[replace](/GGUID/ig, p.uid), {
@@ -5516,7 +5520,7 @@ if (window.GUMGUM) {
             pv : self.pvid,
             seq : data.i,
             pu : current,
-            af : stats[index] + stats[_height] < tileSize.h && stats[k] + stats[_width] < tileSize.w
+            af : stats[_top] + stats[_height] < tileSize.h && stats[k] + stats[_width] < tileSize.w
           };
           var originalEvent;
           if (options.inViewRatio) {
@@ -5564,7 +5568,7 @@ if (window.GUMGUM) {
             pv : self.pvid,
             seq : res.i,
             pu : current,
-            af : data[index] + data[_height] < tileSize.h && data[k] + data[_width] < tileSize.w
+            af : data[_top] + data[_height] < tileSize.h && data[k] + data[_width] < tileSize.w
           };
           var originalEvent;
           if (options.inViewRatio) {
@@ -5603,7 +5607,7 @@ if (window.GUMGUM) {
             ab : c.ab,
             seq : c.i,
             pv : self.pvid,
-            af : stats[index] + stats[_height] < tileSize.h && stats[k] + stats[_width] < tileSize.w
+            af : stats[_top] + stats[_height] < tileSize.h && stats[k] + stats[_width] < tileSize.w
           };
           var pu = {};
           if (options.inViewRatio) {
@@ -5862,7 +5866,7 @@ if (window.GUMGUM) {
                   end : "margin-left:0"
                 };
                 break;
-              case index:
+              case _top:
                 result = {
                   start : ["marginTop", "-100%"],
                   end : "margin-top:0"
@@ -5900,6 +5904,7 @@ if (window.GUMGUM) {
             options.requireAnimation = element;
           }
           result = {};
+
           switch(p.x) {
             case "l":
               result[k] = data[k];
@@ -5917,23 +5922,23 @@ if (window.GUMGUM) {
           }
           switch(p.y) {
             case "t":
-              result[index] = data[index];
+              result[_top] = data[_top];
               break;
             case "b":
               /** @type {number} */
-              result[index] = data[index] + data[_height] - max;
+              result[_top] = data[_top] + data[_height] - max;
               break;
             case "m":
-              result[index] = data[index] + (data[_height] - max) / 2;
+              result[_top] = data[_top] + (data[_height] - max) / 2;
               break;
             default:
-              result[index] = ~~p.y > 0 ? data[index] + ~~p.y : data[index] + data[_height] - max + ~~p.y;
+              result[_top] = ~~p.y > 0 ? data[_top] + ~~p.y : data[_top] + data[_height] - max + ~~p.y;
               break;
           }
           css(value, {
             zIndex : data[rootProperty],
             left : result[k],
-            top : result[index],
+            top : result[_top],
             display : val,
             visibility : VISIBLE
           });
