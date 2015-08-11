@@ -1,16 +1,18 @@
 Internet Ads
 =============
 
+## 行业动态跟踪
+* [营销技术生态图谱（2015）](http://chiefmartec.com/2015/01/marketing-technology-landscape-supergraphic-2015/)
+* [RTBChina：中国程序化技术生态圈](http://www.rtbchina.com/china-display-ad-tech-ecosystem)
+
 ## 行业标准
 * [中国移动互联网广告标准（互联网数字广告基础标准、移动互联网广告监测标准、移动系统对接标准）](http://iac-i.org/standards_of_chinese_mobile_internet_advertisement.html)
 * [互联网广告署IAB](https://www.iab.net/)
 
 ## 精准广告 ##
-
 * Tanx
 
 ## 原生广告（Native Advertising） ##
-
 * [百度图＋](http://imageplus.baidu.com/)：根据网站图片匹配相关推广，并展示在图片上的变现方案。有三种展示形式，贴片样式、右上展开样式、Icon浮层样式
 * [GumGum](http://gumgum.com/)：图片内嵌广告公司。通过智能识别图片内容，为图片添加对应的悬浮式广告信息。2014年针对视频推出屏幕嵌入式广告。产品分 IN-IMAGE和 IN-SCREEN
 * [Kiosked](http://www.kiosked.com/)：芬兰的一个“内容广告平台”公司，几乎可以让用户购买他们在网络上看到的任何东西。通过使用视觉识别软件，它可以匹配YouTube视频、网页或网站其他地方出现的物品，并可以让用户购买它们——但前提是该商品品牌参与到 Kiosked的项目。
