@@ -2418,7 +2418,7 @@ if (!window.GUMGUM) {
          */
         var after = function() {
           el[_src] = src + time;
-          _addNode(suiteView, el);
+          iframe(suiteView, el);
         };
         if (!type) {
           return false;
