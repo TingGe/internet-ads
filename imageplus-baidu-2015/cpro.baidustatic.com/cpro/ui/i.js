@@ -1,7 +1,5 @@
 (function (AD_CONFIG, LINKS, RT_CONFIG) {
   /*! Copyright 2015 Baidu Inc. All Rights Reserved. */
-  "";
-  "";
   var baidu = {version: "1.5.0"};
   baidu.guid = "$BAIDU$";
   window[baidu.guid] = window[baidu.guid] || {};
@@ -167,7 +165,15 @@
     b = null
   };
   baidu.sio.callByServer = function (a, m, n) {
-    var i = document.createElement("SCRIPT"), h = "bd__cbs__", k, e, o = n || {}, d = o.charset, f = o.queryField || "callback", l = o.timeOut || 0, b, c = new RegExp("(\\?|&)" + f + "=([^&]*)"), g;
+    var i = document.createElement("SCRIPT"),
+      h = "bd__cbs__",
+      k, e, o = n || {},
+      d = o.charset,
+      f = o.queryField || "callback",
+      l = o.timeOut || 0,
+      b,
+      c = new RegExp("(\\?|&)" + f + "=([^&]*)"),
+      g;
     if (baidu.lang.isFunction(m)) {
       k = h + Math.floor(Math.random() * 2147483648).toString(36);
       window[k] = j(0)
@@ -205,6 +211,16 @@
         }
       }
     }
+  };
+  baidu.sio.log = function (b) {
+    var a = new Image(), c = "tangram_sio_log_" + Math.floor(Math.random() * 2147483648).toString(36);
+    window[c] = a;
+    a.onload = a.onerror = a.onabort = function () {
+      a.onload = a.onerror = a.onabort = null;
+      window[c] = null;
+      a = null
+    };
+    a.src = b
   };
   baidu.page.getViewHeight = function () {
     var b = document, a = b.compatMode == "BackCompat" ? b.body : b.documentElement;
@@ -381,30 +397,30 @@
   ;
   var m, q = q || {};
   q.global = this;
-  q.Pa = !0;
-  q.Ra = "en";
-  q.Qa = !0;
-  q.Ja = function (a) {
+  q.Ra = !0;
+  q.Ta = "en";
+  q.Sa = !0;
+  q.La = function (a) {
     return void 0 !== a
   };
-  q.Ia = function (a, b, c) {
+  q.Ja = function (a, b, c) {
     a = a.split(".");
     c = c || q.global;
     a[0]in c || !c.execScript || c.execScript("var " + a[0]);
-    for (var d; a.length && (d = a.shift());)!a.length && q.Ja(b) ? c[d] = b : c = c[d] ? c[d] : c[d] = {}
+    for (var d; a.length && (d = a.shift());)!a.length && q.La(b) ? c[d] = b : c = c[d] ? c[d] : c[d] = {}
   };
-  q.Ua = function (a, b, c) {
-    q.Ia(a, b, c)
+  q.Xa = function (a, b, c) {
+    q.Ja(a, b, c)
   };
-  q.Ta = function (a, b, c) {
+  q.Wa = function (a, b, c) {
     a[b] = c
   };
-  q.Wa = function () {
+  q.Za = function () {
     return !1
   };
-  q.$a = function () {
+  q.cb = function () {
   };
-  q.Va = function () {
+  q.Ya = function () {
   };
   var aa, s;
   if (s = /msie (\d+\.\d)/i.exec(navigator.userAgent))var t = document.documentMode || +s[1];
@@ -415,7 +431,26 @@
   var fa = "CSS1Compat" === document.compatMode, ga = /webkit/i.test(navigator.userAgent);
   s = /UCBrowser\/(\d+\.\d)/i.exec(navigator.userAgent);
   window.$ECMA$ = window.$ECMA$ || {};
-  function ha(a, b) {
+  function w(a) {
+    return "[object Array]" === Object.prototype.toString.call(a)
+  }
+
+  function ha(a) {
+    return "[object Number]" === Object.prototype.toString.call(a) && isFinite(a)
+  }
+
+  function ia(a) {
+    if (null === a || void 0 === a)return [];
+    if (w(a))return a;
+    if ("number" !== typeof a.length || "string" === typeof a || "[object Function]" === Object.prototype.toString.call(a))return [a];
+    if (a.item) {
+      for (var b = a.length, c = Array(b); b--;)c[b] = a[b];
+      return c
+    }
+    return [].slice.call(a)
+  }
+
+  function ja(a, b) {
     function c() {
     }
 
@@ -430,29 +465,29 @@
   window.$ECMA$._instances = window.$ECMA$._instances || {};
   (function () {
     var a = window.$ECMA$;
-    a.la = a.la || 1;
+    a.ma = a.ma || 1;
     return function () {
-      return "ECMA__" + (a.la++).toString(36)
+      return "ECMA__" + (a.ma++).toString(36)
     }
   })();
-  function ia(a, b) {
+  function ka(a, b) {
     if ("function" === typeof b)for (var c in a)if (a.hasOwnProperty(c) && !1 === b.call(a, a[c], c))break
   }
 
-  function v(a, b) {
+  function x(a, b) {
     for (var c in b)b.hasOwnProperty(c) && (a[c] = b[c]);
     return a
   }
 
-  function ja(a) {
+  function la(a) {
     var b = Object.prototype.hasOwnProperty, c;
     if (!(a && "[object Object]" === Object.prototype.toString.call(a) && "isPrototypeOf"in a) || a.constructor && !b.call(a, "constructor") && !b.call(a.constructor.prototype, "isPrototypeOf"))return !1;
     for (c in a);
     return void 0 === c || b.call(a, c)
   };
-  var w = [];
+  var z = [];
 
-  function y(a, b, c) {
+  function A(a, b, c) {
     function d(b) {
       c.call(a, b)
     }
@@ -462,16 +497,16 @@
     var e = b;
     b = b.toLowerCase();
     a.addEventListener ? a.addEventListener(e, d, !1) : a.attachEvent && a.attachEvent("on" + e, d);
-    w[w.length] = [a, b, c, d, e]
+    z[z.length] = [a, b, c, d, e]
   }
 
-  function z(a, b, c) {
+  function B(a, b, c) {
     "string" === typeof a && (a = document.getElementById(a));
     b = b.replace(/^on/i, "").toLowerCase();
-    for (var d = w.length, e = !c, f, g; d--;)f = w[d], f[1] !== b || f[0] !== a || !e && f[2] !== c || (g = f[4], f = f[3], a.removeEventListener ? a.removeEventListener(g, f, !1) : a.detachEvent && a.detachEvent("on" + g, f), w.splice(d, 1))
+    for (var d = z.length, e = !c, f, g; d--;)f = z[d], f[1] !== b || f[0] !== a || !e && f[2] !== c || (g = f[4], f = f[3], a.removeEventListener ? a.removeEventListener(g, f, !1) : a.detachEvent && a.detachEvent("on" + g, f), z.splice(d, 1))
   }
 
-  function ka(a) {
+  function ma(a) {
     a.preventDefault ? a.preventDefault() : a.returnValue = !1
   }
 
@@ -482,26 +517,26 @@
     }
 
     function b(b, c, d) {
-      d = v({}, d);
+      d = x({}, d);
       var e = a(k[c], d), f = [], g;
       for (g in e)e.hasOwnProperty(g) && f.push(e[g]);
       e = document.createEvent(c);
       f.unshift(b);
       "KeyEvents" === c ? e.initKeyEvent.apply(e, f) : "MouseEvents" === c ? e.initMouseEvent.apply(e, f) : "UIEvents" === c ? e.initUIEvent.apply(e, f) : e.initEvent.apply(e, f);
-      v(e, d);
+      x(e, d);
       return e
     }
 
     function c(a) {
       var b;
-      document.createEventObject && (b = document.createEventObject(), v(b, a));
+      document.createEventObject && (b = document.createEventObject(), x(b, a));
       return b
     }
 
-    var d = {Xa: 1, Za: 1, Ya: 1}, e = {click: 1, Sa: 1, ab: 1, bb: 1, fb: 1, eb: 1, cb: 1}, f = {
+    var d = {$a: 1, bb: 1, ab: 1}, e = {click: 1, Va: 1, eb: 1, fb: 1, ib: 1, hb: 1, gb: 1}, f = {
       abort: 1,
       blur: 1,
-      Ha: 1,
+      Ia: 1,
       error: 1,
       focus: 1,
       load: t ? 0 : 1,
@@ -510,20 +545,20 @@
       scroll: 1,
       select: 1,
       submit: 1,
-      gb: t ? 0 : 1
-    }, g = {scroll: 1, resize: 1, reset: 1, submit: 1, Ha: 1, select: 1, error: 1, abort: 1}, k = {
+      kb: t ? 0 : 1
+    }, g = {scroll: 1, resize: 1, reset: 1, submit: 1, Ia: 1, select: 1, error: 1, abort: 1}, k = {
       KeyEvents: "bubbles cancelable view ctrlKey altKey shiftKey metaKey keyCode charCode".split(" "),
       MouseEvents: "bubbles cancelable view detail screenX screenY clientX clientY ctrlKey altKey shiftKey metaKey button relatedTarget".split(" "),
       HTMLEvents: ["bubbles", "cancelable"],
       UIEvents: ["bubbles", "cancelable", "view", "detail"],
       Events: ["bubbles", "cancelable"]
     };
-    v(g, d);
-    v(g, e);
-    return function (r, n, h) {
+    x(g, d);
+    x(g, e);
+    return function (p, n, h) {
       n = n.replace(/^on/i, "");
-      r = A.g(r);
-      h = v({
+      p = C.g(p);
+      h = x({
         bubbles: !0,
         cancelable: !0,
         view: window,
@@ -542,55 +577,55 @@
         relatedTarget: null
       }, h);
       if (d[n]) {
-        var p = n;
+        var r = n;
         h = a(k.KeyEvents, h);
         var l;
         if (document.createEvent)try {
-          l = b(p, "KeyEvents", h)
+          l = b(r, "KeyEvents", h)
         } catch (u) {
           try {
-            l = b(p, "Events", h)
-          } catch (x) {
-            l = b(p, "UIEvents", h)
+            l = b(r, "Events", h)
+          } catch (v) {
+            l = b(r, "UIEvents", h)
           }
         } else h.keyCode =
           0 < h.charCode ? h.charCode : h.keyCode, l = c(h);
         h = l
-      } else if (e[n])l = n, h = a(k.MouseEvents, h), document.createEvent ? (p = b(l, "MouseEvents", h), h.relatedTarget && !p.relatedTarget && ("mouseout" === l.toLowerCase() ? p.toElement = h.relatedTarget : "mouseover" === l.toLowerCase() && (p.fromElement = h.relatedTarget))) : (l = h, 0 === h.button ? p = 1 : 1 === h.button ? p = 4 : (p = h.button, p = "[object Number]" === Object.prototype.toString.call(p) && isFinite(p) ? h.button : 0), l.button = p, p = c(h)), h = p; else if (f[n]) {
+      } else if (e[n])l = n, h = a(k.MouseEvents, h), document.createEvent ? (r = b(l, "MouseEvents", h), h.relatedTarget && !r.relatedTarget && ("mouseout" === l.toLowerCase() ? r.toElement = h.relatedTarget : "mouseover" === l.toLowerCase() && (r.fromElement = h.relatedTarget))) : (h.button = 0 === h.button ? 1 : 1 === h.button ? 4 : ha(h.button) ? h.button : 0, r = c(h)), h = r; else if (f[n]) {
         l = n;
         h.bubbles = g.hasOwnProperty(l);
-        h = a(k.HTMLEvents,
-          h);
+        h = a(k.HTMLEvents, h);
         if (document.createEvent)try {
-          p = b(l, "HTMLEvents", h)
-        } catch (B) {
+          r = b(l, "HTMLEvents", h)
+        } catch (y) {
           try {
-            p = b(l, "UIEvents", h)
-          } catch (K) {
-            p = b(l, "Events", h)
+            r = b(l, "UIEvents",
+              h)
+          } catch (E) {
+            r = b(l, "Events", h)
           }
-        } else p = c(h);
-        h = p
+        } else r = c(h);
+        h = r
       } else throw Error(n + " is not support!");
-      h && (r.dispatchEvent ? r.dispatchEvent(h) : r.fireEvent && r.fireEvent("on" + n, h))
+      h && (p.dispatchEvent ? p.dispatchEvent(h) : p.fireEvent && p.fireEvent("on" + n, h))
     }
   })();
-  var C;
-  C = function (a, b, c) {
+  var D;
+  D = function (a, b, c) {
     var d, e, f = a.length;
     if ("function" === typeof b)for (e = 0; e < f && (d = a[e], d = b.call(c || a, d, e), !1 !== d); e++);
   };
-  var D = "function" === typeof"".trim ? function (a) {
+  var F = "function" === typeof"".trim ? function (a) {
     return String(a).trim()
   } : function (a) {
     return String(a).replace(/(^[\s\t\xa0\u3000\ufeff]+)|([\ufeff\u3000\xa0\s\t]+$)/g, "")
   };
 
-  function la(a, b) {
+  function na(a, b) {
     a = String(a);
     var c = arguments[1];
     if ("undefined" !== typeof c) {
-      if (ja(c))return a.replace(/\$\{(.+?)\}/g, function (a, b) {
+      if (la(c))return a.replace(/\$\{(.+?)\}/g, function (a, b) {
         var d = c[b];
         "function" === typeof d && (d = d(b));
         return "undefined" === typeof d ? "" : d
@@ -604,19 +639,19 @@
     return a
   }
 
-  function ma(a) {
+  function oa(a) {
     return 0 > a.indexOf("-") && 0 > a.indexOf("_") ? a : a.replace(/[-_][^-_]/g, function (a) {
       return a.charAt(1).toUpperCase()
     })
   };
-  function na(a) {
+  function pa(a) {
     return String(a).replace(/%/g, "%25").replace(/&/g, "%26").replace(/\+/g, "%2B").replace(/ /g, "%20").replace(/\//g, "%2F").replace(/#/g, "%23").replace(/=/g, "%3D")
   }
 
-  function oa(a) {
+  function qa(a) {
     var b = [], c;
-    ia(a, function (a, e) {
-      if ("[object Array]" === Object.prototype.toString.call(a))for (c = a.length; c--;)b.push(e + "=" + na(a[c])); else b.push(e + "=" + na(a))
+    ka(a, function (a, e) {
+      if (w(a))for (c = a.length; c--;)b.push(e + "=" + pa(a[c])); else b.push(e + "=" + pa(a))
     });
     return b.join("&")
   };
@@ -626,23 +661,23 @@
     return b
   }
 
-  function E() {
+  function G() {
     return Math.floor(2147483648 * Math.random()).toString(36)
   }
 
-  var sa = RT_CONFIG.HOSTMAP;
-  sa || (sa = RT_CONFIG.HOSTMAP = {});
+  var ta = RT_CONFIG.HOSTMAP;
+  ta || (ta = RT_CONFIG.HOSTMAP = {});
   "object" !== typeof RT_CONFIG || RT_CONFIG.HOST || (RT_CONFIG.HOST = function (a) {
     return RT_CONFIG.HOSTMAP[a] || "http://" + a
   });
-  function ta(a) {
+  function va(a) {
     var b = ra("bds.ready");
     "function" === typeof b && b(function () {
       a()
     })
   }
 
-  var ua = {
+  var wa = {
     "[object Boolean]": "boolean",
     "[object Number]": "number",
     "[object String]": "string",
@@ -652,80 +687,80 @@
     "[object RegExp]": "regexp",
     "[object Object]": "object",
     "[object Error]": "error"
-  }, va = Object.prototype.toString;
+  }, xa = Object.prototype.toString;
 
-  function wa(a) {
-    return null == a ? String(a) : "object" === typeof a || "function" === typeof a ? ua[va.call(a)] || "object" : typeof a
+  function ya(a) {
+    return null == a ? String(a) : "object" === typeof a || "function" === typeof a ? wa[xa.call(a)] || "object" : typeof a
   }
 
-  function F(a, b, c) {
+  function H(a, b, c) {
     for (var d in b)if (b.hasOwnProperty(d) && (c || !a.hasOwnProperty(d))) {
-      var e = wa(b[d]);
+      var e = ya(b[d]);
       if ("object" === e || "array" === e) {
-        var f = wa(a[d]);
+        var f = ya(a[d]);
         "object" !== f && "array" !== f && (a[d] = "object" === e ? {} : []);
-        F(a[d], b[d], c)
+        H(a[d], b[d], c)
       } else a[d] = b[d]
     }
   }
 
-  var G = {}, xa = {};
+  var I = {}, za = {};
 
-  function H(a, b) {
-    ya();
+  function J(a, b) {
+    Aa();
     var c = setTimeout(a, b);
-    G[c] = !0;
+    I[c] = !0;
     return c
   }
 
-  function za(a) {
-    a && (delete G[a], clearTimeout(a))
+  function Ba(a) {
+    a && (delete I[a], clearTimeout(a))
   }
 
-  var Aa = !1;
+  var Ca = !1;
 
-  function ya() {
-    Aa || (I(function () {
-      for (var a in G)G.hasOwnProperty(a) && za(parseInt(a, 10));
-      for (a in xa)if (xa.hasOwnProperty(a)) {
+  function Aa() {
+    Ca || (K(function () {
+      for (var a in I)I.hasOwnProperty(a) && Ba(parseInt(a, 10));
+      for (a in za)if (za.hasOwnProperty(a)) {
         var b = parseInt(a, 10);
-        b && (delete xa[b], clearInterval(b))
+        b && (delete za[b], clearInterval(b))
       }
-    }), Aa = !0)
+    }), Ca = !0)
   }
 
-  function I(a) {
+  function K(a) {
     var b = ra("bds.comm.registerUnloadHandler");
-    "function" === typeof b ? b(a) : ta(function () {
-      I(a)
+    "function" === typeof b ? b(a) : va(function () {
+      K(a)
     })
   };
-  function Ba(a) {
+  function Da(a) {
     this.r = a || document;
-    Ca(this)
+    Ea(this)
   }
 
-  m = Ba.prototype;
+  m = Da.prototype;
   m.g = function (a) {
     return "[object String]" === Object.prototype.toString.call(a) ? this.r.getElementById(a) : a && a.nodeName && (1 === a.nodeType || 9 === a.nodeType) ? a : null
   };
   m.N = null;
-  m.S = null;
-  function Da(a) {
-    var b = A;
+  m.T = null;
+  function Fa(a) {
+    var b = C;
     b.N = a;
     var c = b.r.head || b.r.getElementsByTagName("head")[0] || b.r.body;
     c.insertBefore(a, c.firstChild);
     b.N = null
   }
 
-  function Ea() {
-    var a = A;
+  function Ga() {
+    var a = C;
     if (a.N)return a.N;
-    if (a.S && "interactive" === a.S.readyState)return a.S;
+    if (a.T && "interactive" === a.T.readyState)return a.T;
     for (var b = a.r.getElementsByTagName("script"), c = b.length; c--;) {
       var d = b[c];
-      if ("interactive" === d.readyState)return a.S = d
+      if ("interactive" === d.readyState)return a.T = d
     }
     return null
   }
@@ -755,8 +790,8 @@
     }
     return c
   };
-  function J(a) {
-    var b = A;
+  function M(a) {
+    var b = C;
     a = b.g(a);
     b = b.getPosition(a);
     b.width = a.offsetWidth;
@@ -776,7 +811,7 @@
   };
   m.hasClass = function (a, b) {
     a = this.g(a);
-    var c = D(b).split(/\s+/), d = c.length;
+    var c = F(b).split(/\s+/), d = c.length;
     for (b = a.className.split(/\s+/).join(" "); d--;)if (!RegExp("(^| )" + c[d] + "( |$)").test(b))return !1;
     return !0
   };
@@ -787,17 +822,17 @@
   };
   m.getStyle = function (a, b) {
     a = this.g(a);
-    b = ma(b);
+    b = oa(b);
     var c = (a.currentStyle ? a.currentStyle[b] : "") || this.getComputedStyle(a, b);
     if (!c || "auto" === c) {
-      var d = L[b];
+      var d = N[b];
       d && (c = d.get ? d.get(a, b, c) : this.getStyle(a, d))
     }
-    if (M)for (var d = b, e = 0, f; f = M[e]; e++)(f = f.get) && (c = f(d, c));
+    if (O)for (var d = b, e = 0, f; f = O[e]; e++)(f = f.get) && (c = f(d, c));
     return c
   };
-  var L = L || {};
-  L.display = t && 8 > t ? {
+  var N = N || {};
+  N.display = t && 8 > t ? {
     set: function (a, b) {
       var c = a.style;
       "inline-block" === b ? (c.display = "inline", c.zoom = 1) : c.display = b
@@ -807,8 +842,8 @@
       a.style.display = "inline-block" === b ? "-moz-inline-box" : b
     }
   } : null;
-  L["float"] = t ? "styleFloat" : "cssFloat";
-  L.opacity = t && 9 > t ? {
+  N["float"] = t ? "styleFloat" : "cssFloat";
+  N.opacity = t && 9 > t ? {
     get: function (a) {
       return (a = a.style.filter) && 0 <= a.indexOf("opacity=") ? parseFloat(a.match(/opacity=([^)]*)/)[1]) / 100 + "" : "1"
     }, set: function (a, b) {
@@ -817,8 +852,8 @@
       c.zoom = 1
     }
   } : null;
-  var M = M || [];
-  M[M.length] = {
+  var O = O || [];
+  O[O.length] = {
     get: function (a, b) {
       if (/color/i.test(a) && -1 !== b.indexOf("rgb(")) {
         var c = b.split(",");
@@ -829,33 +864,33 @@
       return b
     }
   };
-  M[M.length] = {
+  O[O.length] = {
     set: function (a, b) {
       b.constructor !== Number || /zIndex|fontWeight|opacity|zoom|lineHeight/i.test(a) || (b += "px");
       return b
     }
   };
-  m = Ba.prototype;
+  m = Da.prototype;
   m.children = function (a) {
     a = this.g(a);
     var b = [];
     for (a = a.firstChild; a; a = a.nextSibling)1 === a.nodeType && b.push(a);
     return b
   };
-  function Fa(a, b, c, d) {
+  function Ha(a, b, c, d) {
     b = a.g(b);
     for (a = b[d]; a; a = a[c])if (1 === a.nodeType)return a;
     return null
   }
 
   m.first = function (a) {
-    return Fa(this, a, "nextSibling", "firstChild")
+    return Ha(this, a, "nextSibling", "firstChild")
   };
   m.next = function (a) {
-    return Fa(this, a, "nextSibling", "nextSibling")
+    return Ha(this, a, "nextSibling", "nextSibling")
   };
   m.prev = function (a) {
-    return Fa(this, a, "previousSibling", "previousSibling")
+    return Ha(this, a, "previousSibling", "previousSibling")
   };
   m.getAncestorBy = function (a, b) {
     for (a = this.g(a); (a = a.parentNode) && 1 === a.nodeType;)if (b(a))return a;
@@ -870,15 +905,15 @@
   };
   m.q = function (a, b, c) {
     var d = [], e, f, g;
-    if (!(a = D(a)))return d;
+    if (!(a = F(a)))return d;
     if ("undefined" === typeof b)b = this.r; else if (b = this.g(b), !b)return d;
-    c && (c = D(c).toUpperCase());
+    c && (c = F(c).toUpperCase());
     if (b.getElementsByClassName)for (f = b.getElementsByClassName(a), b = f.length, e = 0; e < b; e++)g = f[e], c && g.tagName !== c || (d[d.length] = g); else for (a = RegExp("(^|\\s)" + String(a).replace(RegExp("([.*+?^=!:${}()|[\\]/\\\\-])", "g"), "\\$1") + "(\\s|$)"), f = c ? b.getElementsByTagName(c) : b.all || b.getElementsByTagName("*"), b = f.length, e = 0; e < b; e++)g = f[e], a.test(g.className) && (d[d.length] =
       g);
     return d
   };
-  function Ca(a) {
-    a.ya || (a.ya = function () {
+  function Ea(a) {
+    a.za || (a.za = function () {
       function b() {
         if (!b.isReady) {
           b.isReady = !0;
@@ -913,7 +948,7 @@
             } : b;
             d.addEventListener("DOMContentLoaded",
               g, !1);
-            I(function () {
+            K(function () {
               d.removeEventListener("DOMContentLoaded", g, !1)
             })
           } else if (aa) {
@@ -930,10 +965,10 @@
               }
             })()
           }
-          f.attachEvent ? (f.attachEvent("onload", b), I(function () {
+          f.attachEvent ? (f.attachEvent("onload", b), K(function () {
             f.detachEvent("onload",
               b)
-          })) : f.addEventListener && (f.addEventListener("load", b, !1), I(function () {
+          })) : f.addEventListener && (f.addEventListener("load", b, !1), K(function () {
             f.removeEventListener("load", b, !1)
           }))
         }
@@ -945,44 +980,44 @@
   }
 
   m.ready = function (a) {
-    this.ya.apply(this, arguments)
+    this.za.apply(this, arguments)
   };
-  var A = new Ba;
-  var N = {}, Ga = [];
-
-  function Ha(a, b) {
-    function c() {
-      d++;
-      d >= e && b.apply(null, Ia(a))
-    }
-
-    "string" === typeof a && (a = [a]);
-    for (var d = 0, e = a.length, f = 0; f < e; f++)Ja(a[f], c)
-  }
-
-  function Ia(a) {
-    for (var b = [], c = 0; c < a.length; c++)b.push(N[a[c]] || null);
-    return b
-  }
+  var C = new Da;
+  var P = {}, Ia = [];
 
   function Ja(a, b) {
     function c() {
+      d++;
+      d >= e && b.apply(null, Ka(a))
+    }
+
+    "string" === typeof a && (a = [a]);
+    for (var d = 0, e = a.length, f = 0; f < e; f++)La(a[f], c)
+  }
+
+  function Ka(a) {
+    for (var b = [], c = 0; c < a.length; c++)b.push(P[a[c]] || null);
+    return b
+  }
+
+  function La(a, b) {
+    function c() {
       var a = d.readyState;
-      if ("undefined" === typeof a || /^(?:loaded|complete)$/.test(a))if (a = d.src, d = d.onload = d.onreadystatechange = null, N[a])b(N[a]); else {
-        var c = Ga.pop();
-        c && (N[a] = c, b(c))
+      if ("undefined" === typeof a || /^(?:loaded|complete)$/.test(a))if (a = d.src, d = d.onload = d.onreadystatechange = null, P[a])b(P[a]); else {
+        var c = Ia.pop();
+        c && (P[a] = c, b(c))
       }
     }
 
-    if (N[a])b(N[a]); else {
-      var d = Ka();
+    if (P[a])b(P[a]); else {
+      var d = Ma();
       d.src = a;
       document.addEventListener ? d.onload = c : d.readyState && (d.onreadystatechange = c);
-      Da(d)
+      Fa(d)
     }
   }
 
-  function Ka() {
+  function Ma() {
     var a = document.createElement("script");
     a.type = "text/javascript";
     a.charset = "utf-8";
@@ -991,60 +1026,60 @@
   }
 
   window.ECMA_define = window.ECMA_define || function (a) {
-      var b = Ea();
-      b ? (a = a(), (b = b.src) ? N[b] = a : Ga.push(a)) : (b = a(), Ga.push(b))
+      var b = Ga();
+      b ? (a = a(), (b = b.src) ? P[b] = a : Ia.push(a)) : (b = a(), Ia.push(b))
     };
   window.ECMA_require = window.ECMA_require || function (a, b) {
-      Ha(a, b)
+      Ja(a, b)
     };
-  function La(a) {
-    this.O = v({closeBoardRenderUrl: "http://ecma.bdimg.com/public03/imageplus/v2/dailog/close_board.app.js"}, this.O || {});
-    this.s = v(this.O, a)
+  function Na(a) {
+    this.O = x({closeBoardRenderUrl: "http://ecma.bdimg.com/public03/imageplus/v2/dailog/close_board.app.js"}, this.O || {});
+    this.s = x(this.O, a)
   }
 
-  La.prototype.get = function (a, b) {
+  Na.prototype.get = function (a, b) {
     return a in this.s ? this.s[a] : b
   };
-  function Ma(a, b, c) {
-    this.B = "f21ac82b21eeb7322631b6aa94e17f45" + E();
-    this.T = c;
-    this.Fa = this.render();
-    a.insertBefore(this.Fa, a.firstChild);
-    Oa(this, b)
+  function Oa(a, b, c) {
+    this.B = "f21ac82b21eeb7322631b6aa94e17f45" + G();
+    this.V = c;
+    this.Ga = this.render();
+    a.insertBefore(this.Ga, a.firstChild);
+    Pa(this, b)
   }
 
-  function Oa(a, b) {
-    var c = A.g(a.B + "-icon");
-    y(c, "mouseover", function (a) {
-      ka(a);
+  function Pa(a, b) {
+    var c = C.g(a.B + "-icon");
+    A(c, "mouseover", function (a) {
+      ma(a);
       if (a = c.nextSibling)a.style.display = "block";
       b("tipmouseover")
     });
-    y(c, "mouseout", function (a) {
-      ka(a);
+    A(c, "mouseout", function (a) {
+      ma(a);
       if (a = c.nextSibling)a.style.display = "none";
       b("tipmouseout")
     });
-    y(c, "click", function (a) {
-      ka(a);
+    A(c, "click", function (a) {
+      ma(a);
       b("tipclick")
     })
   }
 
-  Ma.prototype.render = function () {
+  Oa.prototype.render = function () {
     var a = "#${domId} {position:absolute;top:0;left:0;right:auto;bottom:auto;margin:0;padding:0;border:0;width:200px;background:transparent;-webkit-box-sizing:content-box;box-sizing:content-box;}#${domId} div{float:left;width:144px;height:17px;line-height:17px;margin:3px 0 0 -2px;background:url(${TIP_BACK_URL}) 0 0 no-repeat;_background:0;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='${TIP_BACK_URL}');font-family:sans-serif;text-align:center;font-size:12px;color:#666;padding:8px 10px;display:none;-webkit-box-sizing:content-box;box-sizing:content-box;}#${domId}-icon {float:left;height:38px;width:38px;cursor:default;background:url(${ICON_URL}) 0 0 no-repeat;_background:0;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='${ICON_URL}');-webkit-box-sizing:content-box;box-sizing:content-box;}#${domId}-icon:hover {float:left;height:38px;width:38px;}#${domId} #${domId}-icon:hover {background:url(${ICON_HOVER_URL}) 0 0 no-repeat;_background:0;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='${ICON_HOVER_URL}');}";
-    this.T &&
+    this.V &&
     (a += "#${domId}-icon {width:34px;height:34px;margin:2px 0 0 2px;cursor:pointer;}#${domId}-icon:hover {width:34px;height:34px;}");
     var b = document.createElement("div");
     b.id = this.B;
-    b.innerHTML = '<a href="javascript:void(0);" id="' + this.B + '-icon"></a>' + (this.T ? "" : '<div id="' + this.B + '-msg">\u67e5\u770b\u6807\u8bc6\u83b7\u53d6\u66f4\u591a\u4fe1\u606f</div>');
-    var c = b.childNodes[0], a = la(a, {
+    b.innerHTML = '<a href="javascript:void(0);" id="' + this.B + '-icon"></a>' + (this.V ? "" : '<div id="' + this.B + '-msg">\u67e5\u770b\u6807\u8bc6\u83b7\u53d6\u66f4\u591a\u4fe1\u606f</div>');
+    var c = b.childNodes[0], a = na(a, {
       domId: this.B,
       TIP_BACK_URL: "http://ecma.bdimg.com/public03/imageplus/tip-back.png",
-      ICON_URL: this.T ? "http://ecma.bdimg.com/public03/imageplus/i_2.png" :
+      ICON_URL: this.V ? "http://ecma.bdimg.com/public03/imageplus/i_2.png" :
         "http://ecma.bdimg.com/public03/imageplus/tip.png",
-      ICON_HOVER_URL: this.T ? "http://ecma.bdimg.com/public03/imageplus/i_2.png" : "http://ecma.bdimg.com/public03/imageplus/tip-hover.png"
-    }), d = A.r, e = c.parentNode;
+      ICON_HOVER_URL: this.V ? "http://ecma.bdimg.com/public03/imageplus/i_2.png" : "http://ecma.bdimg.com/public03/imageplus/tip-hover.png"
+    }), d = C.r, e = c.parentNode;
     if (e) {
       var f = d.createElement("style");
       f.type = "text/css";
@@ -1054,112 +1089,112 @@
     }
     return b
   };
-  function O(a) {
+  function Q(a) {
     this.f = this.n = 0;
     this.a = [];
     this.P = [];
     this.config = a;
-    this.ua = Math.ceil(new Date / 36E5);
+    this.va = Math.ceil(new Date / 36E5);
     this.u = {};
     this.t = null;
-    this.fa = !1
+    this.ga = !1
   }
 
-  m = O.prototype;
+  m = Q.prototype;
   m.I = function () {
   };
-  m.V = function () {
+  m.X = function () {
   };
-  m.za = function () {
+  m.Aa = function () {
   };
-  function Pa(a, b) {
+  function Qa(a, b) {
     var c = a.getImgIndex(b);
     if (!c) {
-      var c = ++a.f, d = a.V(b), e = function (b) {
-        P(a, b.relatedTarget || b.fromElement, c) || a.c(c, "mouseover")
+      var c = ++a.f, d = a.X(b), e = function (b) {
+        Ra(a, b.relatedTarget || b.fromElement, c) || a.c(c, "mouseover")
       }, f = function (b) {
-        P(a, b.relatedTarget || b.toElement, c) || a.c(c, "mouseout")
+        Ra(a, b.relatedTarget || b.toElement, c) || a.c(c, "mouseout")
       }, g = function () {
         a.c(c, "mousemove")
       };
-      y(d, "mouseover", e);
-      y(d, "mouseout", f);
-      y(d, "mousemove", g);
-      y(b, "mouseover", e);
-      y(b, "mouseout", f);
-      y(b, "mousemove", g);
-      y(b, "click", function () {
+      A(d, "mouseover", e);
+      A(d, "mouseout", f);
+      A(d, "mousemove", g);
+      A(b, "mouseover", e);
+      A(b, "mouseout", f);
+      A(b, "mousemove", g);
+      A(b, "click", function () {
         a.c(c, "clickimg")
       });
-      a.a[c] = {h: b, j: d, w: {}, xa: {}, A: {}, p: {}, ga: 0, J: {}, Z: "", Na: null, Ma: !1};
+      a.a[c] = {h: b, j: d, w: {}, xa: {}, A: {}, p: {}, ha: 0, J: {}, aa: "", Pa: null, Oa: !1};
       a.n++
     }
     return c
   }
 
-  function P(a, b, c) {
+  function Ra(a, b, c) {
     a = a.a[c];
     if (!a || null == b)return !1;
-    if (a.h === b || A.contains(a.j, b))return !0;
+    if (a.h === b || C.contains(a.j, b))return !0;
     var d = !1;
-    a.links && C(a.links, function (a) {
-      if (a === b || A.contains(a, b))return d = !0, !1
+    a.links && D(a.links, function (a) {
+      if (a === b || C.contains(a, b))return d = !0, !1
     });
     return d
   }
 
-  m.U = function (a, b, c) {
-    var d = this, e = "string" === typeof b ? b : b.url, f = "string" === typeof b ? "" : b.id, g = new Q(this, a), k = g.getImgWrapper();
-    k && (b = e, b = -1 !== b.indexOf("?") ? b + "&" : b + "?", b += "cacheTime=" + d.ua, ECMA_require(b, function (b) {
+  m.W = function (a, b, c) {
+    var d = this, e = "string" === typeof b ? b : b.url, f = "string" === typeof b ? "" : b.id, g = new R(this, a), k = g.getImgWrapper();
+    k && (b = e, b = -1 !== b.indexOf("?") ? b + "&" : b + "?", b += "cacheTime=" + d.va, ECMA_require(b, function (b) {
       var n = d.a[a];
-      if (null != n && A.contains(document.documentElement, k)) {
+      if (null != n && C.contains(document.documentElement, k)) {
         d.u[e] || (d.u[e] = b.get("AD_CONFIG"));
         var h = {};
-        F(h, d.u[e]);
-        var p = c.id || h.id || "f21ac82b21eeb7322631b6aa94e17f45" + a + E();
-        c.id = p;
-        d.c(a, "renderloaded", e, p);
+        H(h, d.u[e]);
+        var r = c.id || h.id || "f21ac82b21eeb7322631b6aa94e17f45" + a + G();
+        c.id = r;
+        d.c(a, "renderloaded", e, r);
         var l = d.config.get("adConfig");
-        l && F(h, l, !0);
-        F(h, c, !0);
+        l && H(h, l, !0);
+        H(h, c, !0);
         h.api = g;
         b.set("AD_CONFIG",
           h);
         h = document.createElement("div");
-        h.id = p;
+        h.id = r;
         h.style.margin = "0px";
         h.style.padding = "0px";
         h.style.border = "none";
         h.style.overflow = "visible";
         h.style.textAlign = "left";
         k.appendChild(h);
-        n.w[p] = h;
-        n.A[p] = "canvasopen";
-        n.p[p] = {id: f, url: e};
-        n.ga++;
-        g.m = p;
+        n.w[r] = h;
+        n.A[r] = "canvasopen";
+        n.p[r] = {id: f, url: e};
+        n.ha++;
+        g.m = r;
         b = b.start(!0, !0);
-        n.xa[p] = b
+        n.xa[r] = b
       }
     }))
   };
-  m.ha = function (a) {
+  m.ia = function (a) {
     var b = this, c = b.a[a];
-    if (c && !c.Z) {
-      var d = new Ma(c.j, function () {
+    if (c && !c.aa) {
+      var d = new Oa(c.j, function () {
         var c = [].slice.call(arguments, 0);
         c.unshift(a);
         b.c.apply(b, c)
-      }, b.fa);
-      c.Z = d.B;
-      c.Na = d
+      }, b.ga);
+      c.aa = d.B;
+      c.Pa = d
     }
   };
-  function Qa(a, b, c) {
+  function Ta(a, b, c) {
     function d(a) {
       var b = {}, c;
       for (c in a)if (a.hasOwnProperty(c)) {
-        var e = wa(a[c]);
+        var e = ya(a[c]);
         if ("object" === e || "array" === e) {
           if ("object" !== e || a[c].constructor === Object)b[c] = d(a[c])
         } else b[c] = a[c]
@@ -1171,17 +1206,17 @@
     a = e.xa;
     var e = e.p, f = c || "ALL";
     c = [];
-    if ("[object Array]" === Object.prototype.toString.call(f))c = f; else if ("ALL" === f)for (var g in a)a.hasOwnProperty(g) && c.push(g); else c = [f];
+    if (w(f))c = f; else if ("ALL" === f)for (var g in a)a.hasOwnProperty(g) && c.push(g); else c = [f];
     f = [];
     b = "f21ac82b21eeb7322631b6aa94e17f45closeBoardCavnasId" + b;
     for (var k = 0; k < c.length; k++)if (g = c[k], g !== b) {
-      var r = e[g];
-      f.push({renderId: r.id, renderUrl: r.url, data: d(a[g].adConfig)})
+      var p = e[g];
+      f.push({renderId: p.id, renderUrl: p.url, data: d(a[g].adConfig)})
     }
     return f
   }
 
-  O.prototype.closeAd = function (a, b, c) {
+  Q.prototype.closeAd = function (a, b, c) {
     var d = this.a[a], e = d.w, d = d.A;
     if ("ALL" === b) {
       for (var f in e)e.hasOwnProperty(f) && (e[f].style.display = "none", d[f] = "canvasclose");
@@ -1189,7 +1224,7 @@
       this.c(a, "onclose", c)
     } else e[b].style.display = "none", d[b] = "canvasclose", this.fire(a, b, "hide"), this.fire(a, b, "onclose", c)
   };
-  O.prototype.c = function (a, b, c) {
+  Q.prototype.c = function (a, b, c) {
     if (3 < arguments.length) {
       var d = Array.prototype.slice.call(arguments);
       d.shift();
@@ -1198,125 +1233,125 @@
       this.fire.apply(this, d)
     } else this.fire(a, "ALL", b, c)
   };
-  O.prototype.fire = function (a, b, c, d) {
+  Q.prototype.fire = function (a, b, c, d) {
     var e = this.P[a];
     if (e) {
       var f;
       "string" !== typeof c && (f = c, c = c.type);
       if ((e = e[c]) && 0 !== e.length) {
         var g = Array.prototype.slice.call(arguments, 3);
-        f ? f.imgIndex = a : f = {imgIndex: a, id: E(), type: c};
+        f ? f.imgIndex = a : f = {imgIndex: a, id: G(), type: c};
         g.unshift(f);
-        for (var k = "ALL" === b, r, n = 0, h = e.length; n < h; n++)f = e[n], r = f.canvas, (k || "ALL" === r || r === b) && f.func.apply(null, g)
+        for (var k = "ALL" === b, p, n = 0, h = e.length; n < h; n++)f = e[n], p = f.canvas, (k || "ALL" === p || p === b) && f.func.apply(null, g)
       }
     }
   };
-  O.prototype.getImgIndex = function (a) {
+  Q.prototype.getImgIndex = function (a) {
     if ("number" === typeof a)return a;
     for (var b = this.a, c = 1, d = b.length; c < d; c++)if (b[c] && b[c].h === a)return c;
     return 0
   };
-  O.prototype.l = function (a) {
+  Q.prototype.l = function (a) {
     for (var b = this.a, c = 1, d = b.length; c < d; c++)if (b[c] && b[c].h === a)return b[c];
     return null
   };
-  function R(a, b) {
+  function S(a, b) {
     for (var c = a.a, d = 1, e = c.length; d < e; d++)c[d] && b(c[d], d)
   }
 
-  O.prototype.recordKey = function (a, b, c, d) {
+  Q.prototype.recordKey = function (a, b, c, d) {
     if (a = this.a[a])a.J[b] = a.J[b] || [], a.J[b].push("string" === typeof c ? {type: c, time: d} : c)
   };
-  O.prototype.addListener = function (a, b, c, d) {
+  Q.prototype.addListener = function (a, b, c, d) {
     var e = this.P[a];
     e || (e = this.P[a] = {});
     e[c] || (e[c] = []);
     e[c].push({canvas: b, func: d})
   };
-  O.prototype.getImgs = function () {
+  Q.prototype.getImgs = function () {
     for (var a = [], b = 1; b <= this.n; b++)null != this.a[b] && a.push(this.a[b].h);
     return a
   };
-  function Q(a, b) {
+  function R(a, b) {
     this.d = a;
     this.f = b;
     this.m = "";
     this.version = "1.0.7"
   }
 
-  Q.prototype.getImgs = function () {
+  R.prototype.getImgs = function () {
     return this.d.getImgs()
   };
-  Q.prototype.l = function () {
+  R.prototype.l = function () {
     return this.d.a[this.f]
   };
-  Q.prototype.rendDone = function (a) {
+  R.prototype.rendDone = function (a) {
     var b = this.d, c;
-    "object" === typeof a ? (c = a.showTip, this.d.fa = null != a.useV2Tip ? a.useV2Tip : this.d.fa) : c = a;
-    c && b.ha(this.f);
-    b.a[this.f].Ma = !0
+    "object" === typeof a ? (c = a.showTip, this.d.ga = null != a.useV2Tip ? a.useV2Tip : this.d.ga) : c = a;
+    c && b.ia(this.f);
+    b.a[this.f].Oa = !0
   };
-  Q.prototype.addListener = function (a, b) {
+  R.prototype.addListener = function (a, b) {
     this.d.addListener(this.f, this.m, a, b)
   };
-  Q.prototype.getImg = function () {
+  R.prototype.getImg = function () {
     var a = this.l();
     return a ? a.h : null
   };
-  Q.prototype.getImgWrapper = function () {
+  R.prototype.getImgWrapper = function () {
     var a = this.l();
     return a ? a.j : null
   };
-  Q.prototype.getCanvas = function () {
+  R.prototype.getCanvas = function () {
     var a = this.l();
     return a && a.w ? a.w[this.m] : null
   };
-  Q.prototype.getImgIndex = function () {
+  R.prototype.getImgIndex = function () {
     return this.f
   };
-  Q.prototype.getImgRect = Q.prototype.getAdRect = function () {
+  R.prototype.getImgRect = R.prototype.getAdRect = function () {
     var a = this.l();
-    return a.rect || J(a.h)
+    return a.rect || M(a.h)
   };
-  Q.prototype.setShareData = function (a, b, c) {
+  R.prototype.setShareData = function (a, b, c) {
     var d = this.d;
-    if (c)d.t = d.t || {}, d.t[a] = b; else if (c = d.a[this.f])c.Y = c.Y || {}, c.Y[a] = b
+    if (c)d.t = d.t || {}, d.t[a] = b; else if (c = d.a[this.f])c.$ = c.$ || {}, c.$[a] = b
   };
-  Q.prototype.getShareData = function (a, b) {
+  R.prototype.getShareData = function (a, b) {
     if (b) {
       var c = this.d.t;
       return c ? c[a] || null : null
     }
-    return (c = this.l()) && c.Y ? c.Y[a] : null
+    return (c = this.l()) && c.$ ? c.$[a] : null
   };
-  Q.prototype.recordKey = function (a, b) {
+  R.prototype.recordKey = function (a, b) {
     this.d.recordKey(this.f, this.m, a, b)
   };
-  Q.prototype.recordTime = Q.prototype.recordKey;
-  Q.prototype.getRecordedKey = function () {
+  R.prototype.recordTime = R.prototype.recordKey;
+  R.prototype.getRecordedKey = function () {
     var a = this.l();
     return a && a.J ? a.J[this.m] : null
   };
-  Q.prototype.getRecordedTime = Q.prototype.getRecordedKey;
-  Q.prototype.getRenderUrl = function () {
+  R.prototype.getRecordedTime = R.prototype.getRecordedKey;
+  R.prototype.getRenderUrl = function () {
     var a = this.l();
     return a && a.p ? a.p[this.m].url || "" : ""
   };
-  Q.prototype.getRenderId = function () {
+  R.prototype.getRenderId = function () {
     var a = this.l();
     return a && a.p ? a.p[this.m].id || "" : ""
   };
-  Q.prototype.getLoaderConfig = function (a, b) {
+  R.prototype.getLoaderConfig = function (a, b) {
     var c = this.d.config;
     return c.get.apply(c, arguments)
   };
-  Q.prototype.closeAd = function (a) {
+  R.prototype.closeAd = function (a) {
     var b = {usePrompt: !0, reasons: "", availableReasons: null, canvas: "ALL", closeBy: "AD"};
-    F(b, a || {}, !0);
+    H(b, a || {}, !0);
     a = b.canvas;
     if ("string" === typeof a)"ME" === a.toUpperCase() && (a = this.m, b.canvas = this.m); else for (var c = 0; c < a.length; c++)"ME" === a[c].toUpperCase() && (a[c] = this.m);
     if (b.usePrompt) {
-      b.materials = Qa(this.d, this.f, b.canvas);
+      b.materials = Ta(this.d, this.f, b.canvas);
       a = this.d;
       var c = this.f, d = a.a[c], e = "f21ac82b21eeb7322631b6aa94e17f45closeBoardCavnasId" + c, f = d.A[e];
       if ("canvasloading" !== f && "canvasopen" !== f)if ("canvasclose" === f)if (d =
@@ -1324,132 +1359,131 @@
         for (var g in b)b.hasOwnProperty(g) && (b[g].style.display = "block", d[g] = "canvasopen");
         a.c(c, "show");
         a.c(c, "reopen")
-      } else b[e].style.display = "block", d[e] = "canvasopen", a.fire(c, e, "show"), a.fire(c, e, "reopen"); else if (g = a.config.get("closeBoardRenderUrl"))d.A[e] = "canvasloading", b = b || {}, b.id = e, a.U(c, {
+      } else b[e].style.display = "block", d[e] = "canvasopen", a.fire(c, e, "show"), a.fire(c, e, "reopen"); else if (g = a.config.get("closeBoardRenderUrl"))d.A[e] = "canvasloading", b = b || {}, b.id = e, a.W(c, {
         url: g,
         id: "closeBoardRenderId"
       }, b)
     } else for (g = [], g = "string" === typeof a ? [a] : a, c = 0; c < g.length; c++)this.d.closeAd(this.f, g[c], b.reasons)
   };
-  Q.prototype.triggerAll = function (a, b) {
+  R.prototype.triggerAll = function (a, b) {
     if (2 < arguments.length) {
       var c = Array.prototype.slice.call(arguments);
       c.unshift(this.f);
       this.d.c.apply(this.d, c)
     } else this.d.c(this.f, a, b)
   };
-  Q.prototype.getRenderInfos = function () {
+  R.prototype.getRenderInfos = function () {
     var a = this.l(), b = [];
     if (!a || !a.p)return b;
     var a = a.p, c = {}, d, e;
     for (e in a)a.hasOwnProperty(e) && (d = a[e], c[d.id] || (c[d.id] = !0, b.push({id: d.id, url: d.url})));
     return b
   };
-  Q.prototype.getEnv = function () {
+  R.prototype.getEnv = function () {
     return {from: "desktop"}
   };
-  Q.prototype.inView = function () {
+  R.prototype.inView = function () {
     var a = this.l();
     return a ? a.inView : !0
   };
-  function V(a) {
+  function U(a) {
     var b = {top: 0, left: 0, width: 0, height: 0};
-    if (Ra(a))return b;
+    if (Ua(a))return b;
     var c = a.baiduImageplusOverflowParent;
-    if (c && Sa(c))return Ta(a, c);
-    if ((c = a.baiduImageplusHiddenParent) && Ra(c))return b;
+    if (c && Va(c))return Wa(a, c);
+    if ((c = a.baiduImageplusHiddenParent) && Ua(c))return b;
     var d = !1, e = !1, f = null, c = baidu.dom.getAncestorBy(a, function (b) {
-      var c = A.getStyle(b, "position");
+      var c = C.getStyle(b, "position");
       if ("absolute" === c || "fixed" === c)e = !0;
-      if (Ra(b))return d = !0;
-      if (e && "static" === c || !Sa(b))return !1;
-      f = Ta(a, b);
+      if (Ua(b))return d = !0;
+      if (e && "static" === c || !Va(b))return !1;
+      f = Wa(a, b);
       return f.clipped
     });
-    if (!c)return J(a);
+    if (!c)return M(a);
     if (d)return a.baiduImageplusHiddenParent = c, b;
     a.baiduImageplusOverflowParent = c;
     return f
   }
 
-  function Ra(a) {
-    return "none" === A.getStyle(a, "display") || "0" === A.getStyle(a, "opacity") || "hidden" === A.getStyle(a, "visibility")
+  function Ua(a) {
+    return "none" === C.getStyle(a, "display") || "0" === C.getStyle(a, "opacity") || "hidden" === C.getStyle(a, "visibility")
   }
 
-  function Sa(a) {
+  function Va(a) {
     if ("HTML" === a.nodeName || "BODY" === a.nodeName)return !1;
-    var b = A.getStyle(a, "display"), c = A.getStyle(a, "float");
-    return "inline" !== b || "none" !== c && "" !== c ? "visible" !== A.getStyle(a, "overflow") ? !0 : !1 : !1
+    var b = C.getStyle(a, "display"), c = C.getStyle(a, "float");
+    return "inline" !== b || "none" !== c && "" !== c ? "visible" !== C.getStyle(a, "overflow") ? !0 : !1 : !1
   }
 
-  function Ta(a, b) {
-    var c = J(a), d = J(b), e = c.top, f = c.left, g = c.width, k = c.height, r = d.top, n = d.left, h = d.width, d = d.height;
-    if (e >= r && f >= n && f + g <= n + h && e + k <= r + d)return c.clipped = !1, c;
+  function Wa(a, b) {
+    var c = M(a), d = M(b), e = c.top, f = c.left, g = c.width, k = c.height, p = d.top, n = d.left, h = d.width, d = d.height;
+    if (e >= p && f >= n && f + g <= n + h && e + k <= p + d)return c.clipped = !1, c;
     c = {clipped: !0};
     f > n ? (c.left = f, c.width = h - (f - n)) : (c.left = n, c.width = g - (n - f));
     c.width = Math.min(c.width, g, h);
-    e > r ? (c.top = e, c.height = d - (e - r)) : (c.top = r, c.height = k - (r - e));
+    e > p ? (c.top = e, c.height = d - (e - p)) : (c.top = p, c.height = k - (p - e));
     c.height = Math.min(c.height, k, d);
     return c
   };
   function W(a) {
-    this.R = a.get("imgRectKey", "baiduImageplusRect");
-    O.call(this, a);
+    this.S = a.get("imgRectKey", "baiduImageplusRect");
+    Q.call(this, a);
     (a = baidu.cookie.get("baiduImageplusQid")) && baidu.cookie.remove("baiduImageplusQid", {path: "/"});
-    a = this.da = a || E() + (new Date).getTime();
+    this.ta = a || G() + (new Date).getTime();
     this.t = this.t || {};
-    this.t.qid = a;
-    this.ra = this.config.get("maxAdCount");
-    this.pa = this.config.get("maxMiniAdCount");
-    this.H = this.ra + this.pa;
+    this.t.qid = "";
+    this.sa = this.config.get("maxAdCount");
+    this.qa = this.config.get("maxMiniAdCount");
+    this.H = this.sa + this.qa;
     this.L = this.M = 0;
     this.o = {};
-    this.Da = {};
-    this.Ca = document.getElementsByTagName("img").length;
-    this.oa = !1;
-    this.ta = [];
-    this.va = this.ea = 0;
-    this.$ = null;
-    this.sa = this.ca =
-      0;
-    this.Ea = this.config.get("noLogo");
-    this.qa = this.config.get("maxMultiFormImgCount");
-    this.D = (this.aa = this.config.get("formList")) ? this.aa.length : 0
+    this.Ea = {};
+    this.Da = document.getElementsByTagName("img").length;
+    this.pa = !1;
+    this.ua = [];
+    this.ea = this.fa = 0;
+    this.ba = null;
+    this.da = this.U = 0;
+    this.Fa = this.config.get("noLogo");
+    this.ra = this.config.get("maxMultiFormImgCount");
+    this.D = (this.R = this.config.get("formList")) ? this.R.length : 0
   }
 
-  baidu.inherits(W, O);
-  function Ua(a) {
-    a = (a = a.config.get("imgContainerId")) && A.g(a) || document;
+  baidu.inherits(W, Q);
+  function Xa(a) {
+    a = (a = a.config.get("imgContainerId")) && C.g(a) || document;
     return baidu.lang.toArray("img" === a.nodeName.toLowerCase() ? [a] : a.getElementsByTagName("img"))
   }
 
   m = W.prototype;
   m.I = function () {
     function a() {
-      Va(b);
-      b.ka();
-      b.oa = !0;
-      C(b.ta, function (a) {
+      Ya(b);
+      b.la();
+      b.pa = !0;
+      D(b.ua, function (a) {
         a()
       })
     }
 
     var b = this;
-    b.config.get("autoStart") && ("complete" === document.readyState ? a() : y(window, "load", a))
+    b.config.get("autoStart") && ("complete" === document.readyState ? a() : A(window, "load", a))
   };
   m.ready = function (a) {
-    this.oa ? a() : this.ta.push(a)
+    this.pa ? a() : this.ua.push(a)
   };
-  function Va(a) {
+  function Ya(a) {
     var b = a.n;
-    0 < b && R(a, function (b, c) {
-      Wa(a, c)
+    0 < b && S(a, function (b, c) {
+      Za(a, c)
     });
     if (b < a.H) {
-      var c = Ua(a), d = function () {
+      var c = Xa(a), d = function () {
         if (c.length && !(a.n >= a.H)) {
           var b = c.shift();
-          Xa(a.config, b) ? a.ia(b, function (c) {
-            c ? (Ya(a, b), H(d, 500)) : d()
+          $a(a.config, b) ? a.ja(b, function (c) {
+            c ? (ab(a, b), J(d, 500)) : d()
           }) : d()
         }
       };
@@ -1457,83 +1491,83 @@
     }
   }
 
-  function Za(a) {
+  function bb(a) {
     var b;
     try {
       b = decodeURIComponent(a.src)
     } catch (c) {
-      b = na(a.src)
+      b = pa(a.src)
     }
     return b
   }
 
-  function $a(a, b) {
+  function cb(a, b) {
     if (!b)return !1;
     switch (b) {
       case 1:
-        return a.sa < a.pa;
+        return a.da < a.qa;
       case 2:
-        return a.ca < a.ra;
+        return a.U < a.sa;
       default:
         return !1
     }
   }
 
-  m.ia = function (a, b) {
+  m.ja = function (a, b) {
     var c = this, d = c.getImgIndex(a);
-    if (d)Wa(c, d), b && b(d); else if (c.n >= c.H)b && b(0); else if (ab(c, a))b && b(0); else {
+    if (d)Za(c, d), b && b(d); else if (c.n >= c.H)b && b(0); else if (db(c, a))b && b(0); else {
       var e = (new Date).getTime();
-      bb(a, function (d) {
+      eb(a, function (d) {
         if (!d || c.n >= c.H)b && b(0); else {
-          d = a[c.R] = V(a);
+          d = a[c.S] = U(a);
           var g = X(c.config, d);
-          if ($a(c, g)) {
+          if (cb(c, g)) {
             var k = (new Date).getTime();
             c.getData(a, function (d) {
-              if (d && $a(c, g)) {
+              if (d && cb(c, g)) {
                 var f = (new Date).getTime(), h;
                 try {
                   h = decodeURIComponent(a.src)
-                } catch (p) {
+                } catch (r) {
                   h = a.src
                 }
-                for (var l, u, x, B, K = !1, S = !1, ub = function (a, b, d) {
+                for (var l, u, v, y, E = !1, V = !1, Bb = function (a, b, d) {
                   if (a.imgIndex === l) {
-                    for (var g in c.o)c.o.hasOwnProperty(g) && c.recordKey(l,
-                      d, g, c.o[g]);
+                    for (var h in c.o)c.o.hasOwnProperty(h) && c.recordKey(l,
+                      d, h, c.o[h]);
                     c.recordKey(l, d, "found", e);
                     c.recordKey(l, d, "loading", k);
                     c.recordKey(l, d, "loaded", f);
                     c.recordKey(l, d, "render_loaded", (new Date).getTime());
-                    c.recordKey(l, d, "ad_count", c.ea);
-                    c.recordKey(l, d, "pg_rect", cb());
-                    a = U.rect;
+                    c.recordKey(l, d, "ad_count", c.fa);
+                    c.recordKey(l, d, "pg_rect", fb());
+                    a = L.rect;
                     c.recordKey(l, d, "img_rect", [a.top, a.left, a.width, a.height].join("_"))
                   }
-                }, pa = 0, vb = d.length; pa < vb; pa++)if (u = d[pa], x = u.ads, x.length) {
-                  for (var qa = 0, wb = x.length; qa < wb; qa++)if (B = x[qa], h === B.image) {
-                    var Na = db(c, u.render);
-                    if (Na) {
-                      B.position_type = u.position_type;
-                      B.exp_list = u.exp_list;
-                      u.box &&
-                      (B.box = B.box || {}, F(B.box, u.box, !0));
-                      if (!S) {
-                        K = a[c.R];
-                        l = Pa(c, a);
-                        c.ea++;
-                        1 === g ? c.sa++ : c.ca++;
-                        var U = c.a[l], S = V(a);
-                        U.rect = K || S;
-                        X(c.config, S) ? U.inView = eb(c, a) : (U.inView = !1, U.j.style.display = "none");
-                        S = !0;
-                        c.addListener(l, "ALL", "renderloaded", ub)
+                }, sa = 0, Cb = d.length; sa < Cb; sa++)if (u = d[sa], v = u.ads, "product" === u.name && gb(c.config.get("unionId"), "c_" + (v || []).length), v.length) {
+                  for (var ua = 0, Db = v.length; ua < Db; ua++)if (y = v[ua], h === y.image) {
+                    var Sa = hb(c, u.render);
+                    if (Sa) {
+                      y.position_type = u.position_type;
+                      y.exp_list = u.exp_list;
+                      u.box && (y.box = y.box || {}, H(y.box, u.box, !0));
+                      if (!V) {
+                        E = a[c.S];
+                        l = Qa(c, a);
+                        c.fa++;
+                        1 === g ? c.da++ : c.U++;
+                        var L = c.a[l], V = U(a);
+                        L.rect = E || V;
+                        L.Ka = g;
+                        X(c.config, V) ? L.inView = ib(c, a) : (L.inView = !1, L.j.style.display = "none");
+                        V = !0;
+                        c.addListener(l, "ALL", "renderloaded", Bb)
                       }
-                      c.U(l, {url: Na, id: u.render_id}, B);
-                      K = !0
+                      c.W(l, {url: Sa, id: u.render_id}, y);
+                      E = !0
                     }
                   }
-                  K && fb(c, l)
+                  E && jb(c, l)
                 }
                 b && b(l || 0)
               } else b && b(0)
@@ -1543,7 +1577,7 @@
       })
     }
   };
-  function db(a, b) {
+  function hb(a, b) {
     var c = a.config.get("renderReplaceRules");
     if (!c)return b;
     for (var d in c)if (c.hasOwnProperty(d)) {
@@ -1553,51 +1587,51 @@
     return b
   }
 
-  m.X = function (a) {
+  m.Z = function (a) {
     if (a = this.getImgIndex(a)) {
-      this.Aa(a);
+      this.Ba(a);
       var b = this.a[a];
       if (b) {
         var c = b.w, d = b.A, e = b.p;
         this.c(a, "release");
-        for (var f in c)c.hasOwnProperty(f) && (A.remove(f), c[f] = null, d[f] = null, e.ALL = null, b.ga--);
-        0 < b.ga || (b.Z && A.remove(b.Z), f = b.h, z(f, "mouseover"), z(f, "mousemove"), z(f, "mouseout"), z(f, "click"), b = b.j, z(b, "mouseover"), z(b, "mousemove"), z(b, "mouseout"), this.za(a), this.a[a] = null, this.P[a] = null, this.n--)
+        for (var f in c)c.hasOwnProperty(f) && (C.remove(f), c[f] = null, d[f] = null, e.ALL = null, b.ha--);
+        0 < b.ha || (b.aa && C.remove(b.aa), f = b.h, B(f, "mouseover"), B(f, "mousemove"), B(f, "mouseout"), B(f, "click"), b = b.j, B(b, "mouseover"), B(b, "mousemove"), B(b, "mouseout"), this.Aa(a), this.a[a] = null, this.P[a] = null, this.n--)
       }
-      this.ea--
+      this.fa--
     }
   };
-  m.V = function (a) {
+  m.X = function (a) {
     var b = document.createElement("div");
     b.style.cssText = "position:absolute;border:0;margin:0;padding:0;height:0;overflow:visible;text-align:left;";
-    gb(b, a);
+    kb(b, a);
     document.body.appendChild(b);
-    var c = a[this.R];
-    a[this.R] = null;
-    hb(this, c, b);
+    var c = a[this.S];
+    a[this.S] = null;
+    lb(this, c, b);
     return b
   };
-  function hb(a, b, c) {
-    b = b.nodeName ? V(b) : b;
-    var d = a.$;
-    d || ("static" === A.getStyle(document.body, "position") ? a.$ = d = {
+  function lb(a, b, c) {
+    b = b.nodeName ? U(b) : b;
+    var d = a.ba;
+    d || ("static" === C.getStyle(document.body, "position") ? a.ba = d = {
       top: 0,
       left: 0
-    } : a.$ = d = baidu.dom.getPosition(document.body));
+    } : a.ba = d = baidu.dom.getPosition(document.body));
     c.style.top = b.top - d.top + "px";
     c.style.left = b.left - d.left + "px";
     c.style.width = b.width + "px"
   }
 
-  m.za = function (a) {
-    (a = this.a[a]) && A.remove(a.j)
+  m.Aa = function (a) {
+    (a = this.a[a]) && C.remove(a.j)
   };
   m.getData = function (a, b, c) {
     if (location.href.match(/(\?|&)baiduImageplus=/))b(window.baiduImagePlusFakeData); else {
       c = 1 === (c || {}).imgType;
       var d = this, e, f, g;
       if (a.nodeName && "img" === a.nodeName.toLowerCase()) {
-        e = Za(a);
-        if (f = d.Da[e]) {
+        e = bb(a);
+        if (f = d.Ea[e]) {
           b(f);
           return
         }
@@ -1607,100 +1641,120 @@
         g = a.offsetWidth;
         a = a.offsetHeight
       } else e = a.image, f = a.wd || "", g = a.width, a = a.height;
-      var k = d.config.get("api"), r = d.config.get("unionId"), n = {
-        src: d.config.get("apiSrc"), k: f, "iurl[]": e, qid: d.da, tu: r,
-        width: g, height: a, opt: d.o.opt || "", v: d.o.v || "", cached: 0, pic: d.Ca
-      }, k = k + (-1 === k.indexOf("?") ? "?" : "&"), h = 0;
+      var k = d.config.get("api"), p = d.config.get("unionId"), n = {
+        src: d.config.get("apiSrc"),
+        k: f,
+        "iurl[]": e,
+        qid: d.ta,
+        tu: p,
+        width: g,
+        height: a,
+        opt: d.o.opt || "",
+        v: d.o.v || "",
+        cached: 0,
+        pic: d.Da,
+        explist: d.config.get("expList", ""),
+        vn: mb
+      }, k = k + (-1 === k.indexOf("?") ? "?" : "&"), h = function (a, b) {
+        H(a, n);
+        baidu.sio.callByServer(k + qa(a), b, {charset: "gbk", timeOut: 1E4, onfailure: b})
+      }, r = 0;
       e = function (a, b) {
-        var c = {dri: ++d.va};
-        b && d.D && (F(c, d.aa[h % d.D]), h++);
-        F(c, n);
-        baidu.sio.callByServer(k + oa(c), a, {charset: "gbk", timeOut: 1E4, onfailure: a})
+        var c = {dri: ++d.ea};
+        b && d.D && (H(c, d.R[r % d.D]), r++);
+        h(c, a)
       };
-      if (c || 1 >= d.D)e(b, !c); else if (0 <= d.qa && d.ca >= d.qa)e(b, !0); else {
-        var p = [], l = 0;
+      if (c)e(b, !1); else if (0 <= d.ra && d.U >= d.ra)e(b, !0); else {
+        var l = parseInt(d.config.get("yuetuFormId", 0) || 0, 10), u = !1;
+        0 < l && D(d.R || [], function (a) {
+          if (l === parseInt(a.formId || 0, 10))return u = !0, !1
+        });
+        var v =
+          [], y = 0, E = d.D;
+        1 > E && (E = 1);
         c = function (a) {
-          a && p.push(a);
-          l++;
-          l >= d.D && b(Array.prototype.concat.apply([], p))
+          a && v.push(a);
+          y++;
+          y >= E && b(Array.prototype.concat.apply([], v))
         };
-        for (a = 0; a < d.D; a++)e(c, !0)
+        0 < l && !u && (E += 1, a = {dri: ++d.ea, formId: l}, h(a, c));
+        if (1 > d.D)e(c, !1); else for (a = 0; a < d.D; a++)e(c, !0)
       }
     }
   };
-  function bb(a, b) {
+  function eb(a, b) {
     if (a.complete)b(!0); else {
       var c = function () {
         b(!0);
-        z(a, "load", c)
+        B(a, "load", c)
       };
-      y(a, "load", c);
+      A(a, "load", c);
       var d = function () {
         b(!1);
-        z(a, "abort", d);
-        z(a, "error", d)
+        B(a, "abort", d);
+        B(a, "error", d)
       };
-      y(a, "abort", d);
-      y(a, "error", d)
+      A(a, "abort", d);
+      A(a, "error", d)
     }
   }
 
-  function ib(a, b, c) {
+  function nb(a, b, c) {
     var d = [];
     c ? (d[0] = c, d[1] = b) : (d[0] = a.getImgIndex(b), d[1] = a.a[d[0]]);
     return d[0] && d[1] ? d : null
   }
 
-  m.ja = function (a, b) {
-    var c = ib(this, a, b);
+  m.ka = function (a, b) {
+    var c = nb(this, a, b);
     if (c) {
       var d = c[0], c = c[1];
-      if (A.contains(document.documentElement, c.h)) {
-        var e = V(c.h), f = c.rect;
-        if (e.top !== f.top || e.left !== f.left || e.width !== f.width || e.height !== f.height)if (c.rect = e, X(this.config, e))hb(this, e, c.j), Wa(this, d), gb(c.j, c.h), this.c(d, "resize", e); else if (d = this.getImgIndex(d))c = this.a[d], c.inView = !1, c.j.style.display = "none", this.c(d, "hide")
-      } else this.X(d)
+      if (C.contains(document.documentElement, c.h)) {
+        var e = U(c.h), f = c.rect;
+        if (e.top !== f.top || e.left !== f.left || e.width !== f.width || e.height !== f.height)if (c.rect = e, X(this.config, e))lb(this, e, c.j), Za(this, d), kb(c.j, c.h), this.c(d, "resize", e); else if (d = this.getImgIndex(d))c = this.a[d], c.inView = !1, c.j.style.display = "none", this.c(d, "hide")
+      } else this.Z(d), 1 === c.Ka ? this.da-- : this.U--
     }
   };
-  function Wa(a, b) {
+  function Za(a, b) {
     var c = a.a[b];
     c.j.style.display = "block";
-    c.inView = eb(a, c.h);
+    c.inView = ib(a, c.h);
     a.c(b, "show")
   }
 
-  m.Ba = function () {
+  m.Ca = function () {
     var a = this;
-    R(a, function (b, c) {
-      a.ja(b, c)
+    S(a, function (b, c) {
+      a.ka(b, c)
     })
   };
-  m.ka = function () {
+  m.la = function () {
     var a = this;
-    jb(function () {
-      a.n && (kb(a), R(a, function (b, c) {
-        a.ja(b, c);
-        lb(a, b, c)
+    ob(function () {
+      a.n && (pb(a), S(a, function (b, c) {
+        a.ka(b, c);
+        qb(a, b, c)
       }))
     });
-    mb(function () {
-      a.n && R(a, function (b, c) {
-        lb(a, b, c)
+    rb(function () {
+      a.n && S(a, function (b, c) {
+        qb(a, b, c)
       })
     })
   };
-  function jb(a) {
+  function ob(a) {
     var b;
-    y(window, "resize", function () {
-      b && za(b);
+    A(window, "resize", function () {
+      b && Ba(b);
       var c = arguments, d = this;
-      b = H(function () {
+      b = J(function () {
         a.apply(d, c);
         b = null
       }, 500)
     })
   }
 
-  function mb(a) {
+  function rb(a) {
     function b() {
       d = g;
       c = null;
@@ -1709,61 +1763,61 @@
     }
 
     var c, d, e, f, g;
-    y(window, "scroll", function () {
+    A(window, "scroll", function () {
       e = this;
       f = arguments;
       g = (new Date).getTime();
       d = d || g;
       var a = 1E3 - (g - d);
-      0 >= a ? (za(c), b()) : c || (c = H(b, a))
+      0 >= a ? (Ba(c), b()) : c || (c = J(b, a))
     })
   }
 
-  function lb(a, b, c) {
-    var d = eb(a, b.h);
+  function qb(a, b, c) {
+    var d = ib(a, b.h);
     b.inView !== d && (b.inView = d, a.c(c, d ? "intoview" : "outview"));
     d && a.c(c, "inview")
   }
 
-  function eb(a, b) {
+  function ib(a, b) {
     a.M = a.M || baidu.page.getViewWidth();
     a.L = a.L || baidu.page.getViewHeight();
     var c = b.getBoundingClientRect();
     return 0 < c.bottom && c.top < a.L && 0 < c.right && c.left < a.M
   }
 
-  function kb(a) {
+  function pb(a) {
     a.M = baidu.page.getViewWidth();
     a.L = baidu.page.getViewHeight()
   }
 
-  function Ya(a, b) {
+  function ab(a, b) {
     function c(a) {
-      (a = "." === a.charAt(0) ? baidu.q(a.replace(/^\./, "")) : A.g(a.replace(/^#/, ""))) && (baidu.lang.isArray(a) ? a.length && C(a, function (a) {
-        d.W(a, f, e)
-      }) : d.W(a, f, e))
+      (a = "." === a.charAt(0) ? baidu.q(a.replace(/^\./, "")) : C.g(a.replace(/^#/, ""))) && (baidu.lang.isArray(a) ? a.length && D(a, function (a) {
+        d.Y(a, f, e)
+      }) : d.Y(a, f, e))
     }
 
     var d = a, e = b ? d.getImgIndex(b) : 1, f = d.a[e];
     if (f) {
       var g = d.config.get("imgCoverId");
       g && c(g);
-      (g = d.config.get("imgCovers")) && C(g.split(","), c)
+      (g = d.config.get("imgCovers")) && D(g.split(","), c)
     }
   }
 
-  m.W = function (a, b, c) {
+  m.Y = function (a, b, c) {
     var d = this;
-    if (b = ib(d, b, c)) {
+    if (b = nb(d, b, c)) {
       var e = b[0];
       b = b[1];
       b.links = b.links || [];
       b.C = b.C || [];
       c = function (a) {
-        P(d, a.relatedTarget || a.fromElement, e) || d.c(e, "mouseover")
+        Ra(d, a.relatedTarget || a.fromElement, e) || d.c(e, "mouseover")
       };
       var f = function (a) {
-        P(d, a.relatedTarget || a.toElement, e) || d.c(e, "mouseout")
+        Ra(d, a.relatedTarget || a.toElement, e) || d.c(e, "mouseout")
       }, g = function () {
         d.c(e, "mousemove")
       }, k = function () {
@@ -1771,47 +1825,47 @@
       };
       b.links.push(a);
       b.C.push({mouseover: c, mouseout: f, mousemove: g, click: k});
-      y(a, "mouseover", c);
-      y(a, "mouseout", f);
-      y(a, "mousemove", g);
-      y(a, "click", k);
-      gb(b.j, a)
+      A(a, "mouseover", c);
+      A(a, "mouseout", f);
+      A(a, "mousemove", g);
+      A(a, "click", k);
+      kb(b.j, a)
     }
   };
-  function gb(a, b) {
+  function kb(a, b) {
     var c;
     var d = b, e = d;
-    for (c = [d]; (e = e.offsetParent) && "body" !== e.nodeName.toLowerCase();)"static" !== A.getStyle(e, "position") && (d = e, c.push(d));
-    if (6 === t)c = parseInt(A.getStyle(d, "z-index"), 10) || 0; else {
-      for (e = 0; c.length;)d = c.pop(), d = parseInt(A.getStyle(d, "z-index"), 10), isNaN(d) || (e = Math.max(d, e));
+    for (c = [d]; (e = e.offsetParent) && "body" !== e.nodeName.toLowerCase();)"static" !== C.getStyle(e, "position") && (d = e, c.push(d));
+    if (6 === t)c = parseInt(C.getStyle(d, "z-index"), 10) || 0; else {
+      for (e = 0; c.length;)d = c.pop(), d = parseInt(C.getStyle(d, "z-index"), 10), isNaN(d) || (e = Math.max(d, e));
       c = e
     }
-    d = parseInt(A.getStyle(a, "z-index"), 10) || 0;
+    d = parseInt(C.getStyle(a, "z-index"), 10) || 0;
     c > d && (a.style.zIndex = c + 10)
   }
 
-  m.Oa = function (a, b) {
+  m.Qa = function (a, b) {
     var c = this.getImgIndex(b);
     if (c && (c = this.a[c], c.links)) {
       var d = baidu.array.indexOf(c.links, a);
       if (-1 !== d) {
         var e = c.C[d], f;
-        for (f in e)e.hasOwnProperty(f) && z(a, f, e[f]);
+        for (f in e)e.hasOwnProperty(f) && B(a, f, e[f]);
         baidu.array.removeAt(c.links, d);
         baidu.array.removeAt(c.C, d)
       }
     }
   };
-  m.Aa = function (a) {
+  m.Ba = function (a) {
     if (a = this.getImgIndex(a)) {
       var b = this.a[a];
-      b.links && (C(b.links, function (a, d) {
+      b.links && (D(b.links, function (a, d) {
         var e = b.C[d], f;
-        for (f in e)e.hasOwnProperty(f) && z(a, f, e[f])
+        for (f in e)e.hasOwnProperty(f) && B(a, f, e[f])
       }), b.links.length = 0, b.C.length = 0)
     }
   };
-  function fb(a, b) {
+  function jb(a, b) {
     if (a.config.get("autoDetectCover")) {
       var c = a.config.get("findCoverLevel");
       if (!(0 >= c)) {
@@ -1824,21 +1878,21 @@
             STYLE: !0,
             META: !0,
             HTML: !0
-          }, k = function (r, n) {
-            if (!(f >= c || g[r.nodeName])) {
+          }, k = function (p, n) {
+            if (!(f >= c || g[p.nodeName])) {
               f++;
               var h;
-              if (h = 0 !== n)if ("a" === r.nodeName.toLowerCase() ? h = !0 : (h = A.getStyle(r, "cursor"), h = "pointer" === h || 0 === h.indexOf("url(")), h && (h = !A.contains(r, e))) {
-                h = J(r);
-                var p = d.rect, l = h.top, u = h.left, x = p.top, B = p.left, u = Math.abs(u - B) < (u > B ? p.width : h.width);
-                h = Math.abs(l - x) < (l > x ? p.height :
+              if (h = 0 !== n)if ("a" === p.nodeName.toLowerCase() ? h = !0 : (h = C.getStyle(p, "cursor"), h = "pointer" === h || 0 === h.indexOf("url(")), h && (h = !C.contains(p, e))) {
+                h = M(p);
+                var r = d.rect, l = h.top, u = h.left, v = r.top, y = r.left, u = Math.abs(u - y) < (u > y ? r.width : h.width);
+                h = Math.abs(l - v) < (l > v ? r.height :
                     h.height) && u
               }
-              h && a.W(r, d, b);
-              4 !== n && (h = baidu.dom.first(r)) && k(h, 1);
-              3 !== n && (h = baidu.dom.next(r)) && k(h, 2);
-              2 !== n && (h = baidu.dom.prev(r)) && k(h, 3);
-              (0 === n || 4 === n) && (h = r.parentNode) && k(h, 4);
+              h && a.Y(p, d, b);
+              4 !== n && (h = baidu.dom.first(p)) && k(h, 1);
+              3 !== n && (h = baidu.dom.next(p)) && k(h, 2);
+              2 !== n && (h = baidu.dom.prev(p)) && k(h, 3);
+              (0 === n || 4 === n) && (h = p.parentNode) && k(h, 4);
               f--
             }
           };
@@ -1848,23 +1902,23 @@
     }
   }
 
-  function ab(a, b) {
+  function db(a, b) {
     var c = !1;
-    R(a, function (a) {
-      c || a.j && (c = A.contains(a.j, b))
+    S(a, function (a) {
+      c || a.j && (c = C.contains(a.j, b))
     });
     return c
   }
 
-  function cb() {
+  function fb() {
     var a = baidu.page.getViewHeight(), b = baidu.page.getViewWidth(), c = baidu.page.getScrollTop(), d = baidu.page.getScrollLeft();
     return [c, d, b, a].join("_")
   }
 
-  m.ha = function () {
-    this.Ea || W.superClass.ha.apply(this, arguments)
+  m.ia = function () {
+    this.Fa || W.superClass.ia.apply(this, arguments)
   };
-  function nb(a) {
+  function sb(a) {
     var b = new Image, c = "baidu_ecom_lego_log_" + Math.floor(2147483648 * Math.random()).toString(36);
     window[c] = b;
     b.onload = b.onerror = b.onabort = function () {
@@ -1874,9 +1928,9 @@
     b.src = a
   };
   function Y(a) {
-    this.na = a.get("imgStatusKey", "baiduImageplusStatus");
-    this.ma = a.get("imgSnapshotKey", "baiduImageplusSnapshot");
-    this.ba = !1;
+    this.oa = a.get("imgStatusKey", "baiduImageplusStatus");
+    this.na = a.get("imgSnapshotKey", "baiduImageplusSnapshot");
+    this.ca = !1;
     this.wa = 0;
     W.call(this, a)
   }
@@ -1889,26 +1943,26 @@
       a.o.v = 8;
       var b = a.config.get("startOnLoad"), c, d = function () {
         function d() {
-          a.n < a.H && ob(a);
-          a.Ba();
+          a.n < a.H && tb(a);
+          a.Ca();
           a.wa++;
-          H(d, a.config.get("tickInterval"))
+          J(d, a.config.get("tickInterval"))
         }
 
         b && (a.o.onload = (new Date).getTime());
         c && clearTimeout(c);
         d();
-        a.ka()
+        a.la()
       };
-      b && "complete" !== document.readyState ? (y(window, "load", d), c = setTimeout(d, a.config.get("onloadTimeout"))) : d()
+      b && "complete" !== document.readyState ? (A(window, "load", d), c = setTimeout(d, a.config.get("onloadTimeout"))) : d()
     }
   };
-  function pb(a, b) {
+  function ub(a, b) {
     if (a.wa === parseInt(a.config.get("checkNoBigPicAtTickNum", 8), 10)) {
       b = b || [];
       var c = 0, d = !0;
-      C(b, function (b) {
-        if (Xa(a.config, b)) {
+      D(b, function (b) {
+        if ($a(a.config, b)) {
           b = X(a.config, b);
           if (1 < b)return d = !1;
           1 === b && c++
@@ -1916,59 +1970,61 @@
       });
       if (d) {
         var e = a.config.get("noBigPicLogUrl", "http://bzclk.baidu.com/nopic.jpg") + "?tu=" + a.config.get("unionId", "") + "&url=" + encodeURIComponent(window.location.href) + "&simg=" + c + "&cache=" + (new Date).getTime();
-        nb(e)
+        sb(e)
       }
     }
   }
 
-  function ob(a) {
-    var b = Ua(a);
-    pb(a, b);
-    var c = a.na;
-    C(b, function (b) {
-      if (b && Xa(a.config, b))switch (b[c] || 0) {
+  function tb(a) {
+    var b = Xa(a);
+    ub(a, b);
+    var c = a.oa;
+    D(b, function (b) {
+      if (b && $a(a.config, b))switch (b[c] || 0) {
         case 0:
-          qb(a, b);
+          vb(a, b);
           break;
         case 1:
-          var e = rb(b), f = b[a.ma], g = !1, k;
+          var e = wb(b), f = b[a.na], g = !1, k;
           for (k in e)if (e.hasOwnProperty(k) && e[k] !== f[k]) {
             g = !0;
             break
           }
-          g && (b[c] = 1, qb(a, b))
+          g && (b[c] = 1, vb(a, b))
       }
     })
   }
 
-  function qb(a, b) {
+  function vb(a, b) {
     var c = {};
-    if (c.immediate || !a.ba)a.ba = !0, a.ia(b, function (d) {
-      a.ba = !1;
-      var e = a.na;
-      d ? (b[e] = 2, Ya(a, b)) : (b[e] = 1, b[a.ma] = rb(b));
+    if (c.immediate || !a.ca)a.ca = !0, a.ja(b, function (d) {
+      a.ca = !1;
+      var e = a.oa;
+      d ? (b[e] = 2, ab(a, b)) : (b[e] = 1, b[a.na] = wb(b));
       c.callback && c.callback(d)
     })
   }
 
-  function rb(a) {
+  function wb(a) {
+    var b = U(a);
     return {
       src: a.src,
-      opacity: A.getStyle(a, "opacity"),
-      visibility: A.getStyle(a, "visibility"),
+      opacity: C.getStyle(a, "opacity"),
+      visibility: C.getStyle(a, "visibility"),
       width: a.offsetWidth,
-      height: a.offsetHeight
+      height: a.offsetHeight,
+      Ua: b.clipped
     }
   }
 
-  Y.prototype.X = function (a) {
+  Y.prototype.Z = function (a) {
     var b = a;
     if ("number" === typeof b)if (b = this.a[b])b = b.h; else return;
     b.baiduImageplusStatus = 0;
-    Y.superClass.X.call(this, a)
+    Y.superClass.Z.call(this, a)
   };
   function Z(a) {
-    this.O = v({
+    this.O = x({
       autoStart: !0,
       imgContainerId: "",
       ignoredContainers: "",
@@ -1978,7 +2034,8 @@
       apiWd: function (a) {
         return a.alt || document.title
       },
-      api: "http://imageplus.baidu.com/ui",
+      //api: "http://imageplus.baidu.com/ui",
+      api: "./imageplus.baidu.com/ui.js",
       minImgWidth: 300,
       minImgHeight: 200,
       maxAdCount: 4,
@@ -1991,35 +2048,35 @@
       noLogo: !1,
       maxMultiFormImgCount: -1
     }, this.O || {});
-    La.call(this, a);
-    this.Ga = this.get("supportGIF") ? /.(?:html|htm)(?:$|#|\?)/ : /.(?:gif|html|htm)(?:$|#|\?)/;
+    Na.call(this, a);
+    this.Ha = this.get("supportGIF") ? /.(?:html|htm)(?:$|#|\?)/ : /.(?:gif|html|htm)(?:$|#|\?)/;
     this.minWidth = parseInt(this.get("minImgWidth"), 10);
     this.minHeight = parseInt(this.get("minImgHeight"), 10);
-    this.La = parseInt(this.get("minMiniImgWidth"), 10);
-    this.Ka = parseInt(this.get("minMiniImgHeight"), 10);
-    (a = D(this.get("unionId"))) && 0 === a.indexOf("u") && (a = a.slice(1));
+    this.Na = parseInt(this.get("minMiniImgWidth"), 10);
+    this.Ma = parseInt(this.get("minMiniImgHeight"), 10);
+    (a = F(this.get("unionId"))) && 0 === a.indexOf("u") && (a = a.slice(1));
     this.s.unionId = a;
     this.F = null
   }
 
-  baidu.inherits(Z, La);
-  function sb(a, b) {
+  baidu.inherits(Z, Na);
+  function xb(a, b) {
     var c = a.get("ignoredContainers");
     if (!c)return !1;
-    a.F || (a.F = [], C(c.split(","), function (b) {
-      b = "." === b.charAt(0) ? baidu.q(b.slice(1)) : [A.g(b.slice(1))];
+    a.F || (a.F = [], D(c.split(","), function (b) {
+      b = "." === b.charAt(0) ? baidu.q(b.slice(1)) : [C.g(b.slice(1))];
       a.F = a.F.concat(b)
     }));
     var d = !1;
-    C(a.F, function (a) {
-      if (a && (A.contains(a, b) || a === b))return d = !0, !1
+    D(a.F, function (a) {
+      if (a && (C.contains(a, b) || a === b))return d = !0, !1
     });
     return d
   }
 
-  function Xa(a, b) {
+  function $a(a, b) {
     var c = b.getAttributeNode("data-baiduimageplus-ignore");
-    return c && c.specified || a.Ga.test(b.src) || sb(a, b) ? !1 : !!X(a, {
+    return c && c.specified || a.Ha.test(b.src) || xb(a, b) ? !1 : !!X(a, {
       width: b.offsetWidth,
       height: b.offsetHeight
     })
@@ -2027,11 +2084,23 @@
 
   function X(a, b) {
     var c = b.width, d = b.height;
-    return d >= a.minHeight && c >= a.minWidth ? 2 : d >= a.Ka && c >= a.La ? 1 : 0
+    return d >= a.minHeight && c >= a.minWidth ? 2 : d >= a.Ma && c >= a.Na ? 1 : 0
   };
-  function tb(a) {
+  function yb(a) {
     Z.call(this, a);
-    this.s = v({
+    this.s = x({
+      tickInterval: 1E3,
+      onloadTimeout: 5E3,
+      startOnLoad: !1,
+      noBigPicLogUrl: "http://bzclk.baidu.com/nopic.jpg",
+      checkNoBigPicAtTickNum: 8
+    }, this.s)
+  }
+
+  baidu.inherits(yb, Z);
+  function zb(a) {
+    Z.call(this, a);
+    this.s = x({
       nopicLoaderLogUrl: "http://bzclk.baidu.com/nopic_loader.jpg",
       yuetuNopicFormId: 11,
       tagDomId: "imageplus-nopic-icon",
@@ -2039,23 +2108,34 @@
     }, this.s)
   }
 
-  ha(tb, Z);
-  function xb(a) {
+  ja(zb, Z);
+  function Ab() {
+    return RegExp("^[^\\x00-\\x20\\x7f\\(\\)<>@,;:\\\\\\'\\[\\]\\?=\\{\\}\\/\\u0080-\\uffff]+$").test("BDTUJIAID")
+  }
+
+  function Eb() {
+    if (Ab()) {
+      var a = /(^| )BDTUJIAID=([^;]*)(;|$)/.exec(document.cookie);
+      if (a)return a[2] || null
+    }
+    return null
+  };
+  function Fb(a) {
     W.call(this, a);
     this.K = this.config.get("tagDomId", "imageplus-nopic-icon");
     this.b = ""
   }
 
-  ha(xb, W);
-  function yb(a, b) {
+  ja(Fb, W);
+  function Gb(a, b) {
     var c = a.config.get("nopicLoaderLogUrl", "http://bzclk.baidu.com/nopic_loader.jpg");
-    c && (c = c + (0 > c.indexOf("?") ? "?" : "&") + "actionId=0&url=" + encodeURIComponent(window.location.href) + "&msg=" + b, nb(c))
+    c && (c = c + (0 > c.indexOf("?") ? "?" : "&") + "actionId=0&url=" + encodeURIComponent(window.location.href) + "&msg=" + b, sb(c))
   }
 
-  m = xb.prototype;
+  m = Fb.prototype;
   m.I = function () {
     function a() {
-      (d = A.g(c.K)) ? (c.b += ",useTagId:1", b()) : e = setTimeout(function () {
+      (d = C.g(c.K)) ? (c.b += ",useTagId:1", b()) : e = setTimeout(function () {
         a()
       }, c.config.get("nopicTickInterval", 1E3))
     }
@@ -2070,33 +2150,33 @@
     c.b += ",loader_start:" + (new Date).getTime();
     var d = null, e = 0;
     a();
-    A.ready(function () {
+    C.ready(function () {
       clearTimeout(e);
       if (!0 !== !!d) {
-        if (d = A.g(c.K))c.b += ",useTagId:1"; else {
+        if (d = C.g(c.K))c.b += ",useTagId:1"; else {
           c.b += ",useTagId:0";
           var a = (new Date).getTime(), g;
           g = [];
-          for (var k = [document.body], r = [], n = 10, h = {script: !0, style: !0, input: !0, img: !0},
-                 p = window.document.title, p = p.split("-")[0]; 0 < n--;) {
+          for (var k = [document.body], p = [], n = 10, h = {script: !0, style: !0, input: !0, img: !0},
+                 r = window.document.title, r = r.split("-")[0]; 0 < n--;) {
             for (; 0 < k.length;) {
               var l = k.shift();
-              if (!h[l.tagName.toLowerCase()] && !A.hasClass(l, "yuetu-float-layer") && l.innerHTML) {
-                for (var u = parseInt(2 * p.length / 3, 10), x = 0; x < u && l.innerHTML.charAt(x) === p.charAt(x); x++);
-                x === u && g.push(l);
-                r = r.concat(A.children(l))
+              if (!h[l.tagName.toLowerCase()] && !C.hasClass(l, "yuetu-float-layer") && l.innerHTML) {
+                for (var u = parseInt(2 * r.length / 3, 10), v = 0; v < u && l.innerHTML.charAt(v) === r.charAt(v); v++);
+                v === u && g.push(l);
+                p = p.concat(C.children(l))
               }
             }
-            k = r;
-            r = [];
+            k = p;
+            p = [];
             if (1 > k.length)break
           }
           c.b += ",algorithm_time:" + ((new Date).getTime() - a);
           c.b += ",algorithm_result_length:" + g.length;
-          1 === g.length && (g = g[0], g.innerHTML += '<span id="' + c.K + '"></span>', d = A.g(c.K))
+          1 === g.length && (g = g[0], g.innerHTML += '<span id="' + c.K + '"></span>', d = C.g(c.K))
         }
         !0 === !!d ? b() :
-          (c.b += ",tag_is_found:0", yb(c, c.b))
+          (c.b += ",tag_is_found:0", Gb(c, c.b))
       }
     })
   };
@@ -2108,45 +2188,55 @@
         src: this.config.get("apiSrc"),
         k: b,
         "iurl[]": "http://imageplus.baidu.com/imgs/showcase-1.jpg",
-        qid: this.da,
+        qid: this.ta,
         tu: d,
         width: 660,
         height: 370,
         opt: 1,
         v: 8,
         cached: 0,
-        pic: 1
+        pic: 1,
+        explist: this.config.get("expList", ""),
+        vn: mb
       }, c = c + (-1 === c.indexOf("?") ? "?" : "&"), d = {
-        dri: ++this.va,
-        formId: this.config.get("yuetuNopicFormId", 11)
+        dri: ++this.ea, formId: this.config.get("yuetuNopicFormId",
+          11)
       };
-      F(d, b);
-      baidu.sio.callByServer(c +
-        oa(d), a, {charset: "gbk", timeOut: 1E4, onfailure: a})
+      H(d, b);
+      baidu.sio.callByServer(c + qa(d), a, {charset: "gbk", timeOut: 1E4, onfailure: a})
     }
   };
-  m.V = function () {
+  m.X = function () {
     var a = document.createElement("div");
     a.style.cssText = "position:absolute;border:0;margin:0;padding:0;height:0;overflow:visible;text-align:left;";
     document.body.appendChild(a);
     return a
   };
-  m.U = function (a, b) {
-    var c = this, d = "string" === typeof a ? a : a.url, e = "string" === typeof a ? "" : a.id, f = this.V();
+  m.W = function (a, b) {
+    var c = this, d = "string" === typeof a ? a : a.url, e = "string" === typeof a ? "" : a.id, f = this.X();
     if (f) {
-      var g = d, g = -1 !== g.indexOf("?") ? g + "&" : g + "?", g = g + ("cacheTime=" + c.ua);
+      var g = d, g = -1 !== g.indexOf("?") ? g + "&" : g + "?", g = g + ("cacheTime=" + c.va);
       ECMA_require(g, function (a) {
-        if (A.contains(document.documentElement, f)) {
+        if (C.contains(document.documentElement, f)) {
           c.u[d] || (c.u[d] = a.get("AD_CONFIG"));
-          var g = {renderWrapper: f, unionId: c.config.get("unionId"), tagDom: A.g(c.K), renderId: e};
-          F(g, c.u[d]);
-          var n = b.id || g.id || "f21ac82b21eeb7322631b6aa94e17f450" + E();
+          var g = {
+            renderWrapper: f,
+            unionId: c.config.get("unionId"),
+            tagDom: C.g(c.K),
+            renderId: e,
+            api: {
+              getImgWrapper: function () {
+                return f
+              }
+            }
+          };
+          H(g, c.u[d]);
+          var n = b.id || g.id || "f21ac82b21eeb7322631b6aa94e17f450" + G();
           b.id = n;
           var h = c.config.get("adConfig");
-          h && F(g, h, !0);
-          F(g, b, !0);
-          a.set("AD_CONFIG",
-            g);
+          h && H(g, h, !0);
+          H(g, b, !0);
+          a.set("AD_CONFIG", g);
           g = document.createElement("div");
           g.id = n;
           g.style.margin = "0px";
@@ -2164,57 +2254,110 @@
     var a = this, b, c, d;
     a.getData(function (e) {
       a.b += ",renderjs_got:" + (new Date).getTime();
-      yb(a, a.b);
+      Gb(a, a.b);
       e = e || [];
-      for (var f = 0, g = e.length; f < g; f++)if (b = e[f], c = b.ads, c.length)for (var k = 0, r = c.length; k < r; k++) {
+      for (var f = 0, g = e.length; f < g; f++)if (b = e[f], c = b.ads, "product" === b.name && gb(a.config.get("unionId"), "c_" + (c || []).length), c.length)for (var k = 0, p = c.length; k < p; k++) {
         d = c[k];
-        var n = db(a, b.render);
-        n && (d.position_type = b.position_type, d.exp_list = b.exp_list, b.box && (d.box = d.box || {}, F(d.box, b.box, !0)), a.U({
+        var n = hb(a, b.render);
+        n && (d.position_type = b.position_type, d.exp_list = b.exp_list, b.box && (d.box = d.box || {}, H(d.box, b.box, !0)), a.W({
           url: n,
           id: b.render_id
         }, d))
       }
     })
   };
-  function zb(a) {
-    Z.call(this, a);
-    this.s = v({
-      tickInterval: 1E3,
-      onloadTimeout: 5E3,
-      startOnLoad: !1,
-      noBigPicLogUrl: "http://bzclk.baidu.com/nopic.jpg",
-      checkNoBigPicAtTickNum: 8
-    }, this.s)
+  var Hb = window.cpro_id || "", $ = window.baiduImagePlus || {}, Ib = {};
+  Hb && (window.cpro_id = null);
+  !$.unionId && Hb && ($.unionId = Hb);
+  var mb = "150825";
+
+  function gb(a, b) {
+    baidu.sio.log("http://bzclk.baidu.com/eye.php?actionid=100&attach=" + a + "_" + b + "&timestamp=" + (new Date).getTime() + "_" + Math.floor(2147483648 * Math.random()).toString(36) + "&vn=" + mb)
   }
 
-  baidu.inherits(zb, Z);
-  var Ab = window.cpro_id || "", $ = window.baiduImagePlus || {}, Bb = {};
-  Ab && (window.cpro_id = null);
-  !$.unionId && Ab && ($.unionId = Ab);
-  function Cb(a) {
-    var b = new Y(new zb(a || $));
-    b.o = Bb;
-    b.I();
-    a = a || $;
-    0 < parseInt(a.yuetuNopicFormId || 0, 10) && (new xb(new tb(a))).I();
-    window.baiduImagePlus = {
-      _status: "loaded", _loader: b, showAd: function () {
-        return b.ia.apply(b, arguments)
-      }, removeAd: function () {
-        return b.X.apply(b, arguments)
-      }, updateAd: function () {
-        return b.ja.apply(b, arguments)
-      }, updateAds: function () {
-        return b.Ba.apply(b, arguments)
-      }, watchAds: function () {
-        return b.ka.apply(b, arguments)
-      }, linkAd: function () {
-        return b.W.apply(b, arguments)
-      }, unlinkAd: function () {
-        return b.Oa.apply(b,
-          arguments)
-      }, unlinkAds: function () {
-        return b.Aa.apply(b, arguments)
+  function Jb(a) {
+    function b(a) {
+      var b = (window.location.hostname || "").split(".");
+      if (!(2 > b.length))for (var c = "." + b[b.length - 1], d = b.length - 2; 0 <= d; d--) {
+        var c = "." + b[d] + c, e = a, f = {path: "/", domain: c, ya: 31536E6};
+        if (Ab()) {
+          var f = f || {}, g = f.ya;
+          ha(g) && (g = new Date, g.setTime(g.getTime() + f.ya));
+          document.cookie = "BDTUJIAID=" + e + (f.path ? "; path=" + f.path : "") + (g ? "; expires=" + g.toGMTString() : "") + (f.domain ? "; domain=" + f.domain : "") + (f.jb ? "; secure" : "")
+        }
+        if (!0 === !!Eb())break
+      }
+    }
+
+    function c() {
+      for (var a = "", b = 10; 32 > a.length && 0 < b;)a +=
+        Math.random().toString(16).slice(2), b -= 1;
+      for (b = 32 - a.length; 0 < b;)a = "0" + a, b -= 1;
+      return a.substr(0, 32)
+    }
+
+    function d(a) {
+      var b;
+      a = a || "";
+      b = b || 4;
+      for (var c = 0, d = Math.pow(10, b), e = a.length, f = 0; f < e; f += b) {
+        var g = parseInt(a.substr(f, b), 16);
+        ha(g) && (c = (c + g) % d)
+      }
+      return c
+    }
+
+    function e(a) {
+      return !0 === !w(a) || 1 > a.length ? !1 : !0
+    }
+
+    var f = null, g = a.exp, k = Eb();
+    k || b(c());
+    k = Eb();
+    if (!0 === !!g && !0 === e(g) && !0 === !!k) {
+      f = x({}, a);
+      f.expList = "";
+      var p = d(k);
+      D(g, function (a) {
+        var b = ia(a.flow), c = parseInt(b[1] || 0, 10), d = p % parseInt(a.mode || 1E3, 10);
+        if (d < parseInt(b[0] ||
+            0, 10) || d >= c)return !0;
+        f = x(f, a.config || {});
+        f.expList = f.expList ? f.expList + ("_" + a.name) : "" + a.name
+      });
+      g = "exp&explist=" + f.expList + "&cookieid=" + k + "&url=" + encodeURIComponent(window.location.href) + "&referurl=" + encodeURIComponent(window.document.referrer);
+      gb(F(f.unionId || "").replace(/^u/, ""), g)
+    }
+    return f || a
+  }
+
+  function Kb(a) {
+    if (a.unionId) {
+      a = Jb(a);
+      var b = new Y(new yb(a || $));
+      b.o = Ib;
+      b.I();
+      a = a || $;
+      0 < parseInt(a.yuetuNopicFormId || 0, 10) && (new Fb(new zb(a))).I();
+      window.baiduImagePlus = {
+        _status: "loaded", _loader: b, showAd: function () {
+          return b.ja.apply(b, arguments)
+        }, removeAd: function () {
+          return b.Z.apply(b, arguments)
+        }, updateAd: function () {
+          return b.ka.apply(b, arguments)
+        }, updateAds: function () {
+          return b.Ca.apply(b, arguments)
+        }, watchAds: function () {
+          return b.la.apply(b, arguments)
+        }, linkAd: function () {
+          return b.Y.apply(b, arguments)
+        },
+        unlinkAd: function () {
+          return b.Qa.apply(b, arguments)
+        }, unlinkAds: function () {
+          return b.Ba.apply(b, arguments)
+        }
       }
     }
   }
@@ -2222,21 +2365,21 @@
   if ("loading" !== $._status && "loaded" !== $._status) {
     $._status = "loading";
     window.baiduImagePlus = $;
-    Bb.start = (new Date).getTime();
-    var Db = $.api || "http://imageplus.baidu.com/ui", Db = Db + (-1 === Db.indexOf("?") ? "?" : "&") + "api=config&tu=" + D($.unionId || "").replace(/^u/, "") + "&pic=" + document.getElementsByTagName("img").length;
-    baidu.sio.callByServer(Db, function (a) {
-      Bb.site_api_loaded = (new Date).getTime();
+    Ib.start = (new Date).getTime();
+    var Lb = $.api || "http://imageplus.baidu.com/ui",
+      Lb = Lb + (-1 === Lb.indexOf("?") ? "?" : "&") + "api=config&tu=" + F($.unionId || "").replace(/^u/, "") + "&pic=" + document.getElementsByTagName("img").length + "&vn=" + mb;
+    baidu.sio.callByServer(Lb, function (a) {
+      Ib.site_api_loaded = (new Date).getTime();
       a = a || {};
       if (1 === parseInt(a.confPriority || 0, 10)) {
-        var b = {}, b = v(b, $);
-        Cb(v(b, a))
-      } else Cb(v(a, $))
+        var b = {}, b = x(b, $);
+        Kb(x(b, a))
+      } else Kb(x(a, $))
     }, {
-      charset: "gbk", timeOut: 1E4,
-      onfailure: Cb
+      charset: "gbk",
+      timeOut: 1E4, onfailure: Kb
     })
-  }
-  ;
+  };
 
 })(/** AD_CONFIG */{}, /** LINKS */[], /** RT_CONFIG */{});
-//Fri Jul 17 2015 14:45:40 GMT+0800 (CST)
+//Tue Aug 25 2015 16:02:45 GMT+0800 (CST)
