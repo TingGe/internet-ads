@@ -11,6 +11,7 @@ Internet Ads
 
 ## 精准广告 ##
 * Tanx
+* [京准通](http://jzt.jd.com/gw/)
 
 ## 原生广告（Native Advertising） ##
 * [百度图＋](http://imageplus.baidu.com/)：根据网站图片匹配相关推广，并展示在图片上的变现方案。有三种展示形式，贴片样式、右上展开样式、Icon浮层样式
