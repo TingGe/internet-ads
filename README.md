@@ -9,6 +9,10 @@ Internet Ads
 * [中国移动互联网广告标准（互联网数字广告基础标准、移动互联网广告监测标准、移动系统对接标准）](http://iac-i.org/standards_of_chinese_mobile_internet_advertisement.html)
 * [互联网广告署IAB](https://www.iab.net/)
 
+## 示例 ##
+
+1. [really-understanding-iframes](http://webadvertising20.com/2011/11/06/really-understanding-iframes/)
+
 ## 精准广告 ##
 * Tanx
 * [京准通](http://jzt.jd.com/gw/)
@@ -23,3 +27,9 @@ Internet Ads
 * http://www.popmarker.com/products
 * http://insightimage.com/
 * http://kaptur.co/embedding-images-contextual-ad-delivery-model/
+
+## 其它 ##
+
+### 关于运营商强投 ###
+最近发现使用 北京方正宽带 时总有个奇怪的http请求到指定ip（59.108.34.106），规律是请求一个未缓存的js请求时出现。同时如果是PC网页则右下角浮窗或手机网页时底部通栏。时间有限，在此只扒了一点js分享。效果如图右下角
+![方正宽带运营商强投](./res/founderbn.jpg)

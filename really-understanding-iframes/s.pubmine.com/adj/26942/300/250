@@ -1,0 +1,1 @@
+document.writeln("<script type=\'text\/javascript\' src=\'\/\/www.googletagservices.com\/tag\/js\/gpt.js\'>\n googletag.pubads().definePassback(\'\/9240792\/WordAds_MIS_Mrec_adsafe\', [300, 250]).setTargeting(\'SSL\', [\'0\']).display();\n<\/script>");

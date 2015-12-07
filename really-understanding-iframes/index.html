@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Demo</title>
+
+  <!-- <script type="text/javascript" src="//c.amazon-adsystem.com/aax2/amzn_ads.js"></script> -->
+  <!-- <script type="text/javascript" src="./c.amazon-adsystem.com/aax2/amzn_ads.js"></script>
+	<script type="text/javascript">
+	try { amznads.getAds("3033"); } catch(e) { /* ignore */ }
+	</script>-->
+
+  <script type="text/javascript">
+    //var a9_p = amznads.getKeys(),
+    var _ipw_custom = {
+      wordAds: '0',
+      adSafe: '0',
+      domain: 'webadvertising20.com',
+      pageURL: 'http://webadvertising20.com/2011/11/06/really-understanding-iframes/'
+    };
+    // if("undefined"!=typeof a9_p&&""!=a9_p&&null!==a9_p&&"[object Array]"===Object.prototype.toString.call(a9_p)){var a="",b=0,c=a9_p.length;a9_p.sort();for(var d=0;d<c;d++){a9_p[d-b]=a9_p[d-b].replace(/a1x6p/,"a160x600p");var e=a9_p[d-b].split("p");e[0]==a&&(a9_p.splice(d-b,1),b++);a=e[0]}_ipw_custom.amznPay=a9_p};document.close();
+  </script>
+
+  <script type="text/javascript">
+    window.__ATA = {
+      //scriptSrc: '//s.pubmine.com/showad.js',
+      scriptSrc: './s.pubmine.com/showad.js',
+      slotPrefix: 'automattic-id-',
+      initAd: function(o) {
+        var o = o || {},
+          g = window,
+          d = g.document,
+          wr = d.write,
+          id = g.__ATA.id();
+        wr.call(d, '<div id="' + id + '" data-section="' + (o.sectionId || 0) + '"' + (o.type ? ('data-type="' + o.type + '"') : '') + ' ' + (o.forcedUrl ? ('data-forcedurl="' + o.forcedUrl + '"') : '') + ' style="width:' + (o.width || 0) +
+          'px; height:' + (o.height || 0) + 'px;">');
+        g.__ATA.displayAd(id);
+        wr.call(d, '</div>');
+      },
+      displayAd: function(id) {
+        window.__ATA.ids = window.__ATA.ids || {};
+        window.__ATA.ids[id] = 1;
+      },
+      customParams: _ipw_custom,
+      id: function() {
+        return window.__ATA.slotPrefix + (parseInt(Math.random() * 10000, 10) + 1 + (new Date()).getMilliseconds());
+      }
+    };
+    (function(d, ata) {
+      var pr = "https:" === d.location.protocol ? "https:" : "http:",
+        src = pr + ata.scriptSrc,
+        st = "text/javascript";
+      d.write('<scr' + 'ipt type="' + st + '" src="' + src + '"><\/scr' + 'ipt>');
+    })(window.document, window.__ATA);
+  </script>
+</head>
+
+<body>
+  <div class="u">
+    <script type="text/javascript">
+      (function(g) {
+        g.__ATA.initAd({
+          sectionId: 26942,
+          width: 300,
+          height: 250
+        });
+      })(window);
+    </script>
+  </div>
+</body>
+
+</html>
