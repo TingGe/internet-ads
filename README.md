@@ -6,7 +6,6 @@ Internet Ads
 ## 前言 ##
 
 - 目标：探索不同在线广告实现方案，推动互联网广告向智能、原生、精准的跨屏方向发展，追求实现一套优良的 Web 生态的广告投放实践方案
-
 - 面向读者人群：面向互联网公司的商业产品技术实践者
 
 ## 行业 ##
@@ -14,13 +13,11 @@ Internet Ads
 ### 行业动态 ###
 
 - [营销技术生态图谱（2015）](http://chiefmartec.com/2015/01/marketing-technology-landscape-supergraphic-2015/)
-
 - [RTBChina：中国程序化技术生态圈](http://www.rtbchina.com/china-display-ad-tech-ecosystem)
 
 ### 行业标准 ###
 
 - [中国移动互联网广告标准（互联网数字广告基础标准、移动互联网广告监测标准、移动系统对接标准）](http://iac-i.org/standards_of_chinese_mobile_internet_advertisement.html)
-
 - [互联网广告署IAB](https://www.iab.net/)
 
 ## 竞品 ##
@@ -45,27 +42,16 @@ Internet Ads
 #### 竞品名单 ####
 
 - Google Admob
-
 - InMobi 投放广告创意
-
 - OutBrain 投放付费内容（即广告主的内容）
-
 - [百度图＋](http://imageplus.baidu.com/)：根据网站图片匹配相关推广，并展示在图片上的变现方案。有三种展示形式，贴片样式、右上展开样式、Icon浮层样式
-
 - [GumGum](http://gumgum.com/)：图片内嵌广告公司。通过智能识别图片内容，为图片添加对应的悬浮式广告信息。2014年针对视频推出屏幕嵌入式广告。产品分 IN-IMAGE和 IN-SCREEN。GumGum的盈利机制是这样的，GumGum首先和图片发布者达成协议，准许GumGum使用他们的图片并开辟广告位。GumGum再向有兴趣的广告商推销这些图片上的广告位。接下来的事就和互联网广告业的通行做法类似，GumGum与图片发布者对浏览并点击广告产生的收入进行分成。
-
 - [Cortica](http://cortica.com/demo_new.html):与Gumgum类似。
-
 - [Kiosked](http://www.kiosked.com/)：芬兰的一个“内容广告平台”公司，几乎可以让用户购买他们在网络上看到的任何东西。通过使用视觉识别软件，它可以匹配 YouTube 视频、网页或网站其他地方出现的物品，并可以让用户购买它们——但前提是该商品品牌参与到 Kiosked 的项目。
-
 - [ThinkLink](https://www.thinglink.com/)：通过将一个有搜索、评论及社会连接的导航界面放入图片从而改变了人们与图片互动的方式。ThingLink技术可以让企业及供应商在图片中标记产品，从而引导消费者购买，ThingLink表示图片中的平均点击率大概在1.5%到5%之间，还能让厂商追踪标记的图片是如何在网络上被传播分享的。
-
 - [Imonomy](http://imonomy.com/products/)
-
 - [Popmarker](http://www.popmarker.com/products)
-
 - [Insight Image](http://insightimage.com/)
-
 - [Kaptur](http://kaptur.co/embedding-images-contextual-ad-delivery-model/)
 
 ## 其它 ##
