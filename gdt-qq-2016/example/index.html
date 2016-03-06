@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>广点通移动联盟Demo</title>
+
+  </head>
+  <body>
+    <p>广点通移动联盟Demo广告</p>
+    <div>
+      <script type="text/javascript" id="gdt-3000501921072471">
+        var TencentGDT = TencentGDT || [];
+        TencentGDT.push({
+          posid: '3000501921072471', type: 'banner',
+          //containerid:'ad_container',//如果容器不合适，可自定义广告容器
+          filltype: 'full', //填充方式，full：填满宽度，fix:固定大小,
+          appid: "1105143643"
+        });
+        (function () {
+          var doc = document,
+            h = doc.getElementsByTagName('head')[0],
+            s = doc.createElement('script');
+          s.async = true;
+          s.src = './qzs.qq.com/qzone/biz/res/i.js';
+          //s.src = 'http://qzs.qq.com/qzone/biz/res/i.js';
+          h && h.insertBefore(s, h.firstChild)
+        })()
+      </script>
+    </div>
+  </body>
+</html>

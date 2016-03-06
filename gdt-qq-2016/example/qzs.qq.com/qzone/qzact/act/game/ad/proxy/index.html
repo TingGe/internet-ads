@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>proxy</title>
+  </head>
+  <body>
+    <script>
+      var appflag = getCookie("appflag") - "";
+
+      if (!appflag) {
+        var ua = navigator.userAgent;
+        var isIphone = ua.match(/(iPhone\sOS)\s([\d_]+)/),
+          isQzone = ua.match("Qzone");
+        //因为iOS版的有bug，appflag这个cookie种不上，所以只能临时这样判断
+        if (isIphone && isQzone && getCookie("keystr")) {
+          appflag = 1;
+        }
+      }
+
+      window.parent.postMessage(JSON.stringify({"appflag": appflag}), "*");
+
+      //获得cookie
+      function getCookie(name) {
+        var r = new RegExp('(?:^|;\\s*)' + name + '=([^;]*)'),
+          m = document.cookie.match(r);
+        return m && m[1] || '';
+      }
+    </script>
+  </body>
+</html>
+<!--[if !IE]>|xGv00|40247521dece164ae8abbe3645668699<![endif]-->
