@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>百度SSP源码分析</title>
+</head>
+
+<body>
+  <!-- 广告位：CBV4-670x100 首页 -->
+  <script>
+    (function() {
+      var s = "_" + Math.random().toString(36).slice(2);
+      document.write('<div id="' + s + '"></div>');
+      (window.slotbydup = window.slotbydup || []).push({
+        id: '685244',
+        container: s,
+        size: '670,100',
+        display: 'inlay-fix'
+      });
+    })();
+  </script>
+  <script src="./dup.baidustatic.com/js/os.js"></script>
+  <!-- <script src="http://dup.baidustatic.com/js/os.js"></script> -->
+</body>
+
+</html>

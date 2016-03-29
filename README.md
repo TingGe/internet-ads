@@ -61,3 +61,6 @@ Internet Ads
 2015年12月，发现使用 方正宽带（北京） 时总有个奇怪的 http 请求到指定 ip （ PC 是59.108.34.106；移动设备是 114.215.114.158），规律是拦截 js 请求，之后再请求原始的 js 。同时如果是 PC 网页则右下角浮窗，如果是手机网页则底部出现浮动通栏。时间有限，在此只扒了一点 js 分享。源码见 founderbn ， 效果如图右下角
 ![方正宽带运营商PC强投](./res/founderbn.jpg)
 
+### Google AdSense ###
+
+- [如何修改自适应广告代码](https://support.google.com/adsense/answer/6307124)
