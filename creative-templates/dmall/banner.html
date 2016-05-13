@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    /*左侧图标*/
+    .left {
+      float: left;
+      display: inline;
+    }
+
+    img {
+      vertical-align: middle;
+    }
+
+    img {
+      display: block;
+      border: 0;
+      -ms-interpolation-mode: bicubic;
+    }
+
+    /*右侧*/
+    .app-download .right {
+      margin-top: 18px;
+    }
+
+    .right {
+      float: right;
+      display: inline;
+    }
+
+    /*关闭按钮*/
+    #closeAppBar {
+      background-color: transparent;
+    }
+
+    .dm-ico {
+      display: inline-block;
+      vertical-align: middle;
+      background-image: url(./images/dm-sprt.15081321.png);
+      background-repeat: no-repeat;
+      background-size: 400px auto;
+    }
+  </style>
+  <style type="text/css">
+    /*APP 下载浮层*/
+    .app-download {
+      position: fixed;
+      bottom: 49px;
+      left: 0;
+      z-index: 1000;
+      padding: 0;
+      width: 100%;
+      height: 66px;
+      background: rgba(0, 0, 0, .65)
+    }
+
+    .app-download .wrapper {
+      padding: 0 12px;
+      height: 100%;
+      position: relative
+    }
+
+    .app-download .app-txt {
+      margin-left: 2%
+    }
+
+    .app-download .app-txt h4 {
+      margin: 0;
+      padding: 0;
+      font-weight: 400;
+      font-size: 14px;
+      color: #fff;
+      line-height: 1.5
+    }
+
+    .app-download .left img {
+      width: 40px;
+      height: 40px;
+      border-radius: 5px
+    }
+
+    .app-download .right {
+      margin-top: 18px;
+    }
+
+    .app-download .left {
+      margin-top: 13px
+    }
+
+    #closeAppBar {
+      background-color: transparent
+    }
+
+    #experience {
+      display: block;
+      color: #333;
+      background: #fff;
+      border: none;
+      outline: 0;
+      line-height: 31px;
+      height: 31px;
+      padding: 0 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      margin-right: 5px
+    }
+
+    #closeAppBar {
+      background-position: 100% -200px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      border: none;
+      overflow: hidden;
+      text-align: left;
+      text-indent: -400%;
+      width: 25px;
+      height: 25px
+    }
+  </style>
+</head>
+<body>
+<div class="app-download" id="appDownload">
+  <div class="wrapper">
+       <span class="left">
+           <img src="./icon/touch-icon-ipad.png" alt="">
+       </span>
+       <span class="left app-txt">
+           <h4>多点APP</h4>
+           <h4>更多精彩，上多点客户端</h4>
+       </span>
+       <span class="right">
+           <a href="javascript:;" id="experience" onclick="openAppLink()">立即体验</a>
+           <button class="dm-ico" id="closeAppBar" onclick="closeAppDownload()">关闭</button>
+       </span>
+  </div>
+</div>
+<script type="text/javascript">
+  var UA = window.navigator.userAgent;
+  //写cookies
+  function setCookie(name,value) {
+    var Days = 30;
+    var exp = new Date();
+    exp.setTime(exp.getTime() + Days*24*60*60*1000);
+    document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+  }
+
+  //读取cookies
+  function getCookie(name) {
+    var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+    if(arr=document.cookie.match(reg))
+      return unescape(arr[2]);
+    else
+      return null;
+  }
+
+  // 终端
+  var os = {
+    'android': UA.match(/(Android);?[\s\/]+([\d.]+)?/),
+    'ios': UA.match(/(iPad|iPhone|iPod).*OS\s([\d_]+)/)
+  };
+  // 客户端
+  var client = {
+    'weixin': UA.match(/.*?(MicroMessenger\/([0-9.]+))\s*/)
+  };
+  //微信
+  if (client.weixin) {
+    document.getElementById("experience").href = 'http://app.dmall.com/'
+  }
+  //打开APP链接地址
+  function openAppLink() {
+    if (os.ios) {
+      window.location.href = 'https://itunes.apple.com/cn/app/duo-dian-rang-sheng-huo-duo/id1002314698?mt=8';
+    } else {
+      window.location.href = 'http://app.dmall.com/download/dmall_1.3.0.apk';
+    }
+  }
+  //关闭APP浮层
+  function closeAppDownload() {
+    document.getElementById("appDownload").style.display = "none";
+    setCookie("haveBeenSaw", "true");
+  }
+  function initAppLink() {
+    if (getCookie("haveBeenSaw") == "true") {
+      document.getElementById("appDownload").style.display = "none";
+    }
+  }
+  initAppLink();
+</script>
+</body>
+</html>
