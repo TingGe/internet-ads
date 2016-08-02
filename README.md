@@ -4,6 +4,8 @@ Internet Ads
 
 知识图谱标签：在线广告行业、JavaScript（前端/全栈）技术
 
+[TOC]
+
 ## 前言 ##
 
 在线广告，无外乎游走于 AUC (广告主、用户、媒体方)之间。A至极为4A，U至极为精准，C至极则原生。
@@ -13,12 +15,12 @@ Internet Ads
 
 ## 行业 ##
 
-### 行业动态 ###
+### 动态 ###
 
 - [营销技术生态图谱（2015）](http://chiefmartec.com/2015/01/marketing-technology-landscape-supergraphic-2015/)
 - [RTBChina：中国程序化技术生态圈](http://www.rtbchina.com/china-display-ad-tech-ecosystem)
 
-### 行业标准 ###
+### 标准 ###
 
 - [中国移动互联网广告标准（互联网数字广告基础标准、移动互联网广告监测标准、移动系统对接标准）](http://iac-i.org/standards_of_chinese_mobile_internet_advertisement.html)
 - [互联网广告署IAB](https://www.iab.net/)
@@ -57,29 +59,35 @@ Internet Ads
 - [Insight Image](http://insightimage.com/)
 - [Kaptur](http://kaptur.co/embedding-images-contextual-ad-delivery-model/)
 
-## 广告创意
+## 创意制作
 
 一般供广告主或广告主方代理人使用。
 
 [Creative Teamplates](https://github.com/TingGe/internet-ads/tree/master/creative-templates)
 
-## 广告代码或监测代码部署管理
+## 第三方广告商合作
+
+### Google AdSense
+
+- [如何修改自适应广告代码](https://support.google.com/adsense/answer/6307124)
+
+## （广告或监测代码）部署
 
 一般媒体方使用。
 
 [Tag Manager](https://github.com/TingGe/internet-ads/blob/master/tag-manager.md)
 
+## 着陆页优化
+
+[着陆页优化(Landing Page Optimization)101招-第13章:着陆页的报告.测评和分析](http://www.quweiji.com/%E7%9D%80%E9%99%86%E9%A1%B5%E4%BC%98%E5%8C%96-landing-page-optimization-101%E6%8B%9B-%E7%AC%AC13%E7%AB%A0-%E7%9D%80%E9%99%86%E9%A1%B5%E7%9A%84%E6%8A%A5%E5%91%8A-%E6%B5%8B%E8%AF%84%E5%92%8C%E5%88%86/)
+
 ## 其它 ##
 
-### ISP强投 ###
+### ISP 劫持广告 ###
 
 2015年12月，发现使用 方正宽带（北京） 时总有个奇怪的 http 请求到指定 ip （ PC 是59.108.34.106；移动设备是 114.215.114.158），规律是拦截 js 请求，之后再请求原始的 js 。同时如果是 PC 网页则右下角浮窗，如果是手机网页则底部出现浮动通栏。时间有限，在此只扒了一点 js 分享。源码见 founderbn ， 效果如图右下角
 ![方正宽带运营商PC强投](./res/founderbn.jpg)
 
-#### 禁止运营商劫持方案：
+禁止运营商劫持方案：
 
 - [屌炸天的Content Security Policy，解决运营商页面注入！](http://www.xiaomeiti.com/note/3621)
-
-### Google AdSense ###
-
-- [如何修改自适应广告代码](https://support.google.com/adsense/answer/6307124)
