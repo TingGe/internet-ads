@@ -1,4 +1,3 @@
-
 Internet Ads
 =============
 
@@ -23,7 +22,7 @@ Internet Ads
 >
 > 行业快速发展，因此，我们要有洞察市场变化的视野和脚踏实地的智慧。
 
-- [营销技术生态图谱（2015）](http://chiefmartec.com/2015/01/marketing-technology-landscape-supergraphic-2015/)
+- [营销技术生态图谱 (2020)](https://chiefmartec.com/2020/04/marketing-technology-landscape-2020-martech-5000/)
 - [RTBChina：中国程序化技术生态圈](http://www.rtbchina.com/china-programmatic-ad-tech-landscape)
 
 ### 标准 ###
@@ -103,3 +102,4 @@ Internet Ads
 ## 附录
 
 - [纯干货！阿里CEO首次授课，揭秘阿里历史上数次重大决策背后的故事](http://mp.weixin.qq.com/s/pOcm3rKyh7NF28B2HzAgwQ)
+- [数字广告的效果监测与评估(2014.10)](http://v.admaster.co/uploads/2015/12/24/1450942748.pdf)
