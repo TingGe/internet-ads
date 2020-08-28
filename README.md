@@ -28,7 +28,7 @@ Internet Ads
 
 ### 标准 ###
 
-- [中国移动互联网广告标准（互联网数字广告基础标准、移动互联网广告监测标准、移动系统对接标准）](http://iac-i.org/standards_of_chinese_mobile_internet_advertisement.html)
+- [中国广告协会互联网广告数据服务平台](http://www.china-caa.org/digital/sdk/1)
 - [互联网广告署IAB](https://www.iab.net/)
 
 ## 产品 ##
